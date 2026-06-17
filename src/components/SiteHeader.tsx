@@ -1,12 +1,14 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Menu, X, Phone } from "lucide-react";
+import { NewsTicker } from "./NewsTicker";
 
 const nav = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About" },
   { to: "/services", label: "Services" },
   { to: "/calculators", label: "Calculators" },
+  { to: "/apply", label: "Apply" },
   { to: "/contact", label: "Contact" },
 ] as const;
 
@@ -16,11 +18,11 @@ export function SiteHeader() {
     <header className="sticky top-0 z-40 backdrop-blur-md bg-background/80 border-b border-border">
       <div className="container-page flex h-16 items-center justify-between">
         <Link to="/" className="flex items-center gap-2 group">
-          <span className="inline-flex h-9 w-9 items-center justify-center rounded-md bg-primary text-primary-foreground font-serif text-lg">A</span>
+          <span className="inline-flex h-9 w-9 items-center justify-center rounded-md bg-gradient-royal text-primary-foreground font-serif text-lg shadow-md">A</span>
           <span className="font-serif text-xl tracking-tight">Amit Mortgages</span>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-7">
           {nav.map((n) => (
             <Link
               key={n.to}
@@ -39,8 +41,8 @@ export function SiteHeader() {
             <Phone className="h-4 w-4 text-gold" /> (416) 555-0199
           </a>
           <Link
-            to="/contact"
-            className="inline-flex items-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition"
+            to="/apply"
+            className="inline-flex items-center rounded-md bg-gradient-royal px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition shadow"
           >
             Apply Now
           </Link>
@@ -59,12 +61,15 @@ export function SiteHeader() {
                 {n.label}
               </Link>
             ))}
-            <Link to="/contact" onClick={() => setOpen(false)} className="mt-2 inline-flex justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground">
+            <Link to="/apply" onClick={() => setOpen(false)} className="mt-2 inline-flex justify-center rounded-md bg-gradient-royal px-4 py-2 text-sm font-medium text-primary-foreground">
               Apply Now
             </Link>
           </div>
         </div>
       )}
+
+      {/* Breaking-news style ticker */}
+      <NewsTicker />
     </header>
   );
 }

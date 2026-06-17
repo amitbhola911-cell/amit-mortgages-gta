@@ -17,11 +17,11 @@ export const Route = createFileRoute("/calculators")({
 });
 
 const tabs = [
-  { id: "payment", label: "Mortgage Payment", icon: Home },
-  { id: "afford", label: "Affordability", icon: Wallet },
-  { id: "ltt", label: "Land Transfer Tax", icon: Landmark },
-  { id: "cmhc", label: "CMHC Insurance", icon: PiggyBank },
-  { id: "prepay", label: "Prepayment Savings", icon: Calculator },
+  { id: "payment", label: "Mortgage Payment", icon: Home, desc: "Estimate monthly, bi-weekly, and accelerated payments using Canadian semi-annual compounding." },
+  { id: "afford", label: "Affordability", icon: Wallet, desc: "See the maximum home price you qualify for under the federal stress test rules." },
+  { id: "ltt", label: "Land Transfer Tax", icon: Landmark, desc: "Calculate Ontario + City of Toronto land transfer tax, with first-time buyer rebates." },
+  { id: "cmhc", label: "CMHC Insurance", icon: PiggyBank, desc: "Estimate default insurance premiums when your down payment is under 20%." },
+  { id: "prepay", label: "Prepayment Savings", icon: Calculator, desc: "See how much interest and time you save by paying extra each month or year." },
 ] as const;
 
 function CalcPage() {
@@ -35,7 +35,7 @@ function CalcPage() {
           Run the numbers before you sign anything.
         </h1>
         <p className="mt-6 max-w-xl text-muted-foreground">
-          Built on Canadian semi-annual compounding and current Ontario tax rules. Estimates only — your real approval may differ.
+          Built on Canadian semi-annual compounding and current Ontario tax rules. Hover any tab for a quick description. Estimates only — your real approval may differ.
         </p>
       </section>
 
@@ -44,13 +44,22 @@ function CalcPage() {
           {tabs.map((t) => {
             const Active = t.id === active;
             return (
-              <button
-                key={t.id}
-                onClick={() => setActive(t.id)}
-                className={`inline-flex items-center gap-2 px-5 py-3 text-sm font-medium border-b-2 -mb-px transition ${Active ? "border-gold text-foreground" : "border-transparent text-muted-foreground hover:text-foreground"}`}
-              >
-                <t.icon className="h-4 w-4" /> {t.label}
-              </button>
+              <div key={t.id} className="relative group">
+                <button
+                  onClick={() => setActive(t.id)}
+                  className={`inline-flex items-center gap-2 px-5 py-3 text-sm font-medium border-b-2 -mb-px transition ${Active ? "border-gold text-foreground" : "border-transparent text-muted-foreground hover:text-foreground"}`}
+                >
+                  <t.icon className="h-4 w-4" /> {t.label}
+                </button>
+                <div
+                  role="tooltip"
+                  className="pointer-events-none absolute left-1/2 top-full z-30 mt-2 w-64 -translate-x-1/2 translate-y-1 rounded-lg bg-primary px-4 py-3 text-xs leading-relaxed text-primary-foreground opacity-0 shadow-[var(--shadow-elevated)] transition-all duration-200 group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:opacity-100"
+                >
+                  <span className="absolute -top-1.5 left-1/2 h-3 w-3 -translate-x-1/2 rotate-45 bg-primary" />
+                  <span className="block font-serif text-sm text-gold mb-1">{t.label}</span>
+                  {t.desc}
+                </div>
+              </div>
             );
           })}
         </div>
