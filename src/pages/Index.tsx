@@ -1,25 +1,17 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { ArrowRight, Check, Building2, Home, RefreshCw, TrendingUp, Sparkles, ShieldCheck } from "lucide-react";
 import heroImg from "@/assets/hero-toronto.jpg";
 import advisorImg from "@/assets/advisor.jpg";
+import SEO from "@/components/SEO";
 
-export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Amit Mortgages — GTA Mortgage Agent" },
-      { name: "description", content: "One advisor, 50+ lenders. Get sharper mortgage rates and personal guidance for buying, renewing, or refinancing anywhere in the Greater Toronto Area." },
-      { property: "og:title", content: "Amit Mortgages — GTA Mortgage Agent" },
-      { property: "og:description", content: "One advisor, 50+ lenders. Mortgages made simple across the Greater Toronto Area." },
-      { property: "og:url", content: "/" },
-    ],
-    links: [{ rel: "canonical", href: "/" }],
-  }),
-  component: HomePage,
-});
-
-function HomePage() {
+export default function Index() {
   return (
     <>
+      <SEO
+        title="Amit Mortgages — GTA Mortgage Agent"
+        description="One advisor, 50+ lenders. Get sharper mortgage rates and personal guidance for buying, renewing, or refinancing anywhere in the Greater Toronto Area."
+        canonical="/"
+      />
       {/* Hero */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0">
@@ -60,7 +52,6 @@ function HomePage() {
         </div>
       </section>
 
-      {/* Services preview */}
       <section className="container-page py-24">
         <div className="flex items-end justify-between gap-6 flex-wrap">
           <div className="max-w-xl">
@@ -90,7 +81,6 @@ function HomePage() {
         </div>
       </section>
 
-      {/* Lenders */}
       <section className="bg-secondary/60 py-24">
         <div className="container-page text-center">
           <p className="text-xs uppercase tracking-widest text-gold font-medium">Lender network</p>
@@ -108,7 +98,6 @@ function HomePage() {
         </div>
       </section>
 
-      {/* About strip */}
       <section className="container-page py-24 grid gap-12 md:grid-cols-2 items-center">
         <div className="relative">
           <img src={advisorImg} alt="Amit, your mortgage advisor" className="rounded-2xl shadow-elevated" width={1200} height={1400} loading="lazy" />
@@ -139,7 +128,6 @@ function HomePage() {
         </div>
       </section>
 
-      {/* CTA */}
       <section className="container-page pb-24">
         <div className="rounded-3xl bg-primary text-primary-foreground p-12 md:p-16 flex flex-col md:flex-row md:items-center md:justify-between gap-8">
           <div>

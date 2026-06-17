@@ -1,24 +1,15 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { Check } from "lucide-react";
 import advisorImg from "@/assets/advisor.jpg";
+import SEO from "@/components/SEO";
 
-export const Route = createFileRoute("/about")({
-  head: () => ({
-    meta: [
-      { title: "About Amit — GTA Mortgage Agent" },
-      { name: "description", content: "Meet Amit, an FSRA-licensed mortgage agent serving the Greater Toronto Area with 12+ years of experience across 50+ Canadian lenders." },
-      { property: "og:title", content: "About Amit Mortgages" },
-      { property: "og:description", content: "FSRA-licensed mortgage agent serving the GTA with 12+ years of experience." },
-      { property: "og:url", content: "/about" },
-    ],
-    links: [{ rel: "canonical", href: "/about" }],
-  }),
-  component: AboutPage,
-});
-
-function AboutPage() {
+export default function About() {
   return (
     <>
+      <SEO
+        title="About Amit — GTA Mortgage Agent"
+        description="Meet Amit, an FSRA-licensed mortgage agent serving the Greater Toronto Area with 12+ years of experience across 50+ Canadian lenders."
+        canonical="/about"
+      />
       <section className="container-page pt-20 pb-12">
         <p className="text-xs uppercase tracking-widest text-gold font-medium">About</p>
         <h1 className="mt-3 max-w-3xl text-5xl md:text-6xl font-serif text-balance">

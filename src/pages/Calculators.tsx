@@ -1,20 +1,6 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { Calculator, Home, Wallet, Landmark, PiggyBank } from "lucide-react";
-
-export const Route = createFileRoute("/calculators")({
-  head: () => ({
-    meta: [
-      { title: "Mortgage Calculators — Payment, Affordability, Land Transfer | Amit Mortgages" },
-      { name: "description", content: "Free Canadian mortgage calculators: payment, affordability, Ontario & Toronto land transfer tax, CMHC insurance, and mortgage prepayment savings." },
-      { property: "og:title", content: "Mortgage Calculators — Amit Mortgages" },
-      { property: "og:description", content: "Free Canadian mortgage calculators built for GTA buyers." },
-      { property: "og:url", content: "/calculators" },
-    ],
-    links: [{ rel: "canonical", href: "/calculators" }],
-  }),
-  component: CalcPage,
-});
+import SEO from "@/components/SEO";
 
 const tabs = [
   { id: "payment", label: "Mortgage Payment", icon: Home, desc: "Estimate monthly, bi-weekly, and accelerated payments using Canadian semi-annual compounding." },
@@ -24,11 +10,16 @@ const tabs = [
   { id: "prepay", label: "Prepayment Savings", icon: Calculator, desc: "See how much interest and time you save by paying extra each month or year." },
 ] as const;
 
-function CalcPage() {
+export default function Calculators() {
   const [active, setActive] = useState<(typeof tabs)[number]["id"]>("payment");
 
   return (
     <>
+      <SEO
+        title="Mortgage Calculators — Payment, Affordability, Land Transfer | Amit Mortgages"
+        description="Free Canadian mortgage calculators: payment, affordability, Ontario & Toronto land transfer tax, CMHC insurance, and mortgage prepayment savings."
+        canonical="/calculators"
+      />
       <section className="container-page pt-20 pb-10">
         <p className="text-xs uppercase tracking-widest text-gold font-medium">Calculators</p>
         <h1 className="mt-3 max-w-3xl text-5xl md:text-6xl font-serif text-balance">
@@ -76,8 +67,6 @@ function CalcPage() {
   );
 }
 
-/* ---------- shared UI ---------- */
-
 function Shell({ inputs, results }: { inputs: React.ReactNode; results: React.ReactNode }) {
   return (
     <div className="grid gap-8 md:grid-cols-5">
@@ -118,7 +107,6 @@ function Stat({ label, value, big }: { label: string; value: string; big?: boole
 const fmt = (n: number) => new Intl.NumberFormat("en-CA", { style: "currency", currency: "CAD", maximumFractionDigits: 0 }).format(n);
 const fmt2 = (n: number) => new Intl.NumberFormat("en-CA", { style: "currency", currency: "CAD" }).format(n);
 
-/* ---------- Canadian mortgage math (semi-annual compounding) ---------- */
 function monthlyPayment(principal: number, annualRate: number, amortYears: number) {
   if (principal <= 0 || amortYears <= 0) return 0;
   if (annualRate === 0) return principal / (amortYears * 12);
@@ -127,7 +115,6 @@ function monthlyPayment(principal: number, annualRate: number, amortYears: numbe
   return (principal * effMonthly) / (1 - Math.pow(1 + effMonthly, -n));
 }
 
-/* ---------- Payment ---------- */
 function PaymentCalc() {
   const [price, setPrice] = useState(950000);
   const [down, setDown] = useState(190000);
@@ -176,7 +163,6 @@ function PaymentCalc() {
   );
 }
 
-/* ---------- Affordability (stress test) ---------- */
 function AffordabilityCalc() {
   const [income, setIncome] = useState(140000);
   const [debts, setDebts] = useState(600);
@@ -187,8 +173,7 @@ function AffordabilityCalc() {
   const qualifyingRate = Math.max(rate + 2, 5.25);
   const gdsLimit = (income / 12) * 0.39;
   const tdsLimit = (income / 12) * 0.44 - debts;
-  const maxPmt = Math.max(0, Math.min(gdsLimit * 0.85, tdsLimit)); // reserve ~15% for taxes/heat
-  // invert payment formula at qualifying rate
+  const maxPmt = Math.max(0, Math.min(gdsLimit * 0.85, tdsLimit));
   const eff = Math.pow(1 + qualifyingRate / 2 / 100, 1 / 6) - 1;
   const n = amort * 12;
   const maxMortgage = maxPmt > 0 ? maxPmt * (1 - Math.pow(1 + eff, -n)) / eff : 0;
@@ -223,14 +208,13 @@ function AffordabilityCalc() {
   );
 }
 
-/* ---------- Ontario + Toronto Land Transfer Tax ---------- */
 function ontarioLTT(price: number) {
   let tax = 0;
   const brackets = [
     [55000, 0.005],
-    [195000, 0.01], // 55k–250k
-    [150000, 0.015], // 250k–400k
-    [1600000, 0.02], // 400k–2M
+    [195000, 0.01],
+    [150000, 0.015],
+    [1600000, 0.02],
     [Infinity, 0.025],
   ] as const;
   let remaining = price;
@@ -285,7 +269,6 @@ function LandTransferCalc() {
   );
 }
 
-/* ---------- CMHC insurance ---------- */
 function CmhcCalc() {
   const [price, setPrice] = useState(700000);
   const [down, setDown] = useState(35000);
@@ -294,7 +277,7 @@ function CmhcCalc() {
     const principal = Math.max(price - down, 0);
     const ltv = principal / price;
     let rate = 0;
-    if (ltv > 0.95) rate = 0; // not eligible
+    if (ltv > 0.95) rate = 0;
     else if (ltv > 0.9) rate = 0.04;
     else if (ltv > 0.85) rate = 0.031;
     else if (ltv > 0.8) rate = 0.028;
@@ -332,7 +315,6 @@ function CmhcCalc() {
   );
 }
 
-/* ---------- Prepayment ---------- */
 function PrepaymentCalc() {
   const [principal, setPrincipal] = useState(600000);
   const [rate, setRate] = useState(4.99);
