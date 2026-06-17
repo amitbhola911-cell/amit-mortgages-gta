@@ -1,10 +1,10 @@
-import { Link } from "@tanstack/react-router";
+import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
 import { Menu, X, Phone } from "lucide-react";
 import { NewsTicker } from "./NewsTicker";
 
 const nav = [
-  { to: "/", label: "Home" },
+  { to: "/", label: "Home", end: true },
   { to: "/about", label: "About" },
   { to: "/services", label: "Services" },
   { to: "/calculators", label: "Calculators" },
@@ -24,15 +24,16 @@ export function SiteHeader() {
 
         <nav className="hidden md:flex items-center gap-7">
           {nav.map((n) => (
-            <Link
+            <NavLink
               key={n.to}
               to={n.to}
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-              activeProps={{ className: "text-foreground font-medium" }}
-              activeOptions={{ exact: n.to === "/" }}
+              end={n.end}
+              className={({ isActive }) =>
+                `text-sm transition-colors ${isActive ? "text-foreground font-medium" : "text-muted-foreground hover:text-foreground"}`
+              }
             >
               {n.label}
-            </Link>
+            </NavLink>
           ))}
         </nav>
 
@@ -68,7 +69,6 @@ export function SiteHeader() {
         </div>
       )}
 
-      {/* Breaking-news style ticker */}
       <NewsTicker />
     </header>
   );

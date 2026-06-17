@@ -1,20 +1,7 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import { ShieldCheck, Lock, Send } from "lucide-react";
-
-export const Route = createFileRoute("/apply")({
-  head: () => ({
-    meta: [
-      { title: "Mortgage Application — Apply Online | Amit Mortgages" },
-      { name: "description", content: "Start your mortgage application with Amit Mortgages. Quick, secure, and confidential. Get pre-approved in 24 hours across the GTA." },
-      { property: "og:title", content: "Apply for a Mortgage — Amit Mortgages" },
-      { property: "og:description", content: "Quick & secure mortgage application for GTA homebuyers." },
-      { property: "og:url", content: "/apply" },
-    ],
-    links: [{ rel: "canonical", href: "/apply" }],
-  }),
-  component: ApplyPage,
-});
+import SEO from "@/components/SEO";
 
 /**
  * 🔗 PASTE YOUR FORMSPREE ENDPOINT HERE
@@ -22,7 +9,7 @@ export const Route = createFileRoute("/apply")({
  */
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
 
-function ApplyPage() {
+export default function Apply() {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -48,6 +35,11 @@ function ApplyPage() {
 
   return (
     <>
+      <SEO
+        title="Mortgage Application — Apply Online | Amit Mortgages"
+        description="Start your mortgage application with Amit Mortgages. Quick, secure, and confidential. Get pre-approved in 24 hours across the GTA."
+        canonical="/apply"
+      />
       <section className="container-page pt-20 pb-10">
         <p className="text-xs uppercase tracking-widest text-gold font-medium">Mortgage Application</p>
         <h1 className="mt-3 max-w-3xl text-5xl md:text-6xl font-serif text-balance">
@@ -118,7 +110,7 @@ function ApplyPage() {
             )}
             {FORMSPREE_ENDPOINT.includes("YOUR_FORM_ID") && (
               <p className="text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded-md p-3">
-                ⚠️ Set your Formspree endpoint in <code>src/routes/apply.tsx</code> to enable submissions.
+                ⚠️ Set your Formspree endpoint in <code>src/pages/Apply.tsx</code> to enable submissions.
               </p>
             )}
           </form>

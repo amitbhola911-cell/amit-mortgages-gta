@@ -1,25 +1,16 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { Mail, Phone, MapPin, Clock, Send } from "lucide-react";
 import { useState } from "react";
+import SEO from "@/components/SEO";
 
-export const Route = createFileRoute("/contact")({
-  head: () => ({
-    meta: [
-      { title: "Contact Amit Mortgages — GTA, Ontario" },
-      { name: "description", content: "Book a free mortgage consultation. Call (416) 555-0199 or send a message — typical response within one business hour." },
-      { property: "og:title", content: "Contact Amit Mortgages" },
-      { property: "og:description", content: "Book a free mortgage consultation in the GTA." },
-      { property: "og:url", content: "/contact" },
-    ],
-    links: [{ rel: "canonical", href: "/contact" }],
-  }),
-  component: ContactPage,
-});
-
-function ContactPage() {
+export default function Contact() {
   const [sent, setSent] = useState(false);
   return (
     <>
+      <SEO
+        title="Contact Amit Mortgages — GTA, Ontario"
+        description="Book a free mortgage consultation. Call (416) 555-0199 or send a message — typical response within one business hour."
+        canonical="/contact"
+      />
       <section className="container-page pt-20 pb-10">
         <p className="text-xs uppercase tracking-widest text-gold font-medium">Contact</p>
         <h1 className="mt-3 max-w-3xl text-5xl md:text-6xl font-serif text-balance">
@@ -67,7 +58,7 @@ function ContactPage() {
         <aside className="md:col-span-2 space-y-6">
           <InfoCard icon={Phone} title="Call or text" body={<a href="tel:+14165550199" className="hover:text-gold">(416) 555-0199</a>} />
           <InfoCard icon={Mail} title="Email" body={<a href="mailto:hello@amitmortgages.ca" className="hover:text-gold">hello@amitmortgages.ca</a>} />
-          <InfoCard icon={MapPin} title="Office" body={<>89 Lakeshore Rd E, Suite 200<br />Mississauga, ON L5G 1C7</>} />
+          <InfoCard icon={MapPin} title="Office" body={<>55 Renfrew Dr, #201<br />Markham, ON L3R 8H3</>} />
           <InfoCard icon={Clock} title="Hours" body={<>Mon–Fri · 9am – 8pm<br />Sat · 10am – 4pm<br />Sun · By appointment</>} />
         </aside>
       </section>

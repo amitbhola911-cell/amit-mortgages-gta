@@ -1,20 +1,7 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { Home, RefreshCw, TrendingUp, Building2, ShieldCheck, Sparkles, ArrowRight } from "lucide-react";
 import homeImg from "@/assets/home-gta.jpg";
-
-export const Route = createFileRoute("/services")({
-  head: () => ({
-    meta: [
-      { title: "Mortgage Services — Amit Mortgages GTA" },
-      { name: "description", content: "Purchase, refinance, renewal, investment, self-employed, newcomer, and private mortgage solutions across the Greater Toronto Area." },
-      { property: "og:title", content: "Mortgage Services — Amit Mortgages" },
-      { property: "og:description", content: "Full-spectrum mortgage solutions for the GTA." },
-      { property: "og:url", content: "/services" },
-    ],
-    links: [{ rel: "canonical", href: "/services" }],
-  }),
-  component: ServicesPage,
-});
+import SEO from "@/components/SEO";
 
 const services = [
   { icon: Home, title: "First-time home buyers", body: "Pre-approvals, down-payment planning, FTHB Incentive, RRSP Home Buyers' Plan, and the Tax-Free First Home Savings Account.", points: ["5% min down (insured)", "Closing cost guidance", "Builder & resale offers"] },
@@ -25,9 +12,14 @@ const services = [
   { icon: Sparkles, title: "Private & bridge financing", body: "Short-term solutions when timing matters — bridge a sale, fund construction, or solve a credit-event problem fast.", points: ["48-hour approvals", "Interest-only options", "Equity-based underwriting"] },
 ];
 
-function ServicesPage() {
+export default function Services() {
   return (
     <>
+      <SEO
+        title="Mortgage Services — Amit Mortgages GTA"
+        description="Purchase, refinance, renewal, investment, self-employed, newcomer, and private mortgage solutions across the Greater Toronto Area."
+        canonical="/services"
+      />
       <section className="container-page pt-20 pb-10">
         <p className="text-xs uppercase tracking-widest text-gold font-medium">Services</p>
         <h1 className="mt-3 max-w-3xl text-5xl md:text-6xl font-serif text-balance">
