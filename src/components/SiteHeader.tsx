@@ -3,14 +3,14 @@ import { useState } from "react";
 import { Menu, X, Phone } from "lucide-react";
 import { NewsTicker } from "./NewsTicker";
 
-const nav = [
+const nav: { to: string; label: string; end?: boolean }[] = [
   { to: "/", label: "Home", end: true },
   { to: "/about", label: "About" },
   { to: "/services", label: "Services" },
   { to: "/calculators", label: "Calculators" },
   { to: "/apply", label: "Apply" },
   { to: "/contact", label: "Contact" },
-] as const;
+];
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
