@@ -39,16 +39,9 @@ export default function Index() {
           </div>
 
           <dl className="mt-16 grid max-w-2xl grid-cols-3 gap-8">
-            {[
-              { k: "50+", v: "Lender partners" },
-              { k: "$420M+", v: "Funded for clients" },
-              { k: "4.9★", v: "Avg. client rating" },
-            ].map((s) => (
-              <div key={s.v}>
-                <dt className="font-serif text-3xl md:text-4xl text-gold">{s.k}</dt>
-                <dd className="mt-1 text-xs uppercase tracking-wider text-primary-foreground/60">{s.v}</dd>
-              </div>
-            ))}
+            <Stat value={<CountUp end={50} suffix="+" className="font-serif text-3xl md:text-4xl text-gold" />} label="Lender partners" />
+            <Stat value={<CountUp end={420} prefix="$" suffix="M+" className="font-serif text-3xl md:text-4xl text-gold" />} label="Funded for clients" />
+            <Stat value={<CountUp end={4.9} decimals={1} suffix="★" className="font-serif text-3xl md:text-4xl text-gold" />} label="Avg. client rating" />
           </dl>
         </div>
       </section>
@@ -101,7 +94,7 @@ export default function Index() {
 
       <section className="container-page py-24 grid gap-12 md:grid-cols-2 items-center">
         <div className="relative">
-          <img src={advisorImg} alt="Amit, your mortgage advisor" className="rounded-2xl shadow-elevated" width={1200} height={1400} loading="lazy" />
+          <img src={advisorImg.url} alt="Amit Bhola, your mortgage advisor" className="rounded-2xl shadow-elevated bg-white" loading="lazy" />
           <div className="absolute -bottom-6 -right-6 hidden md:block rounded-xl bg-gold text-gold-foreground px-6 py-4 shadow-soft">
             <div className="font-serif text-2xl">12+ years</div>
             <div className="text-xs uppercase tracking-wider">funding GTA mortgages</div>
