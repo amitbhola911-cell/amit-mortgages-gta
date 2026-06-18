@@ -136,3 +136,12 @@ export default function Index() {
     </>
   );
 }
+
+function Stat({ value, label }: { value: React.ReactNode; label: string }) {
+  return (
+    <div>
+      <dt>{value}</dt>
+      <dd className="mt-1 text-xs uppercase tracking-wider text-primary-foreground/60">{label}</dd>
+    </div>
+  );
+}
