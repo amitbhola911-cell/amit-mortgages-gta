@@ -23,7 +23,7 @@ export function SiteHeader() {
       <div className="container-page flex items-center justify-between gap-3 py-3">
         <Link to="/" className="flex items-center gap-2 group shrink-0">
           <img
-            src={personalLogo.url}
+            src={personalLogo}
             alt="Amit Mortgages"
             className="h-11 sm:h-12 md:h-14 w-auto"
           />
@@ -35,7 +35,7 @@ export function SiteHeader() {
             <p className="text-[10px] sm:text-xs font-semibold text-primary">Licence #13072</p>
           </div>
           <img
-            src={brokerageLogo.url}
+            src={brokerageLogo}
             alt="8Twelve Mortgage Corp."
             className="h-12 sm:h-14 md:h-[3.85rem] w-auto"
           />
