@@ -105,7 +105,7 @@ export default function Apply() {
             )}
             {status === "error" && (
               <p className="text-sm text-destructive bg-destructive/10 border border-destructive/30 rounded-md p-3">
-                Something went wrong. Please call <a href="tel:+14165550199" className="underline">(416) 555-0199</a> or try again.
+                Something went wrong. Please call <a href="tel:+16479921909" className="underline">647 992 1909</a> or try again.
               </p>
             )}
             {FORMSPREE_ENDPOINT.includes("YOUR_FORM_ID") && (
@@ -128,7 +128,7 @@ export default function Apply() {
             <div className="rounded-2xl border border-border bg-card p-6 text-sm">
               <p className="font-medium">Prefer to chat first?</p>
               <p className="text-muted-foreground mt-1">
-                Call <a href="tel:+14165550199" className="text-foreground underline">(416) 555-0199</a> or visit our <Link to="/contact" className="text-foreground underline">contact page</Link>.
+                Call <a href="tel:+16479921909" className="text-foreground underline">647 992 1909</a> or visit our <Link to="/contact" className="text-foreground underline">contact page</Link>.
               </p>
             </div>
           </aside>

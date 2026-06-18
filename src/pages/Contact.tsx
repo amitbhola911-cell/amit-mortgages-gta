@@ -8,7 +8,7 @@ export default function Contact() {
     <>
       <SEO
         title="Contact Amit Mortgages — GTA, Ontario"
-        description="Book a free mortgage consultation. Call (416) 555-0199 or send a message — typical response within one business hour."
+        description="Book a free mortgage consultation. Call 647 992 1909 or send a message — typical response within one business hour."
         canonical="/contact"
       />
       <section className="container-page pt-20 pb-10">
@@ -56,8 +56,8 @@ export default function Contact() {
         </div>
 
         <aside className="md:col-span-2 space-y-6">
-          <InfoCard icon={Phone} title="Call or text" body={<a href="tel:+14165550199" className="hover:text-gold">(416) 555-0199</a>} />
-          <InfoCard icon={Mail} title="Email" body={<a href="mailto:hello@amitmortgages.ca" className="hover:text-gold">hello@amitmortgages.ca</a>} />
+          <InfoCard icon={Phone} title="Call or text" body={<a href="tel:+16479921909" className="hover:text-gold">647 992 1909</a>} />
+          <InfoCard icon={Mail} title="Email" body={<a href="mailto:info@amitmortgages.com" className="hover:text-gold">info@amitmortgages.com</a>} />
           <InfoCard icon={MapPin} title="Office" body={<>55 Renfrew Dr, #201<br />Markham, ON L3R 8H3</>} />
           <InfoCard icon={Clock} title="Hours" body={<>Mon–Fri · 9am – 8pm<br />Sat · 10am – 4pm<br />Sun · By appointment</>} />
         </aside>

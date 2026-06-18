@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, Check, Building2, Home, RefreshCw, TrendingUp, Sparkles, ShieldCheck } from "lucide-react";
 import heroImg from "@/assets/hero-toronto.jpg";
-import advisorImg from "@/assets/advisor.jpg";
+import advisorImg from "@/assets/profile-photo.png.asset.json";
+import CountUp from "@/components/CountUp";
 import SEO from "@/components/SEO";
 
 export default function Index() {
@@ -117,7 +118,7 @@ export default function Index() {
               "FSRA-licensed mortgage agent, Ontario",
               "Brokerage-independent — no lender quotas",
               "Same-day pre-approvals, evenings & weekends",
-              "Fluent in English, Hindi, Punjabi & Gujarati",
+              "Fluent in English, Hindi, Punjabi & Urdu",
             ].map((b) => (
               <li key={b} className="flex items-start gap-3"><Check className="h-5 w-5 text-gold mt-0.5" /> {b}</li>
             ))}
