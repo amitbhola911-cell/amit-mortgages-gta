@@ -1,86 +1,55 @@
-## Goal
+## Goals
+Apply 8Twelve compliance branding, swap in personal logo + photo + new contact details, add a Privacy Policy page, animate the stats counters, and refresh About copy.
 
-Convert this project from TanStack Start (SSR on Cloudflare Workers, file-based routing) to a plain Vite + React Single Page Application that can be deployed as a static site on Netlify.
+## 1. Upload assets (lovable-assets CLI from /mnt/user-uploads/)
+- `src/assets/personal-logo.png.asset.json` ← personal-logo.png
+- `src/assets/profile-photo.png.asset.json` ← profile-photo.png (replaces use of `advisor.jpg`)
+- `src/assets/8twelve-logo.png.asset.json` ← 8twelve-logo.png
 
-> ⚠️ Heads-up: this stack is officially supported by Lovable as TanStack Start. After this migration the Lovable platform conventions (server functions, the lovable vite preset, generated route tree, SSR error wrappers) no longer apply — Lovable's preview will still work, but future AI guidance that assumes TanStack Start won't fit. If you ever want to redeploy on Lovable Cloud / a Lovable URL, the easier path is to keep TanStack Start and just publish. You explicitly asked for Netlify static, so I'll proceed.
+## 2. Header (`src/components/SiteHeader.tsx`)
+- Left: personal-logo (height ~h-12 on desktop, h-10 mobile) + "Amit Mortgages" wordmark.
+- Right: 8Twelve logo (~h-14, i.e. ~10% larger than personal) with small caption underneath: **"Brokerage Licence #13072"**.
+- Keep nav row below logos on desktop, hamburger on mobile. Phone CTA updated to **647 992 1909**.
+- Add **Privacy** to nav.
 
-## What changes
+## 3. Footer (`src/components/SiteFooter.tsx`)
+- Mirror header: left = personal logo (10% smaller than 8Twelve), right = 8Twelve logo + "Brokerage Licence #13072".
+- Update phone → `647 992 1909`, email → `info@amitmortgages.com` (everywhere they appear).
+- Add Privacy Policy link in the explore list and as a dedicated bottom-row link.
 
-### Routing
-- Remove file-based routing (`src/routes/*`, `routeTree.gen.ts`, `router.tsx`, `start.ts`, `server.ts`, `lib/error-*`, `lib/config.server.ts`, `lib/api/`).
-- Add `react-router-dom` with a `BrowserRouter` and a `<Routes>` table mapping `/`, `/about`, `/services`, `/calculators`, `/contact`, `/apply` plus a 404.
-- Replace every `@tanstack/react-router` import (`Link`, `createFileRoute`, `useRouter`, `HeadContent`, etc.) with React Router equivalents (`Link`, `NavLink`, `useNavigate`).
-- Move per-route `head()` metadata into a tiny `<SEO>` component that sets `document.title` and meta tags via `useEffect` on each page.
-- Drop `sitemap[.]xml.ts` server route → ship a static `public/sitemap.xml` instead.
+## 4. Global contact info sweep
+Replace `(416) 555-0199` → `647 992 1909` (and `tel:+14165550199` → `tel:+16479921909`) and `hello@amitmortgages.ca` → `info@amitmortgages.com` across:
+- `SiteHeader.tsx`, `SiteFooter.tsx`, `Contact.tsx`, `Apply.tsx`, `NewsTicker.tsx`, `Index.tsx` (none currently but check).
 
-### App shell
-- New `src/main.tsx` mounts `<App />` into `#root`.
-- New `src/App.tsx` wires `BrowserRouter`, `QueryClientProvider`, `SiteHeader`, `<Routes>`, `SiteFooter`, `<Toaster />`.
-- New `index.html` at project root with `<div id="root">`, viewport, base title, Google Fonts `<link>` for Fraunces + Inter (currently injected via TanStack head config), and a single root `<link rel="stylesheet">` is no longer needed — Vite will inject `src/styles.css` via the `main.tsx` import.
+## 5. NewsTicker speed
+Reduce CSS animation duration from `45s` to `30s` in `src/styles.css` (`.ticker-track`).
 
-### Vite config
-- Replace `@lovable.dev/vite-tanstack-config` with the standard `@vitejs/plugin-react` + `@tailwindcss/vite` + `vite-tsconfig-paths` setup. Remove nitro / tanstack plugins.
-- Standard `vite.config.ts` with `base: "/"`, `build.outDir: "dist"`.
+## 6. Animated counters
+- New `src/components/CountUp.tsx`: uses IntersectionObserver + requestAnimationFrame to animate from 0 → target when section scrolls into view. Props: `end`, `prefix`, `suffix`, `decimals`, `duration`.
+- Use it in `Index.tsx` hero stats: 50 (+), 420 ($M+), 4.9 (★).
 
-### Netlify
-- Add `netlify.toml` (`build = "vite build"`, `publish = "dist"`).
-- Add `public/_redirects` with `/* /index.html 200` so SPA deep links work.
+## 7. About page updates (`src/pages/About.tsx`)
+- Languages chip: replace `Gujarati` with `Urdu` (so list reads: English · Hindi · Punjabi · Urdu). Same fix in `Index.tsx` advisor bullet.
+- Replace the three intro paragraphs with the six new paragraphs provided (bold lead sentence + body each), rendered as styled sections.
 
-### Dependencies
-- Remove: `@tanstack/react-router`, `@tanstack/react-start`, `@tanstack/router-plugin`, `@lovable.dev/vite-tanstack-config`, `nitro`.
-- Add: `react-router-dom`.
-- Keep: React 19, Tailwind v4, shadcn UI, React Query, Sonner, all radix packages, Lucide, the calculators, NewsTicker, SiteHeader/Footer components.
+## 8. Privacy Policy page
+- New `src/pages/Privacy.tsx` with full 8Twelve privacy text (parsed from upload), rendered with typographic headings, paragraphs, and bullet lists. SEO component with title/desc.
+- Wire route `/privacy` in `src/App.tsx`.
+- Footer + header link to it.
 
-### Files preserved (content untouched, only imports rewritten)
-- All `src/components/ui/*`
-- `src/components/SiteHeader.tsx`, `SiteFooter.tsx`, `NewsTicker.tsx` (rewrite `<Link>` import only)
-- `src/styles.css`, assets in `src/assets/`
-- Calculator logic and form fields inside `apply.tsx`, `calculators.tsx`, `contact.tsx`
+## 9. Mobile responsiveness pass
+- Verify header logos stack/scale on small screens (use `h-10 md:h-12` etc., flex-wrap).
+- Footer grid already responsive; ensure new logo row collapses to stacked centered on mobile.
 
-### Files removed
-- `src/routes/` directory (after extracting page bodies into `src/pages/`)
-- `src/routeTree.gen.ts`, `src/router.tsx`, `src/start.ts`, `src/server.ts`
-- `src/lib/error-capture.ts`, `error-page.ts`, `lovable-error-reporting.ts`, `config.server.ts`, `api/`
-- `vite.config.ts` rewritten
+## 10. Dark→light gradient background
+Already in place in `styles.css` body background. Tweak top stop to be slightly darker (e.g. `oklch(0.78 0.07 240)` at 0%) so the dark→light gradient is more pronounced across pages.
 
-## New file layout
+## Out of scope (will not touch)
+- Formspree endpoint (still placeholder, waiting on user).
+- Calculators page logic.
+- Removing existing GTA hero image / Toronto skyline.
 
-```text
-index.html
-netlify.toml
-public/_redirects
-public/robots.txt          (kept)
-public/sitemap.xml         (new, static)
-src/
-  main.tsx                 (entry)
-  App.tsx                  (router + providers + layout)
-  components/SEO.tsx       (per-page <title>/meta)
-  components/SiteHeader.tsx  (Link → react-router-dom)
-  components/SiteFooter.tsx  (Link → react-router-dom)
-  components/NewsTicker.tsx
-  components/ui/*          (unchanged)
-  pages/
-    Index.tsx
-    About.tsx
-    Services.tsx
-    Calculators.tsx
-    Contact.tsx
-    Apply.tsx
-    NotFound.tsx
-  styles.css
-  assets/*                 (unchanged)
-```
-
-## Build / verify
-- `bun add react-router-dom`, `bun remove` the TanStack/Lovable/nitro packages.
-- The Lovable harness automatically typechecks & builds after edits land — I'll watch for errors and patch.
-- Smoke test: load `/`, click through nav, verify calculators tab tooltips and Apply form still render.
-
-## Deploying to Netlify (after migration)
-1. Push the repo to GitHub.
-2. Netlify → "Add new site" → "Import from Git" → pick the repo.
-3. Netlify auto-detects Vite (build = `vite build`, publish = `dist`). `netlify.toml` makes this explicit.
-4. The `_redirects` file ensures `/calculators`, `/apply`, etc. work on refresh.
-5. Set custom domain (`amitmortgages.com`) in Netlify → Domain management when ready.
-
-Ready to execute when you approve.
+## Technical notes
+- Asset pointers imported as JSON and used via `{logo.url}`.
+- Counter respects `prefers-reduced-motion` (jumps straight to final value).
+- All phone/email changes done via targeted line-replace, not regex shell.
