@@ -117,12 +117,13 @@
     -webkit-font-smoothing: antialiased;
     min-height: 100vh;
     background:
-      radial-gradient(1200px 600px at 90% -10%, color-mix(in oklab, var(--gold) 20%, transparent), transparent 60%),
-      radial-gradient(900px 500px at -10% 10%, color-mix(in oklab, var(--royal) 22%, transparent), transparent 60%),
+      radial-gradient(1200px 600px at 90% -10%, color-mix(in oklab, var(--gold) 22%, transparent), transparent 60%),
+      radial-gradient(900px 500px at -10% 10%, color-mix(in oklab, var(--royal) 28%, transparent), transparent 60%),
       linear-gradient(180deg,
-        oklch(0.99 0.015 240) 0%,
-        oklch(0.94 0.045 235) 45%,
-        oklch(0.88 0.07 230) 100%);
+        oklch(0.32 0.12 265) 0%,
+        oklch(0.55 0.12 245) 22%,
+        oklch(0.82 0.08 230) 55%,
+        oklch(0.97 0.025 240) 100%);
     background-attachment: fixed;
   }
   h1, h2, h3, h4 {
@@ -156,7 +157,7 @@
 
 /* News ticker marquee */
 .ticker-track {
-  animation: ticker-scroll 45s linear infinite;
+  animation: ticker-scroll 30s linear infinite;
   will-change: transform;
 }
 .ticker-track:hover { animation-play-state: paused; }

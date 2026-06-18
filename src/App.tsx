@@ -9,6 +9,7 @@ import Services from "@/pages/Services";
 import Calculators from "@/pages/Calculators";
 import Contact from "@/pages/Contact";
 import Apply from "@/pages/Apply";
+import Privacy from "@/pages/Privacy";
 import NotFound from "@/pages/NotFound";
 import ScrollToTop from "@/components/ScrollToTop";
 
@@ -29,6 +30,7 @@ export default function App() {
               <Route path="/calculators" element={<Calculators />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/apply" element={<Apply />} />
+              <Route path="/privacy" element={<Privacy />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>

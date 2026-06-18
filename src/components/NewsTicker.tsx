@@ -5,7 +5,7 @@ import { Megaphone } from "lucide-react";
  * Add, remove, or change any line below. They scroll in order.
  */
 const TICKER_MESSAGES: string[] = [
-  "BREAKING: Fixed 5-year rates starting from 4.19% — Call (416) 555-0199 today!",
+  "BREAKING: Fixed 5-year rates starting from 4.19% — Call 647 992 1909 today!",
   "🏠 First-time home buyers: Up to $4,000 Ontario Land Transfer Tax rebate available",
   "💼 Self-employed? We work with lenders who understand your income",
   "⚡ Pre-approval in 24 hours — Lock your rate before the next BoC announcement",
