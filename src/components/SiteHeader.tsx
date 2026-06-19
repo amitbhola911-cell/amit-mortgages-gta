@@ -18,7 +18,7 @@ const nav: { to: string; label: string; end?: boolean }[] = [
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   return (
-    <header className="sticky top-0 z-40 backdrop-blur-md bg-background/85 border-b border-border">
+    <header className="sticky top-0 z-40 backdrop-blur-md bg-transparent border-b border-border">
       {/* Compliance branding row */}
       <div className="container-page flex items-center justify-between gap-3 py-3">
         <Link to="/" className="flex items-center gap-2 group shrink-0">
