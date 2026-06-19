@@ -50,7 +50,7 @@ export default function About() {
             <img
               src={profilePhoto.url}
               alt="Amit Bhola, FSRA Licensed Mortgage Agent"
-              className="rounded-2xl w-full bg-white"
+              className="rounded-2xl w-full"
               loading="lazy"
             />
           </div>
