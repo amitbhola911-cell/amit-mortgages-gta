@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin, BadgeCheck } from "lucide-react";
 
-
 export function SiteFooter() {
   return (
+
     <footer className="mt-24 bg-gradient-to-br from-primary via-primary to-royal text-primary-foreground">
       {/* Compliance row */}
       <div className="container-page py-6 border-b border-primary-foreground/10">
@@ -15,8 +15,8 @@ export function SiteFooter() {
         </div>
       </div>
 
-
       <div className="container-page py-12 grid gap-10 md:grid-cols-4">
+
         <div className="md:col-span-2">
           <p className="text-sm text-primary-foreground/75 max-w-sm">
             Independent mortgage advisory serving the Greater Toronto Area. Access to 50+ lenders, one trusted advisor.

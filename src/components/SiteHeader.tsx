@@ -19,6 +19,7 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
 
   return (
+
     <header className="sticky top-0 z-40 backdrop-blur-md bg-background/70 border-b border-border">
       {/* Branding Row */}
       <div className="container-page flex items-center justify-between gap-3 py-2">
@@ -39,8 +40,8 @@ export function SiteHeader() {
         </div>
       </div>
 
-
       {/* Nav Row */}
+
       <div className="border-t border-border/60">
         <div className="container-page flex h-10 items-center justify-between gap-4">
 
