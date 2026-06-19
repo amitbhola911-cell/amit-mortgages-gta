@@ -64,13 +64,13 @@ export function SiteFooter() {
           <h4 className="font-serif text-base mb-4">Contact</h4>
           <ul className="space-y-3 text-sm text-primary-foreground/75">
             <li className="flex items-start gap-2">
-              <Phone className="h-4 w-4 mt-0.5 text-gold" />
-              <a href="tel:+16479921909" className="hover:text-gold">647 992 1909</a>
+              <Phone className="h-5 w-5 mt-0.5 text-gold" />
+              <a href="tel:+16479921909" className="hover:text-gold text-base font-semibold">647 992 1909</a>
             </li>
             <li className="flex items-start gap-2">
               <Mail className="h-4 w-4 mt-0.5 text-gold" />
-              <a href="mailto:info@amitmortgages.com" className="hover:text-gold break-all">
-                info@amitmortgages.com
+              <a href="mailto:amit.bhola@8twelve.mortgage" className="hover:text-gold break-all">
+                amit.bhola@8twelve.mortgage
               </a>
             </li>
             <li className="flex items-start gap-2">

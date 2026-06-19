@@ -40,7 +40,7 @@ export default function Index() {
 
           <dl className="mt-16 grid max-w-2xl grid-cols-3 gap-8">
             <Stat value={<CountUp end={50} suffix="+" className="font-serif text-3xl md:text-4xl text-gold" />} label="Lender partners" />
-            <Stat value={<CountUp end={420} prefix="$" suffix="M+" className="font-serif text-3xl md:text-4xl text-gold" />} label="Funded for clients" />
+            <Stat value={<CountUp end={450} prefix="$" suffix="M+" className="font-serif text-3xl md:text-4xl text-gold" />} label="Funded for clients" />
             <Stat value={<CountUp end={4.9} decimals={1} suffix="★" className="font-serif text-3xl md:text-4xl text-gold" />} label="Avg. client rating" />
           </dl>
         </div>
@@ -83,7 +83,7 @@ export default function Index() {
             We're brokerage-independent and work with every major category of Canadian lender — so the recommendation is always about fit, not loyalty.
           </p>
           <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-3 max-w-4xl mx-auto">
-            {["TD", "Scotiabank", "RBC", "BMO", "CIBC", "First National", "MCAP", "Equitable Bank", "Meridian", "Home Trust", "B2B Bank", "Private Lenders"].map((l) => (
+            {["TD", "Scotiabank", "Community Trust", "BMO", "CIBC", "First National", "MCAP", "Equitable Bank", "Meridian", "Home Trust", "B2B Bank", "Private Lenders"].map((l) => (
               <div key={l} className="rounded-md border border-border bg-card px-4 py-5 font-serif text-lg">
                 {l}
               </div>
