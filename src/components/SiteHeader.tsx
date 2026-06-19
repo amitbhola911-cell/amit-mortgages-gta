@@ -31,8 +31,8 @@ export function SiteHeader() {
 
         <div className="flex items-center gap-3 shrink-0">
           <div className="hidden sm:block text-right">
-            <p className="text-[10px] sm:text-xs uppercase tracking-wider text-muted-foreground">Brokerage of record</p>
-            <p className="text-[10px] sm:text-xs font-semibold text-primary">Licence #13072</p>
+            <p className="text-[10px] sm:text-xs uppercase tracking-wider text-muted-foreground"></p>
+            <p className="text-[10px] sm:text-xs font-semibold text-primary"></p>
           </div>
           <img
             src={brokerageLogo}
