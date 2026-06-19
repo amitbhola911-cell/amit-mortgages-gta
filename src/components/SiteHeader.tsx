@@ -5,44 +5,36 @@ import { NewsTicker } from "./NewsTicker";
 import personalLogo from "@/assets/AMIT MORTGAGES Logo Blue.png";
 import brokerageLogo from "@/assets/8twelve-logo...png";
 
-const nav: { to: string; label: string; end?: boolean }[] = [
-  { to: "/", label: "Home", end: true },
-  { to: "/about", label: "About" },
-  { to: "/services", label: "Services" },
-  { to: "/calculators", label: "Calculators" },
-  { to: "/apply", label: "Apply" },
-  { to: "/contact", label: "Contact" },
-  { to: "/privacy", label: "Privacy" },
-];
-
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+
   return (
-    <header className="sticky top-0 z-40 backdrop-blur-md bg-transparent border-b border-border">
-      {/* Compliance branding row */}
+    <header className="sticky top-0 z-40 backdrop-blur-md bg-background/70 border-b border-border">
+      {/* Branding Row */}
       <div className="container-page flex items-center justify-between gap-3 py-3">
-        <Link to="/" className="flex items-center gap-2 group shrink-0">
+        <Link to="/" className="flex items-center gap-2 shrink-0">
           <img
             src={personalLogo}
             alt="Amit Mortgages"
-            className="h-11 sm:h-12 md:h-14 w-auto"
+            className="h-14 sm:h-16 md:h-20 w-auto bg-transparent"
           />
         </Link>
 
         <div className="flex items-center gap-3 shrink-0">
           <div className="hidden sm:block text-right">
-            <p className="text-[10px] sm:text-xs uppercase tracking-wider text-muted-foreground"></p>
-            <p className="text-[10px] sm:text-xs font-semibold text-primary"></p>
+            <p className="text-[10px] sm:text-xs uppercase tracking-wider text-white/70"></p>
+            <p className="text-[10px] sm:text-xs font-semibold text-gold"></p>
           </div>
+
           <img
             src={brokerageLogo}
             alt="8Twelve Mortgage Corp."
-            className="h-12 sm:h-14 md:h-[3.85rem] w-auto"
+            className="h-14 sm:h-16 md:h-[4.2rem] w-auto bg-transparent"
           />
         </div>
       </div>
 
-      {/* Nav row */}
+      {/* Nav Row */}
       <div className="border-t border-border/60">
         <div className="container-page flex h-12 items-center justify-between gap-4">
           <nav className="hidden md:flex items-center gap-6">
@@ -52,7 +44,11 @@ export function SiteHeader() {
                 to={n.to}
                 end={n.end}
                 className={({ isActive }) =>
-                  `text-sm transition-colors ${isActive ? "text-foreground font-medium" : "text-muted-foreground hover:text-foreground"}`
+                  `text-sm transition-colors ${
+                    isActive
+                      ? "text-white font-medium"
+                      : "text-white/70 hover:text-white"
+                  }`
                 }
               >
                 {n.label}
@@ -61,7 +57,10 @@ export function SiteHeader() {
           </nav>
 
           <div className="hidden md:flex items-center gap-3 ml-auto">
-            <a href="tel:+16479921909" className="inline-flex items-center gap-2 text-sm font-medium text-foreground">
+            <a
+              href="tel:+16479921909"
+              className="inline-flex items-center gap-2 text-sm font-medium text-white"
+            >
               <Phone className="h-4 w-4 text-gold" /> 647 992 1909
             </a>
             <Link
@@ -72,12 +71,16 @@ export function SiteHeader() {
             </Link>
           </div>
 
-          {/* Mobile: licence line + hamburger */}
+          {/* Mobile */}
           <div className="md:hidden flex items-center justify-between w-full">
-            <p className="text-[10px] uppercase tracking-wider text-muted-foreground">
-              <span className="font-semibold text-primary">Licence #13072</span>
+            <p className="text-[10px] uppercase tracking-wider text-white/70">
+              <span className="font-semibold text-gold">Licence #13072</span>
             </p>
-            <button className="p-2 -mr-2" onClick={() => setOpen((v) => !v)} aria-label="Menu">
+            <button
+              className="p-2 -mr-2 text-white"
+              onClick={() => setOpen((v) => !v)}
+              aria-label="Menu"
+            >
               {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
           </div>
@@ -85,17 +88,29 @@ export function SiteHeader() {
       </div>
 
       {open && (
-        <div className="md:hidden border-t border-border bg-background">
+        <div className="md:hidden border-t border-border bg-background/90">
           <div className="container-page py-4 flex flex-col gap-3">
             {nav.map((n) => (
-              <Link key={n.to} to={n.to} onClick={() => setOpen(false)} className="py-1 text-sm text-foreground">
+              <Link
+                key={n.to}
+                to={n.to}
+                onClick={() => setOpen(false)}
+                className="py-1 text-sm text-white"
+              >
                 {n.label}
               </Link>
             ))}
-            <a href="tel:+16479921909" className="py-1 text-sm text-foreground inline-flex items-center gap-2">
+            <a
+              href="tel:+16479921909"
+              className="py-1 text-sm text-white inline-flex items-center gap-2"
+            >
               <Phone className="h-4 w-4 text-gold" /> 647 992 1909
             </a>
-            <Link to="/apply" onClick={() => setOpen(false)} className="mt-2 inline-flex justify-center rounded-md bg-gradient-royal px-4 py-2 text-sm font-medium text-primary-foreground">
+            <Link
+              to="/apply"
+              onClick={() => setOpen(false)}
+              className="mt-2 inline-flex justify-center rounded-md bg-gradient-royal px-4 py-2 text-sm font-medium text-primary-foreground"
+            >
               Apply Now
             </Link>
           </div>
