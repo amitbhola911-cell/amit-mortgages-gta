@@ -48,7 +48,7 @@ export default function About() {
         <div className="md:col-span-2">
           <div className="rounded-2xl bg-gradient-royal p-1 shadow-none">
             <img
-              src={profilePhoto.url}
+              src={profilePhoto}
               alt="Amit Bhola, FSRA Licensed Mortgage Agent"
               className="rounded-2xl w-full"
               loading="lazy"
