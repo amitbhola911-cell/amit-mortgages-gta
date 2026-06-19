@@ -6,29 +6,16 @@ import brokerageLogo from "@/assets/8twelve-logo...png";
 export function SiteFooter() {
   return (
     <footer className="mt-24 bg-gradient-to-br from-primary via-primary to-royal text-primary-foreground">
-      {/* Compliance branding row */}
-      <div className="container-page pt-12 pb-8 flex flex-col sm:flex-row items-center justify-between gap-6 border-b border-primary-foreground/10">
-        <img
-          src={personalLogo}
-          alt="Amit Mortgages"
-          className="h-16 sm:h-20 w-auto bg-transparent"
-        />
-
-        <div className="flex items-center gap-4">
-          <div className="text-right">
-            <p className="text-[10px] uppercase tracking-wider text-primary-foreground/60">
-              Brokerage of record
-            </p>
-            <p className="text-sm font-semibold text-gold">Licence #13072</p>
-          </div>
-
-          <img
-            src={brokerageLogo}
-            alt="8Twelve Mortgage Corp."
-            className="h-16 sm:h-[4.8rem] w-auto bg-transparent"
-          />
+      {/* Compliance row */}
+      <div className="container-page py-6 border-b border-primary-foreground/10">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-2 text-center">
+          <p className="text-[10px] uppercase tracking-wider text-primary-foreground/60">
+            Brokerage of record
+          </p>
+          <p className="text-sm font-semibold text-gold">8Twelve Mortgage Corp. — Licence #13072</p>
         </div>
       </div>
+
 
       <div className="container-page py-12 grid gap-10 md:grid-cols-4">
         <div className="md:col-span-2">
