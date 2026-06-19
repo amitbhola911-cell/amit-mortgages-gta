@@ -11,17 +11,21 @@ export function SiteFooter() {
         <img
           src={personalLogo}
           alt="Amit Mortgages"
-          className="h-14 sm:h-16 w-auto bg-transparent rounded-md p-2"
+          className="h-16 sm:h-20 w-auto bg-transparent"
         />
+
         <div className="flex items-center gap-4">
           <div className="text-right">
-            <p className="text-[10px] uppercase tracking-wider text-primary-foreground/60">Brokerage of record</p>
+            <p className="text-[10px] uppercase tracking-wider text-primary-foreground/60">
+              Brokerage of record
+            </p>
             <p className="text-sm font-semibold text-gold">Licence #13072</p>
           </div>
+
           <img
             src={brokerageLogo}
             alt="8Twelve Mortgage Corp."
-            className="h-16 sm:h-[4.4rem] w-auto bg-transparent rounded-md p-2"
+            className="h-16 sm:h-[4.8rem] w-auto bg-transparent"
           />
         </div>
       </div>
@@ -38,7 +42,9 @@ export function SiteFooter() {
             </p>
             <p className="text-primary-foreground/80">Licence No. 22002220</p>
             <p className="text-primary-foreground/80">8Twelve Mortgage Corp.</p>
-            <p className="text-primary-foreground/60 text-xs">Mortgage Brokerage Ontario #13072</p>
+            <p className="text-primary-foreground/60 text-xs">
+              Mortgage Brokerage Ontario #13072
+            </p>
           </div>
         </div>
 
@@ -57,15 +63,26 @@ export function SiteFooter() {
         <div>
           <h4 className="font-serif text-base mb-4">Contact</h4>
           <ul className="space-y-3 text-sm text-primary-foreground/75">
-            <li className="flex items-start gap-2"><Phone className="h-4 w-4 mt-0.5 text-gold" /> <a href="tel:+16479921909" className="hover:text-gold">647 992 1909</a></li>
-            <li className="flex items-start gap-2"><Mail className="h-4 w-4 mt-0.5 text-gold" /> <a href="mailto:info@amitmortgages.com" className="hover:text-gold break-all">info@amitmortgages.com</a></li>
+            <li className="flex items-start gap-2">
+              <Phone className="h-4 w-4 mt-0.5 text-gold" />
+              <a href="tel:+16479921909" className="hover:text-gold">647 992 1909</a>
+            </li>
+            <li className="flex items-start gap-2">
+              <Mail className="h-4 w-4 mt-0.5 text-gold" />
+              <a href="mailto:info@amitmortgages.com" className="hover:text-gold break-all">
+                info@amitmortgages.com
+              </a>
+            </li>
             <li className="flex items-start gap-2">
               <MapPin className="h-4 w-4 mt-0.5 text-gold shrink-0" />
-              <span>55 Renfrew Dr, #201<br />Markham, ON L3R 8H3</span>
+              <span>
+                55 Renfrew Dr, #201<br />Markham, ON L3R 8H3
+              </span>
             </li>
           </ul>
         </div>
       </div>
+
       <div className="border-t border-primary-foreground/10">
         <div className="container-page py-6 text-xs text-primary-foreground/60 flex flex-col md:flex-row justify-between gap-2">
           <span>© {new Date().getFullYear()} Amit Mortgages — Amit Bhola. All rights reserved.</span>
