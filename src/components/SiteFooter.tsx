@@ -9,7 +9,7 @@ export function SiteFooter() {
       {/* Compliance branding row */}
       <div className="container-page pt-12 pb-8 flex flex-col sm:flex-row items-center justify-between gap-6 border-b border-primary-foreground/10">
         <img
-          src={personalLogo}
+          src={AMIT MORTGAGES Logo Blue}
           alt="Amit Mortgages"
           className="h-14 sm:h-16 w-auto bg-white/95 rounded-md p-2"
         />
