@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin, BadgeCheck } from "lucide-react";
-import personalLogo from "@/assets/personal-logo.png.asset.json";
-import brokerageLogo from "@/assets/8twelve-logo.png.asset.json";
+import personalLogo from "@/assets/AMIT MORTGAGES Logo Blue.png";
+import brokerageLogo from "@/assets/8twelve-logo.png";
 
 export function SiteFooter() {
   return (
@@ -9,7 +9,7 @@ export function SiteFooter() {
       {/* Compliance branding row */}
       <div className="container-page pt-12 pb-8 flex flex-col sm:flex-row items-center justify-between gap-6 border-b border-primary-foreground/10">
         <img
-          src={personalLogo.url}
+          src={personalLogo}
           alt="Amit Mortgages"
           className="h-14 sm:h-16 w-auto bg-white/95 rounded-md p-2"
         />
@@ -19,7 +19,7 @@ export function SiteFooter() {
             <p className="text-sm font-semibold text-gold">Licence #13072</p>
           </div>
           <img
-            src={brokerageLogo.url}
+            src={brokerageLogo}
             alt="8Twelve Mortgage Corp."
             className="h-16 sm:h-[4.4rem] w-auto bg-white/95 rounded-md p-2"
           />
