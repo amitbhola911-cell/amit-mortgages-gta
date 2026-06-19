@@ -11,7 +11,7 @@ export function SiteFooter() {
         <img
           src={personalLogo}
           alt="Amit Mortgages"
-          className="h-14 sm:h-16 w-auto bg-white/95 rounded-md p-2"
+          className="h-14 sm:h-16 w-auto bg-transparent rounded-md p-2"
         />
         <div className="flex items-center gap-4">
           <div className="text-right">
@@ -21,7 +21,7 @@ export function SiteFooter() {
           <img
             src={brokerageLogo}
             alt="8Twelve Mortgage Corp."
-            className="h-16 sm:h-[4.4rem] w-auto bg-white/95 rounded-md p-2"
+            className="h-16 sm:h-[4.4rem] w-auto bg-transparent rounded-md p-2"
           />
         </div>
       </div>
