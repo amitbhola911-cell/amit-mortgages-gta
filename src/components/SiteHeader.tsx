@@ -5,6 +5,16 @@ import { NewsTicker } from "./NewsTicker";
 import personalLogo from "@/assets/AMIT MORTGAGES Logo Blue.png";
 import brokerageLogo from "@/assets/8twelve-logo...png";
 
+const nav: { to: string; label: string; end?: boolean }[] = [
+  { to: "/", label: "Home", end: true },
+  { to: "/about", label: "About" },
+  { to: "/services", label: "Services" },
+  { to: "/calculators", label: "Calculators" },
+  { to: "/apply", label: "Apply" },
+  { to: "/contact", label: "Contact" },
+  { to: "/privacy", label: "Privacy" },
+];
+
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
 
@@ -16,7 +26,7 @@ export function SiteHeader() {
           <img
             src={personalLogo}
             alt="Amit Mortgages"
-            className="h-14 sm:h-16 md:h-20 w-auto bg-transparent"
+            className="h-16 sm:h-20 md:h-24 w-auto bg-transparent"
           />
         </Link>
 
@@ -29,7 +39,7 @@ export function SiteHeader() {
           <img
             src={brokerageLogo}
             alt="8Twelve Mortgage Corp."
-            className="h-14 sm:h-16 md:h-[4.2rem] w-auto bg-transparent"
+            className="h-14 sm:h-16 md:h-[4.4rem] w-auto bg-transparent"
           />
         </div>
       </div>
@@ -121,3 +131,4 @@ export function SiteHeader() {
     </header>
   );
 }
+
