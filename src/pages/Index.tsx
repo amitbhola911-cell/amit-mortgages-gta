@@ -94,7 +94,7 @@ export default function Index() {
 
       <section className="container-page py-24 grid gap-12 md:grid-cols-2 items-center">
         <div className="relative">
-          <img src={advisorImg.url} alt="Amit Bhola, your mortgage advisor" className="rounded-2xl shadow-elevated bg-white" loading="lazy" />
+          <img src={advisorImg.url} alt="Amit Bhola, your mortgage advisor" className="rounded-2xl shadow-elevated" loading="lazy" />
           <div className="absolute -bottom-6 -right-6 hidden md:block rounded-xl bg-gold text-gold-foreground px-6 py-4 shadow-soft">
             <div className="font-serif text-2xl">12+ years</div>
             <div className="text-xs uppercase tracking-wider">funding GTA mortgages</div>
