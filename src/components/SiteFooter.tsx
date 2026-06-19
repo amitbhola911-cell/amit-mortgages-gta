@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin, BadgeCheck } from "lucide-react";
-import personalLogo from "@/assets/AMIT MORTGAGES Logo Blue.png";
-import brokerageLogo from "@/assets/8twelve-logo...png";
+
 
 export function SiteFooter() {
   return (

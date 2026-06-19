@@ -21,32 +21,29 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 backdrop-blur-md bg-background/70 border-b border-border">
       {/* Branding Row */}
-      <div className="container-page flex items-center justify-between gap-3 py-3">
+      <div className="container-page flex items-center justify-between gap-3 py-2">
         <Link to="/" className="flex items-center gap-2 shrink-0">
           <img
             src={personalLogo}
             alt="Amit Mortgages"
-            className="h-16 sm:h-20 md:h-24 w-auto bg-transparent"
+            className="h-10 sm:h-12 md:h-14 w-auto bg-transparent"
           />
         </Link>
 
         <div className="flex items-center gap-3 shrink-0">
-          <div className="hidden sm:block text-right">
-            <p className="text-[10px] sm:text-xs uppercase tracking-wider text-white/70"></p>
-            <p className="text-[10px] sm:text-xs font-semibold text-gold"></p>
-          </div>
-
           <img
             src={brokerageLogo}
             alt="8Twelve Mortgage Corp."
-            className="h-14 sm:h-16 md:h-[4.4rem] w-auto bg-transparent"
+            className="h-9 sm:h-10 md:h-11 w-auto bg-transparent"
           />
         </div>
       </div>
 
+
       {/* Nav Row */}
       <div className="border-t border-border/60">
-        <div className="container-page flex h-12 items-center justify-between gap-4">
+        <div className="container-page flex h-10 items-center justify-between gap-4">
+
           <nav className="hidden md:flex items-center gap-7">
             {nav.map((n) => (
               <NavLink
