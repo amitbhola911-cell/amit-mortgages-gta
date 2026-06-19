@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Menu, X, Phone } from "lucide-react";
 import { NewsTicker } from "./NewsTicker";
 import personalLogo from "@/assets/AMIT MORTGAGES Logo Blue.png";
-import brokerageLogo from "@/assets/8twelve-logo.png";
+import brokerageLogo from "@/assets/8twelve-logo...png";
 
 const nav: { to: string; label: string; end?: boolean }[] = [
   { to: "/", label: "Home", end: true },
