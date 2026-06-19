@@ -47,17 +47,17 @@ export function SiteHeader() {
       {/* Nav Row */}
       <div className="border-t border-border/60">
         <div className="container-page flex h-12 items-center justify-between gap-4">
-          <nav className="hidden md:flex items-center gap-6">
+          <nav className="hidden md:flex items-center gap-7">
             {nav.map((n) => (
               <NavLink
                 key={n.to}
                 to={n.to}
                 end={n.end}
                 className={({ isActive }) =>
-                  `text-sm transition-colors ${
+                  `text-base font-semibold transition-colors ${
                     isActive
-                      ? "text-white font-medium"
-                      : "text-white/70 hover:text-white"
+                      ? "text-gold"
+                      : "text-white hover:text-gold"
                   }`
                 }
               >
@@ -69,9 +69,9 @@ export function SiteHeader() {
           <div className="hidden md:flex items-center gap-3 ml-auto">
             <a
               href="tel:+16479921909"
-              className="inline-flex items-center gap-2 text-sm font-medium text-white"
+              className="inline-flex items-center gap-2 text-base font-semibold text-white"
             >
-              <Phone className="h-4 w-4 text-gold" /> 647 992 1909
+              <Phone className="h-5 w-5 text-gold" /> 647 992 1909
             </a>
             <Link
               to="/apply"

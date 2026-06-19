@@ -57,7 +57,7 @@ export default function Contact() {
 
         <aside className="md:col-span-2 space-y-6">
           <InfoCard icon={Phone} title="Call or text" body={<a href="tel:+16479921909" className="hover:text-gold">647 992 1909</a>} />
-          <InfoCard icon={Mail} title="Email" body={<a href="mailto:info@amitmortgages.com" className="hover:text-gold">info@amitmortgages.com</a>} />
+          <InfoCard icon={Mail} title="Email" body={<a href="mailto:amit.bhola@8twelve.mortgage" className="hover:text-gold">amit.bhola@8twelve.mortgage</a>} />
           <InfoCard icon={MapPin} title="Office" body={<>55 Renfrew Dr, #201<br />Markham, ON L3R 8H3</>} />
           <InfoCard icon={Clock} title="Hours" body={<>Mon–Fri · 9am – 8pm<br />Sat · 10am – 4pm<br />Sun · By appointment</>} />
         </aside>
