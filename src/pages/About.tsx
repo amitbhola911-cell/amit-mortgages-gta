@@ -1,5 +1,5 @@
 import { Check } from "lucide-react";
-import profilePhoto from "@/assets/profile-photo.png.asset.json";
+import profilePhoto from "@/assets/profile-photo.png";
 import SEO from "@/components/SEO";
 
 const pillars: { lead: string; body: string }[] = [
