@@ -46,7 +46,7 @@ export default function About() {
 
       <section className="container-page grid gap-12 md:grid-cols-5 pb-20">
         <div className="md:col-span-2">
-          <div className="rounded-2xl bg-gradient-royal p-1 shadow-none">
+          <div className="rounded-2xl shadow-none">
             <img
               src={profilePhoto}
               alt="Amit Bhola, FSRA Licensed Mortgage Agent"

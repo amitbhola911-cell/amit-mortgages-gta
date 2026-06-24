@@ -20,14 +20,14 @@ export function SiteHeader() {
 
   return (
 
-    <header className="sticky top-0 z-40 backdrop-blur-md bg-background/70 border-b border-border">
+    <header className="sticky top-0 z-40 backdrop-blur-md bg-primary/90 border-b border-border">
       {/* Branding Row */}
       <div className="container-page flex items-center justify-between gap-3 py-2">
         <Link to="/" className="flex items-center gap-2 shrink-0">
           <img
             src={personalLogo}
             alt="Amit Mortgages"
-            className="h-[3.125rem] sm:h-[3.75rem] md:h-[4.375rem] w-auto bg-transparent"
+            className="h-[3.59375rem] sm:h-[4.3125rem] md:h-[5.03125rem] w-auto bg-transparent"
           />
         </Link>
 
@@ -35,7 +35,7 @@ export function SiteHeader() {
           <img
             src={brokerageLogo}
             alt="8Twelve Mortgage Corp."
-            className="h-[2.75rem] sm:h-[3.25rem] md:h-[3.75rem] w-auto bg-transparent"
+            className="h-[3.1625rem] sm:h-[3.7375rem] md:h-[4.3125rem] w-auto bg-transparent"
           />
         </div>
       </div>

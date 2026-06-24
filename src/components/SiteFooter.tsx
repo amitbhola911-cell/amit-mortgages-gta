@@ -6,7 +6,7 @@ export function SiteFooter() {
 
     <footer className="mt-24 bg-gradient-to-br from-primary via-primary to-royal text-primary-foreground">
 
-      <div className="container-page py-12 grid gap-10 md:grid-cols-4">
+      <div className="container-page py-10 grid gap-8 md:grid-cols-4">
 
         <div className="md:col-span-2">
           <p className="text-sm text-primary-foreground/75 max-w-sm">
@@ -61,14 +61,12 @@ export function SiteFooter() {
       </div>
 
       <div className="border-t border-primary-foreground/10">
-        <div className="container-page py-6 text-xs text-primary-foreground/60 flex flex-col md:flex-row justify-between gap-2">
+        <div className="container-page py-4 text-xs text-primary-foreground/60 flex flex-col md:flex-row justify-between gap-2">
           <span>* Rates and terms subject to change without notice. OAC. E.&amp;O.E.</span>
           <span className="flex gap-3 items-center">
             <span>© {new Date().getFullYear()} Amit Mortgages — Amit Bhola. All rights reserved.</span>
             <span>·</span>
             <Link to="/privacy" className="hover:text-gold">Privacy Policy</Link>
-            <span>·</span>
-            <span>Rates and approvals subject to lender criteria.</span>
           </span>
         </div>
       </div>
