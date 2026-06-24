@@ -27,7 +27,7 @@ export function SiteHeader() {
           <img
             src={personalLogo}
             alt="Amit Mortgages"
-            className="h-10 sm:h-12 md:h-14 w-auto bg-transparent"
+            className="h-[3.125rem] sm:h-[3.75rem] md:h-[4.375rem] w-auto bg-transparent"
           />
         </Link>
 
@@ -35,7 +35,7 @@ export function SiteHeader() {
           <img
             src={brokerageLogo}
             alt="8Twelve Mortgage Corp."
-            className="h-9 sm:h-10 md:h-11 w-auto bg-transparent"
+            className="h-[2.75rem] sm:h-[3.25rem] md:h-[3.75rem] w-auto bg-transparent"
           />
         </div>
       </div>
@@ -45,16 +45,16 @@ export function SiteHeader() {
       <div className="border-t border-border/60">
         <div className="container-page flex h-10 items-center justify-between gap-4">
 
-          <nav className="hidden md:flex items-center gap-7">
+          <nav className="hidden md:flex items-center gap-1">
             {nav.map((n) => (
               <NavLink
                 key={n.to}
                 to={n.to}
                 end={n.end}
                 className={({ isActive }) =>
-                  `text-base font-semibold transition-colors ${
+                  `px-3 py-1.5 rounded-md text-base font-semibold transition-colors ${
                     isActive
-                      ? "text-gold"
+                      ? "bg-red-600 text-white"
                       : "text-white hover:text-gold"
                   }`
                 }

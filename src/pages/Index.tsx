@@ -27,7 +27,7 @@ export default function Index() {
             The mortgage you deserve, <span className="italic text-gold">without the runaround.</span>
           </h1>
           <p className="mt-6 max-w-xl text-lg text-primary-foreground/80">
-            Amit shops 50+ Canadian lenders on your behalf — banks, credit unions, monolines, and private — so you get the right rate, terms, and a clear path to closing.
+            We shop 50+ Canadian lenders on your behalf — banks, credit unions, monolines, and private — so you get the right rate, terms, and a clear path to closing.
           </p>
           <div className="mt-10 flex flex-wrap gap-3">
             <Link to="/contact" className="inline-flex items-center gap-2 rounded-md bg-gold px-6 py-3 text-sm font-medium text-gold-foreground hover:opacity-90 transition">
