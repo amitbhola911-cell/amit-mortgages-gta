@@ -5,15 +5,6 @@ export function SiteFooter() {
   return (
 
     <footer className="mt-24 bg-gradient-to-br from-primary via-primary to-royal text-primary-foreground">
-      {/* Compliance row */}
-      <div className="container-page py-6 border-b border-primary-foreground/10">
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-2 text-center">
-          <p className="text-[10px] uppercase tracking-wider text-primary-foreground/60">
-            Brokerage of record
-          </p>
-          <p className="text-sm font-semibold text-gold">8Twelve Mortgage Corp. — Licence #13072</p>
-        </div>
-      </div>
 
       <div className="container-page py-12 grid gap-10 md:grid-cols-4">
 
@@ -71,8 +62,10 @@ export function SiteFooter() {
 
       <div className="border-t border-primary-foreground/10">
         <div className="container-page py-6 text-xs text-primary-foreground/60 flex flex-col md:flex-row justify-between gap-2">
-          <span>© {new Date().getFullYear()} Amit Mortgages — Amit Bhola. All rights reserved.</span>
+          <span>* Rates and terms subject to change without notice. OAC. E.&amp;O.E.</span>
           <span className="flex gap-3 items-center">
+            <span>© {new Date().getFullYear()} Amit Mortgages — Amit Bhola. All rights reserved.</span>
+            <span>·</span>
             <Link to="/privacy" className="hover:text-gold">Privacy Policy</Link>
             <span>·</span>
             <span>Rates and approvals subject to lender criteria.</span>
