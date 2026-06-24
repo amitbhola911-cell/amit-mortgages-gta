@@ -45,16 +45,16 @@ export function SiteHeader() {
       <div className="border-t border-border/60">
         <div className="container-page flex h-10 items-center justify-between gap-4">
 
-          <nav className="hidden md:flex items-center gap-7">
+          <nav className="hidden md:flex items-center gap-1">
             {nav.map((n) => (
               <NavLink
                 key={n.to}
                 to={n.to}
                 end={n.end}
                 className={({ isActive }) =>
-                  `text-base font-semibold transition-colors ${
+                  `px-3 py-1.5 rounded-md text-base font-semibold transition-colors ${
                     isActive
-                      ? "text-gold"
+                      ? "bg-red-600 text-white"
                       : "text-white hover:text-gold"
                   }`
                 }
