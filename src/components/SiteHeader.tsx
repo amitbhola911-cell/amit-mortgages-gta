@@ -81,11 +81,11 @@ export function SiteHeader() {
 
           {/* Mobile */}
           <div className="md:hidden flex items-center justify-between w-full">
-            <p className="text-[10px] uppercase tracking-wider text-white/70">
+            <p className="text-[10px] uppercase tracking-wider text-foreground/70">
               <span className="font-semibold text-gold">Licence #13072</span>
             </p>
             <button
-              className="p-2 -mr-2 text-white"
+              className="p-2 -mr-2 text-foreground"
               onClick={() => setOpen((v) => !v)}
               aria-label="Menu"
             >
