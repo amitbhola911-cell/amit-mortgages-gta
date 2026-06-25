@@ -7,7 +7,7 @@ import SEO from "@/components/SEO";
  * 🔗 PASTE YOUR FORMSPREE ENDPOINT HERE
  * Example: "https://formspree.io/f/abcdwxyz"
  */
-const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/mdaravzo";
 
 export default function Apply() {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
