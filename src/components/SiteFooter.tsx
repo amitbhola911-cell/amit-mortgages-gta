@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Mail, Phone, MapPin, BadgeCheck } from "lucide-react";
+import { Mail, Phone, MapPin, BadgeCheck, MessageCircle } from "lucide-react";
 
 export function SiteFooter() {
   return (
