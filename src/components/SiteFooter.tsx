@@ -51,6 +51,12 @@ export function SiteFooter() {
               </a>
             </li>
             <li className="flex items-start gap-2">
+              <MessageCircle className="h-4 w-4 mt-0.5 text-gold" />
+              <a href="https://wa.me/16479921909" target="_blank" rel="noopener noreferrer" className="hover:text-gold">
+                WhatsApp 647 992 1909
+              </a>
+            </li>
+            <li className="flex items-start gap-2">
               <MapPin className="h-4 w-4 mt-0.5 text-gold shrink-0" />
               <span>
                 55 Renfrew Dr, #201<br />Markham, ON L3R 8H3
