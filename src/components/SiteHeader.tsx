@@ -103,7 +103,7 @@ export function SiteHeader() {
                 key={n.to}
                 to={n.to}
                 onClick={() => setOpen(false)}
-                className="py-1 text-sm text-white"
+                className="py-1 text-sm text-foreground"
               >
                 {n.label}
               </Link>
