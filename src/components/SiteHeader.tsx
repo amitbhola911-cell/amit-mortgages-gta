@@ -110,7 +110,7 @@ export function SiteHeader() {
             ))}
             <a
               href="tel:+16479921909"
-              className="py-1 text-sm text-white inline-flex items-center gap-2"
+              className="py-1 text-sm text-foreground inline-flex items-center gap-2"
             >
               <Phone className="h-4 w-4 text-gold" /> 647 992 1909
             </a>
