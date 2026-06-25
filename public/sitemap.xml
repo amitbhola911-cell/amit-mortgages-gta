@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>/</loc></url>
-  <url><loc>/about</loc></url>
-  <url><loc>/services</loc></url>
-  <url><loc>/calculators</loc></url>
-  <url><loc>/apply</loc></url>
-  <url><loc>/contact</loc></url>
+  <url><loc>https://www.amitmortgages.ca/</loc></url>
+  <url><loc>https://www.amitmortgages.ca/about</loc></url>
+  <url><loc>https://www.amitmortgages.ca/services</loc></url>
+  <url><loc>https://www.amitmortgages.ca/calculators</loc></url>
+  <url><loc>https://www.amitmortgages.ca/apply</loc></url>
+  <url><loc>https://www.amitmortgages.ca/contact</loc></url>
+  <url><loc>https://www.amitmortgages.ca/privacy</loc></url>
 </urlset>
