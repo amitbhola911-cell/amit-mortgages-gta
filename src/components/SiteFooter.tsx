@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Mail, Phone, MapPin, BadgeCheck } from "lucide-react";
+import { Mail, Phone, MapPin, BadgeCheck, MessageCircle } from "lucide-react";
 
 export function SiteFooter() {
   return (
@@ -48,6 +48,12 @@ export function SiteFooter() {
               <Mail className="h-4 w-4 mt-0.5 text-gold" />
               <a href="mailto:amit.bhola@8twelve.mortgage" className="hover:text-gold break-all">
                 amit.bhola@8twelve.mortgage
+              </a>
+            </li>
+            <li className="flex items-start gap-2">
+              <MessageCircle className="h-4 w-4 mt-0.5 text-gold" />
+              <a href="https://wa.me/16479921909" target="_blank" rel="noopener noreferrer" className="hover:text-gold">
+                WhatsApp 647 992 1909
               </a>
             </li>
             <li className="flex items-start gap-2">

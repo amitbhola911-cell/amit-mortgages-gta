@@ -20,7 +20,7 @@ export function SiteHeader() {
 
   return (
 
-    <header className="sticky top-0 z-40 backdrop-blur-md bg-primary/90 border-b border-border">
+    <header className="sticky top-0 z-40 backdrop-blur-md bg-background/95 border-b border-border shadow-sm">
       {/* Branding Row */}
       <div className="container-page flex items-center justify-between gap-3 py-2">
         <Link to="/" className="flex items-center gap-2 shrink-0">
@@ -54,8 +54,8 @@ export function SiteHeader() {
                 className={({ isActive }) =>
                   `px-3 py-1.5 rounded-md text-base font-semibold transition-colors ${
                     isActive
-                      ? "bg-red-600 text-white"
-                      : "text-white hover:text-gold"
+                      ? "bg-primary text-primary-foreground"
+                      : "text-foreground hover:text-gold"
                   }`
                 }
               >
@@ -67,7 +67,7 @@ export function SiteHeader() {
           <div className="hidden md:flex items-center gap-3 ml-auto">
             <a
               href="tel:+16479921909"
-              className="inline-flex items-center gap-2 text-base font-semibold text-white"
+              className="inline-flex items-center gap-2 text-base font-semibold text-foreground"
             >
               <Phone className="h-5 w-5 text-gold" /> 647 992 1909
             </a>
@@ -81,11 +81,11 @@ export function SiteHeader() {
 
           {/* Mobile */}
           <div className="md:hidden flex items-center justify-between w-full">
-            <p className="text-[10px] uppercase tracking-wider text-white/70">
+            <p className="text-[10px] uppercase tracking-wider text-foreground/70">
               <span className="font-semibold text-gold">Licence #13072</span>
             </p>
             <button
-              className="p-2 -mr-2 text-white"
+              className="p-2 -mr-2 text-foreground"
               onClick={() => setOpen((v) => !v)}
               aria-label="Menu"
             >
@@ -103,14 +103,14 @@ export function SiteHeader() {
                 key={n.to}
                 to={n.to}
                 onClick={() => setOpen(false)}
-                className="py-1 text-sm text-white"
+                className="py-1 text-sm text-foreground"
               >
                 {n.label}
               </Link>
             ))}
             <a
               href="tel:+16479921909"
-              className="py-1 text-sm text-white inline-flex items-center gap-2"
+              className="py-1 text-sm text-foreground inline-flex items-center gap-2"
             >
               <Phone className="h-4 w-4 text-gold" /> 647 992 1909
             </a>

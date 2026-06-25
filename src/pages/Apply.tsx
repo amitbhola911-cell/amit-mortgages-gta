@@ -7,10 +7,11 @@ import SEO from "@/components/SEO";
  * 🔗 PASTE YOUR FORMSPREE ENDPOINT HERE
  * Example: "https://formspree.io/f/abcdwxyz"
  */
-const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/mdaravzo";
 
 export default function Apply() {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [email, setEmail] = useState("");
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -53,10 +54,26 @@ export default function Apply() {
       <section className="container-page pb-24">
         <div className="grid gap-8 md:grid-cols-5">
           <form onSubmit={onSubmit} className="md:col-span-3 rounded-2xl border border-border bg-card p-8 space-y-5 shadow-[var(--shadow-royal)]">
+            <input type="hidden" name="_subject" value="New Mortgage Application" />
+            <input type="hidden" name="_replyto" value={email} />
             <div className="grid gap-4 md:grid-cols-2">
               <Field label="Full name" name="name" required />
               <Field label="Phone" name="phone" type="tel" required />
-              <Field label="Email" name="email" type="email" required />
+              <div>
+                <label className="block text-xs font-medium uppercase tracking-wider text-muted-foreground mb-2">
+                  Email<span className="text-destructive ml-0.5">*</span>
+                </label>
+                <div className="flex items-center rounded-md border border-input bg-background focus-within:ring-2 focus-within:ring-gold">
+                  <input
+                    name="email"
+                    type="email"
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="w-full bg-transparent px-3 py-2 text-sm outline-none"
+                  />
+                </div>
+              </div>
               <Field label="City" name="city" placeholder="Toronto, Mississauga…" required />
             </div>
 

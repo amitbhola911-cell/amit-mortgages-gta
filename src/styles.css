@@ -157,7 +157,7 @@
 
 /* News ticker marquee */
 .ticker-track {
-  animation: ticker-scroll 12s linear infinite;
+  animation: ticker-scroll 5.5s linear infinite;
   will-change: transform;
 }
 .ticker-track:hover { animation-play-state: paused; }
