@@ -54,8 +54,8 @@ export function SiteHeader() {
                 className={({ isActive }) =>
                   `px-3 py-1.5 rounded-md text-base font-semibold transition-colors ${
                     isActive
-                      ? "bg-red-600 text-white"
-                      : "text-white hover:text-gold"
+                      ? "bg-primary text-primary-foreground"
+                      : "text-foreground hover:text-gold"
                   }`
                 }
               >
