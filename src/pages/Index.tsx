@@ -89,6 +89,7 @@ export default function Index() {
               </div>
             ))}
           </div>
+          <p className="mt-6 text-center italic text-muted-foreground">&amp; many more</p>
         </div>
       </section>
 
