@@ -11,6 +11,7 @@ const FORMSPREE_ENDPOINT = "https://formspree.io/f/mdaravzo";
 
 export default function Apply() {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [email, setEmail] = useState("");
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
