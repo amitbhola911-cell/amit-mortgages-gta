@@ -20,7 +20,7 @@ export function SiteHeader() {
 
   return (
 
-    <header className="sticky top-0 z-40 backdrop-blur-md bg-primary/90 border-b border-border">
+    <header className="sticky top-0 z-40 backdrop-blur-md bg-background/95 border-b border-border shadow-sm">
       {/* Branding Row */}
       <div className="container-page flex items-center justify-between gap-3 py-2">
         <Link to="/" className="flex items-center gap-2 shrink-0">
