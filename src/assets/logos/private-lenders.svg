@@ -1,0 +1,71 @@
+<svg
+  width="280"
+  height="80"
+  viewBox="0 0 280 80"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <!-- Icon Circle -->
+  <circle cx="40" cy="40" r="32" fill="#0F766E" />
+
+  <!-- House Roof -->
+  <path
+    d="M22 42 L40 28 L58 42"
+    fill="none"
+    stroke="#ECFEFF"
+    stroke-width="3"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <!-- House Body -->
+  <rect
+    x="28"
+    y="42"
+    width="24"
+    height="18"
+    fill="#ECFEFF"
+    rx="3"
+  />
+
+  <!-- Door -->
+  <rect
+    x="38"
+    y="46"
+    width="6"
+    height="10"
+    fill="#0F766E"
+    rx="1.5"
+  />
+
+  <!-- Left Person -->
+  <circle cx="28" cy="34" r="4" fill="#ECFEFF" />
+  <path
+    d="M24 42 C24 38.5 27 37 28 37 C29 37 32 38.5 32 42"
+    fill="none"
+    stroke="#ECFEFF"
+    stroke-width="2"
+    stroke-linecap="round"
+  />
+
+  <!-- Right Person -->
+  <circle cx="52" cy="34" r="4" fill="#ECFEFF" />
+  <path
+    d="M48 42 C48 38.5 51 37 52 37 C53 37 56 38.5 56 42"
+    fill="none"
+    stroke="#ECFEFF"
+    stroke-width="2"
+    stroke-linecap="round"
+  />
+
+  <!-- Text: Private Lending Partners -->
+  <text
+    x="90"
+    y="48"
+    font-family="Inter, Arial, sans-serif"
+    font-size="22"
+    font-weight="600"
+    fill="#0F172A"
+  >
+    Private Lending Partners
+  </text>
+</svg>
