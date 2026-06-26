@@ -4,7 +4,7 @@
   height="150"
   viewBox="0 0 500 150"
 >
-  <!-- House Roof -->
+  <!-- House Roof (same style as your example) -->
   <path
     d="M40 90 L100 40 L160 90"
     fill="none"
@@ -21,7 +21,7 @@
     width="60"
     height="40"
     fill="none"
-    stroke="#1A202C"
+    stroke="#000000"
     stroke-width="6"
     rx="4"
   />
@@ -33,19 +33,19 @@
     width="20"
     height="30"
     fill="none"
-    stroke="#1A202C"
+    stroke="#000000"
     stroke-width="5"
     rx="2"
   />
 
-  <!-- Text -->
+  <!-- Text (same placement as your example) -->
   <text
     x="200"
     y="105"
-    font-family="Inter, Arial, sans-serif"
-    font-size="36"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="40"
     font-weight="700"
-    fill="#1A202C"
+    fill="#000000"
   >
     Private Lending Partners
   </text>
