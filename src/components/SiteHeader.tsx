@@ -19,15 +19,15 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
 
   return (
-
     <header className="sticky top-0 z-40 backdrop-blur-md bg-background/95 border-b border-border shadow-sm">
+
       {/* Branding Row */}
-      <div className="container-page flex items-center justify-between gap-3 py-1">
+      <div className="container-page flex items-center justify-between gap-3 py-2">
         <Link to="/" className="flex items-center gap-2 shrink-0">
           <img
             src={personalLogo}
             alt="Amit Mortgages"
-            className="h-[3.953125rem] sm:h-[4.74375rem] md:h-[5.534375rem] w-auto bg-transparent"
+            className="h-14 sm:h-16 md:h-20 w-auto"
           />
         </Link>
 
@@ -35,15 +35,14 @@ export function SiteHeader() {
           <img
             src={brokerageLogo}
             alt="8Twelve Mortgage Corp."
-            className="h-[3.1625rem] sm:h-[3.7375rem] md:h-[4.3125rem] w-auto bg-transparent"
+            className="h-16 sm:h-18 md:h-22 w-auto"
           />
         </div>
       </div>
 
       {/* Nav Row */}
-
       <div className="border-t border-border/60">
-        <div className="container-page flex h-10 items-center justify-between gap-4">
+        <div className="container-page flex items-center justify-between gap-4 py-2">
 
           <nav className="hidden md:flex items-center gap-1">
             {nav.map((n) => (
@@ -129,4 +128,3 @@ export function SiteHeader() {
     </header>
   );
 }
-
