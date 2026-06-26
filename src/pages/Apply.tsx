@@ -117,7 +117,7 @@ export default function Apply() {
 
             {status === "success" && (
               <p className="text-sm text-green-700 bg-green-50 border border-green-200 rounded-md p-3">
-                ✅ Thank you! Your application was received. Amit will reach out within one business day.
+                ✅ Thank you! Your application was received. We will reach out within one business day.
               </p>
             )}
             {status === "error" && (
