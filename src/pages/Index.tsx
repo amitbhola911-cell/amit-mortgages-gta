@@ -20,6 +20,8 @@ import SEO from "@/components/SEO";
 const lenders: { name: string; logo: string }[] = [
   { name: "Alterna", logo: "/src/assets/logos/alterna.svg" },
   { name: "B2B Bank", logo: "/src/assets/logos/b2b-bank.svg" },
+  { name: "BMO", logo: "/src/assets/logos/bmo.svg" },
+  { name: "CIBC", logo: "/src/assets/logos/cibc.svg" },
   { name: "CMLS Financial", logo: "/src/assets/logos/cmls-financial.svg" },
   { name: "Community Trust", logo: "/src/assets/logos/community-trust.svg" },
   { name: "CWB Optimum", logo: "/src/assets/logos/cwb-optimum-mortgage.svg" },
@@ -38,7 +40,6 @@ const lenders: { name: string; logo: string }[] = [
   { name: "Meridian", logo: "/src/assets/logos/meridian.svg" },
   { name: "Merix", logo: "/src/assets/logos/merix.svg" },
   { name: "New Haven Mortgage", logo: "/src/assets/logos/new-haven-mortgage.svg" },
-  { name: "Private Lenders", logo: "/src/assets/logos/private-lenders.svg" },
   { name: "RFA", logo: "/src/assets/logos/rfa.svg" },
   { name: "RMG Mortgages", logo: "/src/assets/logos/rmg-mortgages.svg" },
   { name: "Scotiabank", logo: "/src/assets/logos/scotiabank.svg" },
@@ -47,6 +48,9 @@ const lenders: { name: string; logo: string }[] = [
   { name: "WealthONE", logo: "/src/assets/logos/wealthone-bank-of-canada.svg" },
   { name: "Xceed", logo: "/src/assets/logos/xceed.svg" },
   { name: "XMC", logo: "/src/assets/logos/xmc-mortgage-corporation.svg" },
+
+  // ⭐ PRIVATE LENDERS LAST
+  { name: "Private Lenders", logo: "/src/assets/logos/private-lenders.svg" },
 ];
 
 export default function Index() {
@@ -224,14 +228,14 @@ export default function Index() {
             loyalty.
           </p>
 
-          {/* LOGOS ONLY — CLEAN, PREMIUM GRID */}
-          <div className="mt-12 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 place-items-center">
+          {/* LOGOS ONLY — DOUBLE SIZE — PRIVATE LENDERS LAST */}
+          <div className="mt-12 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-10 place-items-center">
             {lenders.map((l) => (
               <img
                 key={l.name}
                 src={l.logo}
                 alt={l.name}
-                className="h-10 md:h-12 w-auto object-contain"
+                className="h-16 md:h-20 w-auto object-contain"
               />
             ))}
           </div>
