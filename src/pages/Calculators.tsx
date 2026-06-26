@@ -329,7 +329,13 @@ function CmhcCalc() {
           <p className="text-xs text-muted-foreground">
             CMHC requires min 5% down on the first $500k and 10% on the portion above (up to $1.5M). Premium ranges from 2.8% to 4.0% of the mortgage based on LTV.
           </p>
-          {!eligible && <p className="text-xs text-destructive">Not insurable: price over $1.5M or down payment below minimum.</p>}
+          {!eligible && (
+            <p className="text-xs text-destructive">
+              {price > 1500000
+                ? "Not insurable: CMHC insurance is not available above $1.5M — minimum 20% down required."
+                : `Minimum down payment for this price is ${fmt(minDown)} (5% on the first $500,000, plus 10% on the remainder).`}
+            </p>
+          )}
         </>
       }
       results={
