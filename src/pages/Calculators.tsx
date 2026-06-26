@@ -126,7 +126,16 @@ function PaymentCalc() {
   const monthly = monthlyPayment(principal, rate, amort);
   const payment = freq === "monthly" ? monthly : freq === "biweekly" ? (monthly * 12) / 26 : monthly / 2;
   const perYear = freq === "monthly" ? monthly * 12 : freq === "biweekly" ? payment * 26 : payment * 26;
-  const totalInterest = monthly * amort * 12 - principal;
+  const equivalentMonthlyPmt = freq === "accelerated" ? (monthly * 13) / 12 : monthly;
+  const effMonthlyRate = rate === 0 ? 0 : Math.pow(1 + rate / 2 / 100, 1 / 6) - 1;
+  const payoffMonths =
+    rate === 0
+      ? principal / equivalentMonthlyPmt
+      : equivalentMonthlyPmt <= principal * effMonthlyRate
+        ? amort * 12
+        : Math.log(equivalentMonthlyPmt / (equivalentMonthlyPmt - principal * effMonthlyRate)) / Math.log(1 + effMonthlyRate);
+  const totalPaidAmount = equivalentMonthlyPmt * payoffMonths;
+  const totalInterest = totalPaidAmount - principal;
 
   return (
     <Shell
@@ -155,7 +164,7 @@ function PaymentCalc() {
             <Stat label="Mortgage amount" value={fmt(principal)} />
             <Stat label="Per year" value={fmt(perYear)} />
             <Stat label="Total interest" value={fmt(totalInterest)} />
-            <Stat label="Total paid" value={fmt(monthly * amort * 12)} />
+            <Stat label="Total paid" value={fmt(totalPaidAmount)} />
           </div>
         </>
       }
@@ -227,13 +236,30 @@ function ontarioLTT(price: number) {
   return tax;
 }
 
+function torontoMLTT(price: number) {
+  let tax = 0;
+  const brackets = [
+    [55000, 0.005], [195000, 0.01], [150000, 0.015], [1600000, 0.02],
+    [1000000, 0.025], [1000000, 0.044], [1000000, 0.0545],
+    [5000000, 0.065], [10000000, 0.0755], [Infinity, 0.086],
+  ] as const;
+  let remaining = price;
+  for (const [size, rate] of brackets) {
+    const slice = Math.min(remaining, size);
+    tax += slice * rate;
+    remaining -= slice;
+    if (remaining <= 0) break;
+  }
+  return tax;
+}
+
 function LandTransferCalc() {
   const [price, setPrice] = useState(950000);
   const [toronto, setToronto] = useState(false);
   const [fthb, setFthb] = useState(false);
 
   const ont = ontarioLTT(price);
-  const tor = toronto ? ontarioLTT(price) : 0;
+  const tor = toronto ? torontoMLTT(price) : 0;
   const fthbOnt = fthb ? Math.min(ont, 4000) : 0;
   const fthbTor = fthb && toronto ? Math.min(tor, 4475) : 0;
   const total = ont + tor - fthbOnt - fthbTor;
@@ -267,6 +293,11 @@ function LandTransferCalc() {
       }
     />
   );
+}
+
+function minCmhcDownPayment(price: number) {
+  if (price <= 500000) return price * 0.05;
+  return 25000 + Math.min(price - 500000, 1000000) * 0.10;
 }
 
 function CmhcCalc() {

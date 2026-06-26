@@ -10,6 +10,10 @@ const TICKER_MESSAGES: string[] = [
   "💼 Self-employed? We work with lenders who understand your income",
   "⚡ Pre-approval in 24 hours — Lock your rate before the next BoC announcement",
   "🔑 Renewing soon? Don't auto-renew. Compare 50+ lenders with Amit Mortgages",
+  "🏗️ Buying pre-construction or new build? Let's line up your financing early",
+  "💳 Credit bruised? We work with lenders who look past the score",
+  "🏡 Unlock your home equity with a HELOC — renovate, invest, or consolidate",
+  "🗣️ Fluent in English, Hindi, Punjabi & Urdu — let's talk in your language",
 ];
 
 export function NewsTicker() {
@@ -24,7 +28,7 @@ export function NewsTicker() {
       </div>
 
       <div className="relative flex-1 overflow-hidden">
-        <div className="ticker-track flex whitespace-nowrap py-2 text-sm font-medium">
+        <div className="ticker-track flex w-max whitespace-nowrap py-2 text-sm font-medium">
           {reel.map((msg, i) => (
             <span key={i} className="mx-8 inline-flex items-center gap-3">
               <span className="inline-block h-1.5 w-1.5 rounded-full bg-white/80" />

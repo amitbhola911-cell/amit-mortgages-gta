@@ -5,6 +5,13 @@ import advisorImg from "@/assets/profile-photo.png.asset.json";
 import CountUp from "@/components/CountUp";
 import SEO from "@/components/SEO";
 
+const lenders: { name: string; logo?: string }[] = [
+  { name: "TD" }, { name: "Scotiabank" }, { name: "Community Trust" },
+  { name: "BMO" }, { name: "CIBC" }, { name: "First National" },
+  { name: "MCAP" }, { name: "Equitable Bank" }, { name: "Meridian" },
+  { name: "Home Trust" }, { name: "B2B Bank" }, { name: "Private Lenders" },
+];
+
 export default function Index() {
   return (
     <>
@@ -83,9 +90,10 @@ export default function Index() {
             We're brokerage-independent and work with every major category of Canadian lender — so the recommendation is always about fit, not loyalty.
           </p>
           <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-3 max-w-4xl mx-auto">
-            {["TD", "Scotiabank", "Community Trust", "BMO", "CIBC", "First National", "MCAP", "Equitable Bank", "Meridian", "Home Trust", "B2B Bank", "Private Lenders"].map((l) => (
-              <div key={l} className="rounded-md border border-border bg-card px-4 py-5 font-serif text-lg">
-                {l}
+            {lenders.map((l) => (
+              <div key={l.name} className="flex items-center justify-center gap-2 rounded-md border border-border bg-card px-4 py-5">
+                {l.logo && <img src={l.logo} alt={l.name} className="h-6 w-auto object-contain" />}
+                <span className="font-serif text-lg">{l.name}</span>
               </div>
             ))}
           </div>

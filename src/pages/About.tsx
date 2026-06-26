@@ -51,7 +51,6 @@ export default function About() {
               src={profilePhoto}
               alt="Amit Bhola, FSRA Licensed Mortgage Agent"
               className="rounded-2xl w-full"
-              loading="lazy"
             />
           </div>
         </div>
