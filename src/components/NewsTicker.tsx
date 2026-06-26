@@ -2,7 +2,6 @@ import { Megaphone } from "lucide-react";
 
 /**
  * 📝 EDIT YOUR TICKER MESSAGES HERE
- * Add, remove, or change any line below. They scroll in order.
  */
 const TICKER_MESSAGES: string[] = [
   "BREAKING: Fixed 5-year rates starting from 4.19% — Call 647 992 1909 today!",
@@ -17,7 +16,6 @@ const TICKER_MESSAGES: string[] = [
 ];
 
 export function NewsTicker() {
-  // Duplicate the list so the CSS marquee loops seamlessly
   const reel = [...TICKER_MESSAGES, ...TICKER_MESSAGES];
 
   return (
@@ -28,7 +26,7 @@ export function NewsTicker() {
       </div>
 
       <div className="relative flex-1 overflow-hidden">
-        <div className="ticker-track flex w-max whitespace-nowrap py-2 text-sm font-medium">
+        <div className="ticker-track flex w-max whitespace-nowrap py-2 text-sm font-medium animate-ticker">
           {reel.map((msg, i) => (
             <span key={i} className="mx-8 inline-flex items-center gap-3">
               <span className="inline-block h-1.5 w-1.5 rounded-full bg-white/80" />
