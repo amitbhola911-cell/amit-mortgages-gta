@@ -14,6 +14,21 @@ import advisorImg from "@/assets/profile-photo.png.asset.json";
 import CountUp from "@/components/CountUp";
 import SEO from "@/components/SEO";
 
+const lenders: { name: string; logo?: string }[] = [
+  { name: "TD" },
+  { name: "Scotiabank" },
+  { name: "Community Trust" },
+  { name: "BMO" },
+  { name: "CIBC" },
+  { name: "First National" },
+  { name: "MCAP" },
+  { name: "Equitable Bank" },
+  { name: "Meridian" },
+  { name: "Home Trust" },
+  { name: "B2B Bank" },
+  { name: "Private Lenders" },
+];
+
 export default function Index() {
   return (
     <>
@@ -23,7 +38,7 @@ export default function Index() {
         canonical="/"
       />
 
-      {/* HERO */}
+      {/* Hero */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0">
           <img
@@ -105,7 +120,7 @@ export default function Index() {
         </div>
       </section>
 
-      {/* SERVICES */}
+      {/* Services */}
       <section className="container-page py-24">
         <div className="flex items-end justify-between gap-6 flex-wrap">
           <div className="max-w-xl">
@@ -172,7 +187,48 @@ export default function Index() {
         </div>
       </section>
 
-      {/* ADVISOR SECTION */}
+      {/* Lender Grid */}
+      <section className="bg-secondary/60 py-24">
+        <div className="container-page text-center">
+          <p className="text-xs uppercase tracking-widest text-gold font-medium">
+            Lender network
+          </p>
+
+          <h2 className="mt-3 text-4xl font-serif">
+            One conversation. The entire market.
+          </h2>
+
+          <p className="mt-4 max-w-2xl mx-auto text-muted-foreground">
+            We're brokerage-independent and work with every major category of
+            Canadian lender — so the recommendation is always about fit, not
+            loyalty.
+          </p>
+
+          <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-3 max-w-4xl mx-auto">
+            {lenders.map((l) => (
+              <div
+                key={l.name}
+                className="flex items-center justify-center gap-2 rounded-md border border-border bg-card px-4 py-5"
+              >
+                {l.logo && (
+                  <img
+                    src={l.logo}
+                    alt={l.name}
+                    className="h-6 w-auto object-contain"
+                  />
+                )}
+                <span className="font-serif text-lg">{l.name}</span>
+              </div>
+            ))}
+          </div>
+
+          <p className="mt-6 text-center italic text-muted-foreground">
+            &amp; many more
+          </p>
+        </div>
+      </section>
+
+      {/* Advisor */}
       <section className="container-page py-24 grid gap-12 md:grid-cols-2 items-center">
         <div className="relative">
           <img
@@ -181,6 +237,7 @@ export default function Index() {
             className="rounded-2xl shadow-elevated"
             loading="lazy"
           />
+
           <div className="absolute -bottom-6 -right-6 hidden md:block rounded-xl bg-gold text-gold-foreground px-6 py-4 shadow-soft">
             <div className="font-serif text-2xl">12+ years</div>
             <div className="text-xs uppercase tracking-wider">
@@ -193,9 +250,11 @@ export default function Index() {
           <p className="text-xs uppercase tracking-widest text-gold font-medium">
             Meet your advisor
           </p>
+
           <h2 className="mt-3 text-4xl md:text-5xl font-serif">
             Direct access, honest answers.
           </h2>
+
           <p className="mt-5 text-muted-foreground leading-relaxed">
             I started Amit Mortgages because too many buyers in the GTA were
             getting fast-tracked into the wrong product. You'll work with me
@@ -232,6 +291,7 @@ export default function Index() {
             <h2 className="text-3xl md:text-4xl font-serif max-w-md">
               Ready to see what you actually qualify for?
             </h2>
+
             <p className="mt-3 text-primary-foreground/70 max-w-md">
               No credit check, no commitment. A 15-minute call usually answers
               everything.
