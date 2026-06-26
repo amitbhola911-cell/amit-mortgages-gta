@@ -317,7 +317,8 @@ function CmhcCalc() {
   }, [price, down]);
 
   const insured = principal + premium;
-  const eligible = ratio <= 0.95 && price <= 1500000;
+  const minDown = minCmhcDownPayment(price);
+  const eligible = ratio <= 0.95 && price <= 1500000 && down >= minDown;
 
   return (
     <Shell
