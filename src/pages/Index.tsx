@@ -4,6 +4,18 @@ import heroImg from "@/assets/hero-toronto.jpg";
 import advisorImg from "@/assets/profile-photo.png.asset.json";
 import CountUp from "@/components/CountUp";
 import SEO from "@/components/SEO";
+import tdLogo from "@/assets/lenders/td.png";
+import scotiabankLogo from "@/assets/lenders/scotiabank.png";
+import communityTrustLogo from "@/assets/lenders/community-trust.png";
+import bmoLogo from "@/assets/lenders/bmo.png";
+import cibcLogo from "@/assets/lenders/cibc.png";
+import firstNationalLogo from "@/assets/lenders/first-national.png";
+import mcapLogo from "@/assets/lenders/mcap.png";
+import equitableLogo from "@/assets/lenders/equitable-bank.png";
+import meridianLogo from "@/assets/lenders/meridian.png";
+import homeTrustLogo from "@/assets/lenders/home-trust.png";
+import b2bLogo from "@/assets/lenders/b2b-bank.png";
+import privateLendersLogo from "@/assets/lenders/private-lenders.png";
 
 const lenders: { name: string; logo?: string }[] = [
   { name: "TD" }, { name: "Scotiabank" }, { name: "Community Trust" },
