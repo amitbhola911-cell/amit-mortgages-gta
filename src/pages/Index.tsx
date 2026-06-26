@@ -14,19 +14,39 @@ import advisorImg from "@/assets/profile-photo.png.asset.json";
 import CountUp from "@/components/CountUp";
 import SEO from "@/components/SEO";
 
-const lenders: { name: string; logo?: string }[] = [
-  { name: "TD" },
-  { name: "Scotiabank" },
-  { name: "Community Trust" },
-  { name: "BMO" },
-  { name: "CIBC" },
-  { name: "First National" },
-  { name: "MCAP" },
-  { name: "Equitable Bank" },
-  { name: "Meridian" },
-  { name: "Home Trust" },
-  { name: "B2B Bank" },
-  { name: "Private Lenders" },
+/* ------------------------------
+   LENDER LOGOS (SVG PATHS)
+--------------------------------*/
+const lenders: { name: string; logo: string }[] = [
+  { name: "Alterna", logo: "/src/assets/logos/alterna.svg" },
+  { name: "B2B Bank", logo: "/src/assets/logos/b2b-bank.svg" },
+  { name: "CMLS Financial", logo: "/src/assets/logos/cmls-financial.svg" },
+  { name: "Community Trust", logo: "/src/assets/logos/community-trust.svg" },
+  { name: "CWB Optimum", logo: "/src/assets/logos/cwb-optimum-mortgage.svg" },
+  { name: "DUCA", logo: "/src/assets/logos/duca.svg" },
+  { name: "Effort Trust", logo: "/src/assets/logos/effort-trust.svg" },
+  { name: "Equitable Bank", logo: "/src/assets/logos/equitable-bank.svg" },
+  { name: "First National", logo: "/src/assets/logos/first-national.svg" },
+  { name: "Haventree Bank", logo: "/src/assets/logos/haventree-bank.svg" },
+  { name: "Home Trust", logo: "/src/assets/logos/home-trust.svg" },
+  { name: "HomeEquity Bank", logo: "/src/assets/logos/homeequity-bank.svg" },
+  { name: "IC Savings", logo: "/src/assets/logos/ic-savings.svg" },
+  { name: "ICICI Bank", logo: "/src/assets/logos/icici-bank.svg" },
+  { name: "Lendwise", logo: "/src/assets/logos/lendwise.svg" },
+  { name: "Manulife Bank", logo: "/src/assets/logos/manulife-bank.svg" },
+  { name: "MCAP", logo: "/src/assets/logos/mcap.svg" },
+  { name: "Meridian", logo: "/src/assets/logos/meridian.svg" },
+  { name: "Merix", logo: "/src/assets/logos/merix.svg" },
+  { name: "New Haven Mortgage", logo: "/src/assets/logos/new-haven-mortgage.svg" },
+  { name: "Private Lenders", logo: "/src/assets/logos/private-lenders.svg" },
+  { name: "RFA", logo: "/src/assets/logos/rfa.svg" },
+  { name: "RMG Mortgages", logo: "/src/assets/logos/rmg-mortgages.svg" },
+  { name: "Scotiabank", logo: "/src/assets/logos/scotiabank.svg" },
+  { name: "Street Capital", logo: "/src/assets/logos/street-capital-bank-of-canada.svg" },
+  { name: "TD", logo: "/src/assets/logos/td.svg" },
+  { name: "WealthONE", logo: "/src/assets/logos/wealthone-bank-of-canada.svg" },
+  { name: "Xceed", logo: "/src/assets/logos/xceed.svg" },
+  { name: "XMC", logo: "/src/assets/logos/xmc-mortgage-corporation.svg" },
 ];
 
 export default function Index() {
@@ -204,21 +224,15 @@ export default function Index() {
             loyalty.
           </p>
 
-          <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-3 max-w-4xl mx-auto">
+          {/* LOGOS ONLY — CLEAN, PREMIUM GRID */}
+          <div className="mt-12 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 place-items-center">
             {lenders.map((l) => (
-              <div
+              <img
                 key={l.name}
-                className="flex items-center justify-center gap-2 rounded-md border border-border bg-card px-4 py-5"
-              >
-                {l.logo && (
-                  <img
-                    src={l.logo}
-                    alt={l.name}
-                    className="h-6 w-auto object-contain"
-                  />
-                )}
-                <span className="font-serif text-lg">{l.name}</span>
-              </div>
+                src={l.logo}
+                alt={l.name}
+                className="h-10 md:h-12 w-auto object-contain"
+              />
             ))}
           </div>
 
