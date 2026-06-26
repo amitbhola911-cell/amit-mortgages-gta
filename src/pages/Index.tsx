@@ -14,21 +14,6 @@ import advisorImg from "@/assets/profile-photo.png.asset.json";
 import CountUp from "@/components/CountUp";
 import SEO from "@/components/SEO";
 
-const lenders: { name: string; logo?: string }[] = [
-  { name: "TD", logo: tdLogo },
-  { name: "Scotiabank", logo: scotiabankLogo },
-  { name: "Community Trust", logo: communityTrustLogo },
-  { name: "BMO", logo: bmoLogo },
-  { name: "CIBC", logo: cibcLogo },
-  { name: "First National", logo: firstNationalLogo },
-  { name: "MCAP", logo: mcapLogo },
-  { name: "Equitable Bank", logo: equitableLogo },
-  { name: "Meridian", logo: meridianLogo },
-  { name: "Home Trust", logo: homeTrustLogo },
-  { name: "B2B Bank", logo: b2bLogo },
-  { name: "Private Lenders", logo: privateLendersLogo },
-];
-
 export default function Index() {
   return (
     <>
@@ -184,46 +169,6 @@ export default function Index() {
               </p>
             </div>
           ))}
-        </div>
-      </section>
-
-      {/* LENDER GRID */}
-      <section className="bg-secondary/60 py-24">
-        <div className="container-page text-center">
-          <p className="text-xs uppercase tracking-widest text-gold font-medium">
-            Lender network
-          </p>
-          <h2 className="mt-3 text-4xl font-serif">
-            One conversation. The entire market.
-          </h2>
-          <p className="mt-4 max-w-2xl mx-auto text-muted-foreground">
-            We're brokerage-independent and work with every major category of
-            Canadian lender — so the recommendation is always about fit, not
-            loyalty.
-          </p>
-
-          <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
-            {lenders.map((l) => (
-              <div
-                key={l.name}
-                className="flex items-center justify-center rounded-md border border-border bg-card px-4 py-5"
-              >
-                {l.logo ? (
-                  <img
-                    src={l.logo}
-                    alt={l.name}
-                    className="h-10 w-auto object-contain"
-                  />
-                ) : (
-                  <span className="font-serif text-lg">{l.name}</span>
-                )}
-              </div>
-            ))}
-          </div>
-
-          <p className="mt-6 text-center italic text-muted-foreground">
-            &amp; many more
-          </p>
         </div>
       </section>
 
