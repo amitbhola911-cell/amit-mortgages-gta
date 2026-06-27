@@ -10,7 +10,7 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import heroImg from "@/assets/hero-toronto.jpg";
-import advisorImg from "@/assets/profile-photo.png.asset.json";
+import advisorImg from "@/assets/Profile picture.png";
 import CountUp from "@/components/CountUp";
 import SEO from "@/components/SEO";
 
@@ -148,7 +148,7 @@ export default function Index() {
       <section className="container-page py-24">
         <div className="flex items-end justify-between gap-6 flex-wrap">
           <div className="max-w-xl">
-            <p className="text-xs uppercase tracking-widest text-gold font-medium">
+            <p className="text-xs uppercase tracking-widest text-foreground font-medium">
               What we do
             </p>
             <h2 className="mt-3 text-4xl md:text-5xl font-serif">
@@ -214,7 +214,7 @@ export default function Index() {
       {/* Lender Grid */}
       <section className="bg-secondary/60 py-24">
         <div className="container-page text-center">
-          <p className="text-xs uppercase tracking-widest text-gold font-medium">
+          <p className="text-xs uppercase tracking-widest text-foreground font-medium">
             Lender network
           </p>
 
@@ -250,7 +250,7 @@ export default function Index() {
       <section className="container-page py-24 grid gap-12 md:grid-cols-2 items-center">
         <div className="relative">
           <img
-            src={advisorImg.url}
+            src={advisorImg}
             alt="Amit Bhola, your mortgage advisor"
             className="rounded-2xl shadow-elevated"
             loading="lazy"
@@ -265,7 +265,7 @@ export default function Index() {
         </div>
 
         <div>
-          <p className="text-xs uppercase tracking-widest text-gold font-medium">
+          <p className="text-xs uppercase tracking-widest text-foreground font-medium">
             Meet your advisor
           </p>
 
