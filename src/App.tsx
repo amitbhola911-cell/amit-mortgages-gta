@@ -1,5 +1,8 @@
+// src/App.tsx
+import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import SEO from "@/components/SEO";
 import { Toaster } from "@/components/ui/sonner";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -19,6 +22,9 @@ export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
+        {/* Global SEO + GA injection */}
+        <SEO />
+
         <ScrollToTop />
         <div className="flex min-h-screen flex-col">
           <SiteHeader />
@@ -36,6 +42,8 @@ export default function App() {
           </main>
           <SiteFooter />
         </div>
+
+        {/* Global toaster */}
         <Toaster />
       </BrowserRouter>
     </QueryClientProvider>
