@@ -187,9 +187,8 @@
   .header-compact { padding-top: 0.25rem; padding-bottom: 0.25rem; }
 
   /* NEW: page content helper to replace large py-20 spacing */
-  /* Use <div className="page-content"> or replace page containers with this class */
   .page-content {
-    padding-top: 2rem;   /* ~pt-8 */
+    padding-top: 2rem;
     padding-bottom: 2rem;
   }
 
@@ -209,6 +208,8 @@
   0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
+
+/* Lender logo scroll reveal */
 @keyframes fadeUp {
   from {
     opacity: 0;
