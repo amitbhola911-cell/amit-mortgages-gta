@@ -37,58 +37,51 @@ export default function Apply() {
   return (
     <>
       <SEO
-        title="Mortgage Application — Apply Online | Amit Mortgages"
-        description="Start your mortgage application with Amit Mortgages. Quick, secure, and confidential. Get pre-approved in 24 hours across the GTA."
+        title="Mortgage Inquiry Form — Amit Mortgages"
+        description="Start your mortgage inquiry with Amit Mortgages. Quick, secure, and confidential. Get pre-approved in 24 hours across the GTA."
         canonical="/apply"
       />
 
       {/* Intro */}
       <section className="container-page page-content">
         <p className="text-xs uppercase tracking-widest text-foreground font-medium">
-          Mortgage Application
+          Mortgage Inquiry Form
         </p>
 
         <h1 className="mt-3 max-w-3xl text-3xl md:text-4xl lg:text-5xl font-serif text-balance">
           Apply in minutes. Approved in <span className="italic text-royal">24 hours.</span>
         </h1>
-
-        <p className="mt-4 max-w-xl text-sm md:text-base text-muted-foreground">
-          Complete the secure form below. Your information goes directly to Amit — no call centres, no spam. We'll follow up the same business day.
-        </p>
       </section>
 
       {/* Main grid: left = supporting content, right = full application form */}
       <section className="container-page page-content">
         <div className="grid gap-8 md:grid-cols-12 items-start">
-          {/* Left column: supporting content stacked under intro (md: left, mobile above form) */}
+          {/* Left column: supporting content stacked under intro */}
           <aside className="md:col-span-5 flex flex-col gap-6">
-            {/* Apply summary card */}
+            {/* Apply summary card (renamed content) */}
             <div className="rounded-2xl bg-card border border-border p-6">
-              <h2 className="font-serif text-2xl">Apply in minutes</h2>
+              <h2 className="font-serif text-2xl">We will contact you</h2>
               <p className="mt-3 text-sm text-muted-foreground">
-                Fill the secure form on the right with basic details and we’ll
-                start your pre-approval process. Most applications take under 10 minutes.
+                Complete the secure form here with basic details. Your information goes directly to Amit — no call centres, no spam. We'll follow up the same business day and give you proper advice - free of charge.
               </p>
-              <ul className="mt-4 space-y-3 text-sm">
-                <li className="flex items-start gap-3">
-                  <ShieldCheck className="h-5 w-5 text-gold mt-0.5" />
-                  Bank-grade encryption and secure handling.
-                </li>
-                <li className="flex items-start gap-3">
-                  <Lock className="h-5 w-5 text-gold mt-0.5" />
-                  No credit pull until you approve the lender.
-                </li>
-                <li className="flex items-start gap-3">
-                  <ShieldCheck className="h-5 w-5 text-gold mt-0.5" />
-                  Access to 50+ lenders with one application.
-                </li>
-              </ul>
             </div>
 
-            {/* Why apply with us */}
+            {/* Why apply with us (updated bullets) */}
             <div className="rounded-2xl bg-gradient-royal p-6 text-primary-foreground">
               <h3 className="font-serif text-xl">Why apply with us</h3>
               <ul className="mt-3 space-y-3 text-sm">
+                <li className="flex items-start gap-3">
+                  <ShieldCheck className="h-4 w-4 text-gold mt-0.5" />
+                  Bank-grade encryption and secure handling
+                </li>
+                <li className="flex items-start gap-3">
+                  <Lock className="h-4 w-4 text-gold mt-0.5" />
+                  No credit pull until you approve the lender
+                </li>
+                <li className="flex items-start gap-3">
+                  <ShieldCheck className="h-4 w-4 text-gold mt-0.5" />
+                  Access to 50+ lenders with one application
+                </li>
                 <li className="flex items-start gap-3">
                   <ShieldCheck className="h-4 w-4 text-gold mt-0.5" />
                   Personalized lender matching
@@ -123,14 +116,15 @@ export default function Apply() {
             </div>
           </aside>
 
-          {/* Right column: full application form (primary focus on wide screens) */}
-          <main className="md:col-span-7">
+          {/* Right column: full application form (primary focus on wide screens)
+              moved slightly up so it sits next to the "We will contact you" box */}
+          <main className="md:col-span-7 md:mt-2">
             <form
               onSubmit={onSubmit}
               className="w-full rounded-2xl border border-border bg-card p-6 md:p-8 space-y-5"
-              aria-label="Mortgage application form"
+              aria-label="Mortgage inquiry form"
             >
-              <input type="hidden" name="_subject" value="New Mortgage Application" />
+              <input type="hidden" name="_subject" value="New Mortgage Inquiry" />
               <input type="hidden" name="_replyto" value={email} />
 
               <div className="grid gap-4 md:grid-cols-2">
@@ -206,13 +200,13 @@ export default function Apply() {
                   className="inline-flex items-center gap-2 rounded-md bg-gradient-royal px-5 py-2.5 text-sm md:text-base font-medium text-primary-foreground transition-transform duration-200 hover:scale-[1.15] disabled:opacity-60"
                 >
                   <Send className="h-4 w-4" />
-                  {status === "submitting" ? "Submitting…" : "Submit Application"}
+                  {status === "submitting" ? "Submitting…" : "Submit Inquiry"}
                 </button>
 
                 <span className="text-xs text-muted-foreground">
                   {status === "success" && (
                     <span className="text-green-700 bg-green-50 border border-green-200 rounded-md px-3 py-1">
-                      ✅ Application received — we’ll follow up within one business day.
+                      ✅ Inquiry received — we’ll follow up within one business day.
                     </span>
                   )}
                   {status === "error" && (
