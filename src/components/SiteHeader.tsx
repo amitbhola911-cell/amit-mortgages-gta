@@ -10,7 +10,6 @@ const nav: { to: string; label: string; end?: boolean }[] = [
   { to: "/about", label: "About" },
   { to: "/services", label: "Services" },
   { to: "/calculators", label: "Calculators" },
-  { to: "/apply", label: "Apply" },
   { to: "/contact", label: "Contact" },
 ];
 
@@ -23,33 +22,48 @@ export function SiteHeader() {
       {/* Unified Header Row */}
       <div className="container-page flex items-center justify-between py-2">
 
-        {/* LEFT — Personal Logo */}
-        <Link to="/" className="flex items-center gap-2 shrink-0">
-          <img
-            src={personalLogo}
-            alt="Amit Mortgages"
-            className="h-[4.55rem] sm:h-[5.2rem] md:h-[6.5rem] w-auto"
-          />
-        </Link>
+        {/* LEFT — Personal Logo + Phone */}
+        <div className="flex flex-col items-start shrink-0">
+          <Link to="/" className="flex items-center gap-2">
+            <img
+              src={personalLogo}
+              alt="Amit Mortgages"
+              className="h-[4.55rem] sm:h-[5.2rem] md:h-[6.5rem] w-auto"
+            />
+          </Link>
+
+          {/* Phone under logo */}
+          <a
+            href="tel:+16479921909"
+            className="mt-1 inline-flex items-center gap-2 text-sm font-semibold text-foreground"
+          >
+            <Phone className="h-4 w-4 text-gold" /> 647 992 1909
+          </a>
+        </div>
 
         {/* CENTER — Navigation */}
-        <nav className="hidden md:flex items-center gap-1">
+        <nav className="hidden md:flex items-center gap-2">
           {nav.map((n) => (
             <NavLink
               key={n.to}
               to={n.to}
               end={n.end}
               className={({ isActive }) =>
-                `px-3 py-1.5 rounded-md text-base font-semibold transition-colors ${
-                  isActive
-                    ? "bg-primary text-primary-foreground"
-                    : "text-foreground hover:text-gold"
-                }`
+                `px-3 py-1.5 rounded-md text-base font-semibold transition-all duration-200
+                ${isActive ? "text-gold border-b-2 border-gold" : "text-foreground hover:text-gold hover:border-b-2 hover:border-gold"}`
               }
             >
               {n.label}
             </NavLink>
           ))}
+
+          {/* APPLY NOW BUTTON — after Contact */}
+          <Link
+            to="/apply"
+            className="ml-2 inline-flex items-center rounded-md bg-gradient-royal px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition shadow"
+          >
+            Apply Now
+          </Link>
         </nav>
 
         {/* RIGHT — Brokerage Logo */}
@@ -71,39 +85,6 @@ export function SiteHeader() {
         </button>
       </div>
 
-      {/* SECOND ROW — Phone + CTA */}
-      <div className="border-t border-border/60">
-        <div className="container-page flex items-center justify-end gap-4 py-2">
-
-          <div className="hidden md:flex items-center gap-3">
-            <a
-              href="tel:+16479921909"
-              className="inline-flex items-center gap-2 text-base font-semibold text-foreground"
-            >
-              <Phone className="h-5 w-5 text-gold" /> 647 992 1909
-            </a>
-
-            <Link
-              to="/apply"
-              className="inline-flex items-center rounded-md bg-gradient-royal px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition shadow"
-            >
-              Apply Now
-            </Link>
-          </div>
-
-          {/* MOBILE PHONE + CTA */}
-          <div className="md:hidden flex items-center justify-between w-full">
-            <button
-              className="p-2 -mr-2 text-foreground"
-              onClick={() => setOpen((v) => !v)}
-              aria-label="Menu"
-            >
-              {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-            </button>
-          </div>
-        </div>
-      </div>
-
       {/* MOBILE MENU PANEL */}
       {open && (
         <div className="md:hidden border-t border-border bg-background/90">
@@ -119,6 +100,7 @@ export function SiteHeader() {
               </Link>
             ))}
 
+            {/* Phone under logo for mobile */}
             <a
               href="tel:+16479921909"
               className="py-1 text-sm text-foreground inline-flex items-center gap-2"
