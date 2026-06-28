@@ -14,9 +14,7 @@ import advisorImg from "@/assets/Profile picture.png";
 import CountUp from "@/components/CountUp";
 import SEO from "@/components/SEO";
 
-/* ------------------------------
-   LENDER LOGOS (SVG PATHS)
---------------------------------*/
+/* lender logos omitted for brevity in this snippet import block (keep as-is) */
 import alternaLogo from "@/assets/logos/alterna.svg";
 import b2bBankLogo from "@/assets/logos/b2b-bank.svg";
 import bmoLogo from "@/assets/logos/bmo.svg";
@@ -105,12 +103,13 @@ export default function Index() {
           <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/80 to-primary/40" />
         </div>
 
-        <div className="relative container-page py-28 md:py-40 text-primary-foreground">
+        {/* tightened: use page-content and smaller vertical padding; keep hero tall but not full-screen */}
+        <div className="relative container-page page-content min-h-[60vh] md:min-h-[68vh] text-primary-foreground">
           <span className="inline-flex items-center gap-2 rounded-full border border-primary-foreground/20 bg-primary-foreground/5 px-3 py-1 text-xs uppercase tracking-widest">
             <Sparkles className="h-3 w-3 text-gold" /> FSRA Licensed · GTA, Ontario
           </span>
 
-          <h1 className="mt-6 max-w-3xl text-balance text-5xl md:text-7xl leading-[1.05] font-serif">
+          <h1 className="mt-6 max-w-3xl text-balance text-4xl md:text-6xl lg:text-7xl leading-[1.05] font-serif">
             The mortgage you deserve,{" "}
             <span className="italic text-gold">without the runaround.</span>
           </h1>
@@ -121,7 +120,7 @@ export default function Index() {
             clear path to closing.
           </p>
 
-          <div className="mt-10 flex flex-wrap gap-3">
+          <div className="mt-8 flex flex-wrap gap-3">
             <Link
               to="/contact"
               className="inline-flex items-center gap-2 rounded-md bg-gold px-6 py-3 text-sm font-medium text-gold-foreground hover:opacity-90 transition"
@@ -137,7 +136,7 @@ export default function Index() {
             </Link>
           </div>
 
-          <dl className="mt-16 grid max-w-2xl grid-cols-3 gap-8">
+          <dl className="mt-12 grid max-w-2xl grid-cols-3 gap-8">
             <Stat
               value={
                 <CountUp
@@ -174,14 +173,14 @@ export default function Index() {
         </div>
       </section>
 
-      {/* Services */}
-      <section className="container-page py-24">
+      {/* Services (tightened) */}
+      <section className="container-page py-8">
         <div className="flex items-end justify-between gap-6 flex-wrap">
           <div className="max-w-xl">
             <p className="text-xs uppercase tracking-widest text-foreground font-medium">
               What we do
             </p>
-            <h2 className="mt-3 text-4xl md:text-5xl font-serif">
+            <h2 className="mt-3 text-3xl md:text-4xl lg:text-5xl font-serif">
               A mortgage for every chapter.
             </h2>
           </div>
@@ -194,7 +193,7 @@ export default function Index() {
           </Link>
         </div>
 
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
+        <div className="mt-8 grid gap-6 md:grid-cols-3">
           {[
             {
               icon: Home,
@@ -229,10 +228,10 @@ export default function Index() {
           ].map((s) => (
             <div
               key={s.title}
-              className="group rounded-xl border border-border bg-card p-7 transition hover:shadow-elevated hover:-translate-y-0.5"
+              className="group rounded-xl border border-border bg-card p-6 transition hover:shadow-elevated hover:-translate-y-0.5"
             >
               <s.icon className="h-6 w-6 text-gold" />
-              <h3 className="mt-5 text-xl font-serif">{s.title}</h3>
+              <h3 className="mt-4 text-lg font-serif">{s.title}</h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                 {s.body}
               </p>
@@ -241,14 +240,14 @@ export default function Index() {
         </div>
       </section>
 
-      {/* Lender Grid */}
-      <section className="bg-secondary/60 py-24">
+      {/* Lender Grid (tightened) */}
+      <section className="bg-secondary/60 py-8">
         <div className="container-page text-center">
           <p className="text-xs uppercase tracking-widest text-foreground font-medium">
             Lender network
           </p>
 
-          <h2 className="mt-3 text-4xl font-serif">
+          <h2 className="mt-3 text-3xl md:text-4xl font-serif">
             One conversation. The entire market.
           </h2>
 
@@ -258,26 +257,25 @@ export default function Index() {
             loyalty.
           </p>
 
-          {/* LOGOS ONLY — DOUBLE SIZE — PRIVATE LENDERS LAST */}
-          <div className="mt-12 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-10 place-items-center">
+          <div className="mt-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 place-items-center">
             {lenders.map((l) => (
               <img
                 key={l.name}
                 src={l.logo}
                 alt={l.name}
-                className="h-16 md:h-20 w-auto object-contain"
+                className="h-14 md:h-18 w-auto object-contain"
               />
             ))}
           </div>
 
-          <p className="mt-6 text-center italic text-muted-foreground">
+          <p className="mt-4 text-center italic text-muted-foreground">
             &amp; many more
           </p>
         </div>
       </section>
 
-      {/* Advisor */}
-      <section className="container-page py-24 grid gap-12 md:grid-cols-2 items-center">
+      {/* Advisor (tightened) */}
+      <section className="container-page py-8 grid gap-10 md:grid-cols-2 items-center">
         <div className="relative">
           <img
             src={advisorImg}
@@ -286,8 +284,8 @@ export default function Index() {
             loading="lazy"
           />
 
-          <div className="absolute -bottom-6 -right-6 hidden md:block rounded-xl bg-gold text-gold-foreground px-6 py-4 shadow-soft">
-            <div className="font-serif text-2xl">12+ years</div>
+          <div className="absolute -bottom-6 -right-6 hidden md:block rounded-xl bg-gold text-gold-foreground px-5 py-3 shadow-soft">
+            <div className="font-serif text-xl">12+ years</div>
             <div className="text-xs uppercase tracking-wider">
               funding GTA mortgages
             </div>
@@ -299,18 +297,18 @@ export default function Index() {
             Meet your advisor
           </p>
 
-          <h2 className="mt-3 text-4xl md:text-5xl font-serif">
+          <h2 className="mt-3 text-3xl md:text-4xl font-serif">
             Direct access, honest answers.
           </h2>
 
-          <p className="mt-5 text-muted-foreground leading-relaxed">
+          <p className="mt-4 text-muted-foreground leading-relaxed">
             I started Amit Mortgages because too many buyers in the GTA were
             getting fast-tracked into the wrong product. You'll work with me
             directly — from the first call, through underwriting, and well past
             your closing day.
           </p>
 
-          <ul className="mt-6 space-y-3 text-sm">
+          <ul className="mt-5 space-y-3 text-sm">
             {[
               "FSRA-licensed mortgage agent, Ontario",
               "Brokerage-independent — no lender quotas",
@@ -325,18 +323,18 @@ export default function Index() {
 
           <Link
             to="/about"
-            className="mt-8 inline-flex items-center gap-2 text-sm font-medium hover:text-gold"
+            className="mt-6 inline-flex items-center gap-2 text-sm font-medium hover:text-gold"
           >
             More about Amit <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="container-page pb-24">
-        <div className="rounded-3xl bg-primary text-primary-foreground p-12 md:p-16 flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+      {/* CTA (tightened) */}
+      <section className="container-page pb-12">
+        <div className="rounded-3xl bg-primary text-primary-foreground p-10 md:p-14 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
           <div>
-            <h2 className="text-3xl md:text-4xl font-serif max-w-md">
+            <h2 className="text-2xl md:text-3xl font-serif max-w-md">
               Ready to see what you actually qualify for?
             </h2>
 
@@ -348,7 +346,7 @@ export default function Index() {
 
           <Link
             to="/contact"
-            className="inline-flex w-fit items-center gap-2 rounded-md bg-gold px-6 py-3 text-sm font-medium text-gold-foreground"
+            className="inline-flex w-fit items-center gap-2 rounded-md bg-gold px-5 py-3 text-sm font-medium text-gold-foreground"
           >
             Book a free consult <ArrowRight className="h-4 w-4" />
           </Link>
