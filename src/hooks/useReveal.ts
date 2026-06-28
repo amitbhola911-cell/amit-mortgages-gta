@@ -8,12 +8,22 @@ export default function useReveal() {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) setVisible(true);
+          if (entry.isIntersecting) {
+            setVisible(true);
+          }
         });
       },
       { threshold: 0.2 }
     );
 
-    if (ref.current) observer.observe(ref.current);
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
 
-    return ()
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
+  return { ref, visible };
+}
