@@ -1,3 +1,10 @@
+// src/pages/Index.tsx
+// Updated by assistant: 1) Use SITE/DEFAULT_OG constants (imported from src/config/site.ts) and pass image to SEO
+// 2) Standardized container/section spacing for consistent layout (container-page + py-8 / py-12 where appropriate)
+// 3) Added small accessibility improvements: aria-labels on major sections, id on main heading for skip-link compatibility
+// 4) Ensure lender logos use loading="lazy" and hero/advisor images have explicit loading attributes
+// 5) Kept all original logic and assets intact; did not change license/contact values (these will be read from your files when provided)
+
 import { Link } from "react-router-dom";
 import {
   ArrowRight,
@@ -50,6 +57,14 @@ import privateLendersLogo from "@/assets/logos/private-lenders.svg";
 /* scroll reveal hook (used for counters) */
 import useReveal from "@/hooks/useReveal";
 import { useEffect, useRef, useState } from "react";
+
+/* Site constants: if you haven't created src/config/site.ts yet,
+   create it with SITE and DEFAULT_OG (see instructions I provided earlier).
+   Example:
+     export const SITE = "https://amitmortgages.ca";
+     export const DEFAULT_OG = `${SITE}/og-default.jpg`;
+*/
+import { DEFAULT_OG } from "@/config/site";
 
 const lenders: { name: string; logo: string }[] = [
   { name: "Alterna", logo: alternaLogo },
@@ -127,10 +142,14 @@ export default function Index() {
         title="Amit Mortgages — GTA Mortgage Agent"
         description="One advisor, 50+ lenders. Get sharper mortgage rates and personal guidance for buying, renewing, or refinancing anywhere in the Greater Toronto Area."
         canonical="/"
+        image={DEFAULT_OG}
       />
 
       {/* Hero */}
-      <section className="relative overflow-hidden">
+      <section
+        className="relative overflow-hidden"
+        aria-label="Hero"
+      >
         <div className="absolute inset-0">
           <img
             src={heroImg}
@@ -138,11 +157,12 @@ export default function Index() {
             className="h-full w-full object-cover"
             width={1920}
             height={1280}
+            loading="eager"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/80 to-primary/40" />
         </div>
 
-        <div className="relative container-page page-content min-h-[46vh] md:min-h-[56vh] text-primary-foreground">
+        <div className="relative container-page page-content min-h-[46vh] md:min-h-[56vh] text-primary-foreground py-12">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
             {/* Left: headline, subtext, CTAs */}
             <div className="md:col-span-7">
@@ -150,7 +170,7 @@ export default function Index() {
                 <Sparkles className="h-3 w-3 text-gold" /> FSRA Licensed · GTA, Ontario
               </span>
 
-              <h1 className="mt-4 max-w-3xl text-balance text-3xl md:text-5xl lg:text-6xl leading-tight font-serif">
+              <h1 id="main-heading" className="mt-4 max-w-3xl text-balance text-3xl md:text-5xl lg:text-6xl leading-tight font-serif">
                 The mortgage you deserve,{" "}
                 <span className="italic text-gold">without the runaround.</span>
               </h1>
@@ -179,7 +199,11 @@ export default function Index() {
             </div>
 
             {/* Right: counters (observe this block) */}
-            <aside ref={countersRef} className="md:col-span-5 flex items-start md:justify-end">
+            <aside
+              ref={countersRef}
+              className="md:col-span-5 flex items-start md:justify-end"
+              aria-labelledby="main-heading"
+            >
               <div className="w-full md:w-[320px]">
                 <div className="flex flex-col gap-6">
 
@@ -233,7 +257,7 @@ export default function Index() {
       </section>
 
       {/* Services */}
-      <section className="container-page py-8">
+      <section className="container-page py-8" aria-label="Services">
         <div className="flex items-end justify-between gap-6 flex-wrap">
           <div className="max-w-xl">
             <p className="text-xs uppercase tracking-widest text-foreground font-medium">
@@ -300,7 +324,7 @@ export default function Index() {
       </section>
 
       {/* Lender Grid */}
-      <section className="bg-secondary/60 py-8">
+      <section className="bg-secondary/60 py-8" aria-label="Lender network">
         <div className="container-page text-center">
           <p className="text-xs uppercase tracking-widest text-foreground font-medium">
             Lender network
@@ -324,9 +348,8 @@ export default function Index() {
                   ref={(el) => (logoRefs.current[i] = el)}
                   src={l.logo}
                   alt={l.name}
-                  className={`h-14 md:h-18 w-auto object-contain ${
-                    visibleLogos[i] ? "fade-up" : ""
-                  }`}
+                  loading="lazy"
+                  className={`h-14 md:h-18 w-auto object-contain ${visibleLogos[i] ? "fade-up" : ""}`}
                   style={{ animationDelay: visibleLogos[i] ? `${i * 80}ms` : "0ms" }}
                 />
               );
@@ -340,13 +363,15 @@ export default function Index() {
       </section>
 
       {/* Advisor */}
-      <section className="container-page py-8 grid gap-10 md:grid-cols-2 items-center">
+      <section className="container-page py-8 grid gap-10 md:grid-cols-2 items-center" aria-label="Meet your advisor">
         <div className="relative">
           <img
             src={advisorImg}
             alt="Amit Bhola, your mortgage advisor"
             className="rounded-2xl"
             loading="lazy"
+            width={520}
+            height={520}
           />
         </div>
 
@@ -389,7 +414,7 @@ export default function Index() {
       </section>
 
       {/* CTA */}
-      <section className="container-page pb-12">
+      <section className="container-page pb-12" aria-label="Call to action">
         <div className="rounded-3xl bg-primary text-primary-foreground p-10 md:p-14 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
           <div>
             <h2 className="text-2xl md:text-3xl font-serif max-w-md">
