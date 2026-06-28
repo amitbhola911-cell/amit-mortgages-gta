@@ -37,62 +37,101 @@ export default function About() {
         description="Meet Amit Bhola, an FSRA-licensed mortgage agent serving the Greater Toronto Area with access to 50+ Canadian lenders through 8Twelve Mortgage Corp."
         canonical="/about"
       />
-      <section className="container-page pt-20 pb-12">
-        <p className="text-xs uppercase tracking-widest text-foreground font-medium">About</p>
-        <h1 className="mt-3 max-w-3xl text-5xl md:text-6xl font-serif text-balance">
+
+      {/* Intro */}
+      <section className="container-page page-content">
+        <p className="text-xs uppercase tracking-widest text-foreground font-medium">
+          About
+        </p>
+
+        <h1 className="mt-3 max-w-3xl text-3xl md:text-4xl lg:text-5xl font-serif text-balance">
           Mortgages should feel like advice — not a sales pitch.
         </h1>
       </section>
 
-      <section className="container-page grid gap-12 md:grid-cols-5 pb-20">
-        <div className="md:col-span-2">
-          <div className="rounded-2xl shadow-none">
-            <img
-              src={profilePhoto}
-              alt="Amit Bhola, FSRA Licensed Mortgage Agent"
-              className="rounded-2xl w-full"
-            />
-          </div>
-        </div>
-        <div className="md:col-span-3 space-y-6 leading-relaxed">
-          {pillars.map((p) => (
-            <p key={p.lead} className="text-muted-foreground">
-              <span className="font-serif text-foreground text-lg block mb-1">{p.lead}</span>
-              {p.body}
-            </p>
-          ))}
+      {/* Main content: image + checklist on left, copy on right */}
+      <section className="container-page page-content">
+        <div className="grid gap-10 md:grid-cols-5 items-start">
+          {/* Left column: profile image + checklist */}
+          <div className="md:col-span-2 flex flex-col items-start gap-6">
+            <div className="w-full">
+              <img
+                src={profilePhoto}
+                alt="Amit Bhola, FSRA Licensed Mortgage Agent"
+                className="rounded-2xl w-full object-cover"
+                loading="lazy"
+              />
+            </div>
 
-          <div className="grid grid-cols-2 gap-x-6 gap-y-3 pt-6">
-            {[
-              "FSRA Licensed — Ontario",
-              "Licence No. 22002220",
-              "8Twelve Mortgage Corp. #13072",
-              "Same-day pre-approvals",
-              "Self-employed specialist",
-              "Newcomer to Canada programs",
-              "Investment property financing",
-              "English · Hindi · Punjabi · Urdu",
-            ].map((c) => (
-              <div key={c} className="flex items-start gap-2 text-sm text-foreground">
-                <Check className="h-4 w-4 text-gold mt-0.5 shrink-0" /> {c}
+            {/* Checklist: single column on very small, two columns on small+ screens */}
+            <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {[
+                "FSRA Licensed — Ontario",
+                "Licence No. 22002220",
+                "8Twelve Mortgage Corp. #13072",
+                "Same-day pre-approvals",
+                "Self-employed specialist",
+                "Newcomer to Canada programs",
+                "Investment property financing",
+                "English · Hindi · Punjabi · Urdu",
+              ].map((c) => (
+                <div
+                  key={c}
+                  className="flex items-start gap-2 text-sm text-foreground"
+                >
+                  <Check className="h-4 w-4 text-gold mt-0.5 shrink-0" /> {c}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Right column: pillars / copy */}
+          <div className="md:col-span-3 space-y-6 leading-relaxed">
+            {pillars.map((p) => (
+              <div key={p.lead} className="text-muted-foreground">
+                <div className="font-serif text-foreground text-lg mb-2">
+                  {p.lead}
+                </div>
+                <p className="text-sm md:text-base">{p.body}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-secondary/60 py-20">
+      {/* How we work — tightened spacing and consistent look */}
+      <section className="bg-secondary/60 page-content">
         <div className="container-page">
-          <h2 className="text-3xl md:text-4xl font-serif">How we work</h2>
-          <div className="mt-10 grid gap-6 md:grid-cols-4">
+          <h2 className="text-2xl md:text-3xl font-serif">How we work</h2>
+
+          <div className="mt-8 grid gap-6 md:grid-cols-4">
             {[
-              { n: "01", t: "Discovery call", b: "A 15-minute conversation to understand your goals, timeline, and finances." },
-              { n: "02", t: "Strategy", b: "We map the right product, structure, and lender — and outline a clear plan." },
-              { n: "03", t: "Application", b: "We package your file, negotiate rate, and handle underwriting end-to-end." },
-              { n: "04", t: "Closing & beyond", b: "We coordinate with your lawyer, then check in annually to keep you ahead." },
+              {
+                n: "01",
+                t: "Discovery call",
+                b: "A 15-minute conversation to understand your goals, timeline, and finances.",
+              },
+              {
+                n: "02",
+                t: "Strategy",
+                b: "We map the right product, structure, and lender — and outline a clear plan.",
+              },
+              {
+                n: "03",
+                t: "Application",
+                b: "We package your file, negotiate rate, and handle underwriting end-to-end.",
+              },
+              {
+                n: "04",
+                t: "Closing & beyond",
+                b: "We coordinate with your lawyer, then check in annually to keep you ahead.",
+              },
             ].map((s) => (
-              <div key={s.n} className="rounded-xl bg-card border border-border p-6">
-                <div className="font-serif text-gold text-3xl">{s.n}</div>
+              <div
+                key={s.n}
+                className="rounded-xl bg-card border border-border p-5"
+              >
+                <div className="font-serif text-gold text-2xl">{s.n}</div>
                 <h3 className="mt-3 text-lg font-serif">{s.t}</h3>
                 <p className="mt-2 text-sm text-muted-foreground">{s.b}</p>
               </div>
