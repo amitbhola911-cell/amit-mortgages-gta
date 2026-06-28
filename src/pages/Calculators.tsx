@@ -1,13 +1,39 @@
-import { useMemo, useState } from "react";
+// src/pages/Calculators.tsx
+import React, { useMemo, useState } from "react";
 import { Calculator, Home, Wallet, Landmark, PiggyBank } from "lucide-react";
 import SEO from "@/components/SEO";
 
 const tabs = [
-  { id: "payment", label: "Mortgage Payment", icon: Home, desc: "Estimate monthly, bi-weekly, and accelerated payments using Canadian semi-annual compounding." },
-  { id: "afford", label: "Affordability", icon: Wallet, desc: "See the maximum home price you qualify for under the federal stress test rules." },
-  { id: "ltt", label: "Land Transfer Tax", icon: Landmark, desc: "Calculate Ontario + City of Toronto land transfer tax, with first-time buyer rebates." },
-  { id: "cmhc", label: "CMHC Insurance", icon: PiggyBank, desc: "Estimate default insurance premiums when your down payment is under 20%." },
-  { id: "prepay", label: "Prepayment Savings", icon: Calculator, desc: "See how much interest and time you save by paying extra each month or year." },
+  {
+    id: "payment",
+    label: "Mortgage Payment",
+    icon: Home,
+    desc: "Estimate monthly, bi-weekly, and accelerated payments using Canadian semi-annual compounding.",
+  },
+  {
+    id: "afford",
+    label: "Affordability",
+    icon: Wallet,
+    desc: "See the maximum home price you qualify for under the federal stress test rules.",
+  },
+  {
+    id: "ltt",
+    label: "Land Transfer Tax",
+    icon: Landmark,
+    desc: "Calculate Ontario + City of Toronto land transfer tax, with first-time buyer rebates.",
+  },
+  {
+    id: "cmhc",
+    label: "CMHC Insurance",
+    icon: PiggyBank,
+    desc: "Estimate default insurance premiums when your down payment is under 20%.",
+  },
+  {
+    id: "prepay",
+    label: "Prepayment Savings",
+    icon: Calculator,
+    desc: "See how much interest and time you save by paying extra each month or year.",
+  },
 ] as const;
 
 export default function Calculators() {
@@ -20,42 +46,66 @@ export default function Calculators() {
         description="Free Canadian mortgage calculators: payment, affordability, Ontario & Toronto land transfer tax, CMHC insurance, and mortgage prepayment savings."
         canonical="/calculators"
       />
-      <section className="container-page pt-20 pb-10">
+
+      <section className="container-page pt-8 pb-6">
         <p className="text-xs uppercase tracking-widest text-foreground font-medium">Calculators</p>
-        <h1 className="mt-3 max-w-3xl text-5xl md:text-6xl font-serif text-balance">
+        <h1 className="mt-3 max-w-3xl text-4xl md:text-5xl lg:text-6xl font-serif text-balance">
           Run the numbers before you sign anything.
         </h1>
-        <p className="mt-6 max-w-xl text-muted-foreground">
+        <p className="mt-4 max-w-xl text-muted-foreground">
           Built on Canadian semi-annual compounding and current Ontario tax rules. Hover any tab for a quick description. Estimates only — your real approval may differ.
         </p>
       </section>
 
-      <section className="container-page pb-24">
-        <div className="flex flex-wrap gap-2 border-b border-border">
+      <section className="container-page pb-16">
+        {/* Tabs: premium, larger, accessible */}
+        <div
+          role="tablist"
+          aria-label="Calculator tabs"
+          className="flex gap-3 overflow-x-auto pb-3 border-b border-border -mx-4 px-4 md:mx-0 md:px-0"
+        >
           {tabs.map((t) => {
             const Active = t.id === active;
+            const Icon = t.icon;
             return (
-              <div key={t.id} className="relative group">
-                <button
-                  onClick={() => setActive(t.id)}
-                  className={`inline-flex items-center gap-2 px-5 py-3 text-sm font-medium border-b-2 -mb-px transition ${Active ? "border-gold text-foreground" : "border-transparent text-muted-foreground hover:text-foreground"}`}
+              <button
+                key={t.id}
+                role="tab"
+                aria-selected={Active}
+                onClick={() => setActive(t.id)}
+                className={`relative flex-shrink-0 inline-flex items-center gap-3 rounded-lg px-4 py-3 transition-shadow duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold
+                  ${Active ? "bg-gold/10 text-foreground shadow-sm ring-1 ring-gold/20" : "bg-transparent text-muted-foreground hover:bg-primary/5 hover:text-foreground"}
+                  `}
+              >
+                <span
+                  className={`inline-flex items-center justify-center rounded-md ${
+                    Active ? "bg-gold/20 text-gold" : "bg-background/60 text-muted-foreground"
+                  } h-9 w-9`}
                 >
-                  <t.icon className="h-4 w-4" /> {t.label}
-                </button>
+                  <Icon className="h-5 w-5" />
+                </span>
+
+                <div className="text-left">
+                  <div className="text-sm font-semibold leading-tight">{t.label}</div>
+                  <div className="text-xs text-muted-foreground hidden md:block">{t.desc}</div>
+                </div>
+
+                {/* Tooltip for small screens / hover */}
                 <div
                   role="tooltip"
-                  className="pointer-events-none absolute left-1/2 top-full z-30 mt-2 w-64 -translate-x-1/2 translate-y-1 rounded-lg bg-primary px-4 py-3 text-xs leading-relaxed text-primary-foreground opacity-0 shadow-[var(--shadow-elevated)] transition-all duration-200 group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:opacity-100"
+                  className="pointer-events-none absolute left-1/2 top-full z-30 mt-2 w-64 -translate-x-1/2 translate-y-1 rounded-lg bg-primary px-4 py-3 text-xs leading-relaxed text-primary-foreground opacity-0 shadow-[var(--shadow-elevated)] transition-all duration-200 group-hover:translate-y-0 group-hover:opacity-100"
+                  aria-hidden
                 >
                   <span className="absolute -top-1.5 left-1/2 h-3 w-3 -translate-x-1/2 rotate-45 bg-primary" />
                   <span className="block font-serif text-sm text-gold mb-1">{t.label}</span>
                   {t.desc}
                 </div>
-              </div>
+              </button>
             );
           })}
         </div>
 
-        <div className="mt-10">
+        <div className="mt-8">
           {active === "payment" && <PaymentCalc />}
           {active === "afford" && <AffordabilityCalc />}
           {active === "ltt" && <LandTransferCalc />}
@@ -67,6 +117,8 @@ export default function Calculators() {
   );
 }
 
+/* ---------- Shell and shared UI ---------- */
+
 function Shell({ inputs, results }: { inputs: React.ReactNode; results: React.ReactNode }) {
   return (
     <div className="grid gap-8 md:grid-cols-5">
@@ -76,7 +128,21 @@ function Shell({ inputs, results }: { inputs: React.ReactNode; results: React.Re
   );
 }
 
-function NumberInput({ label, value, onChange, prefix, suffix, step = 1 }: { label: string; value: number; onChange: (v: number) => void; prefix?: string; suffix?: string; step?: number }) {
+function NumberInput({
+  label,
+  value,
+  onChange,
+  prefix,
+  suffix,
+  step = 1,
+}: {
+  label: string;
+  value: number;
+  onChange: (v: number) => void;
+  prefix?: string;
+  suffix?: string;
+  step?: number;
+}) {
   return (
     <div>
       <label className="block text-xs font-medium uppercase tracking-wider text-muted-foreground mb-2">{label}</label>
@@ -99,13 +165,17 @@ function Stat({ label, value, big }: { label: string; value: string; big?: boole
   return (
     <div>
       <div className="text-xs uppercase tracking-wider text-primary-foreground/60">{label}</div>
-      <div className={`font-serif ${big ? "text-5xl text-gold mt-2" : "text-2xl mt-1"}`}>{value}</div>
+      <div className={`font-serif ${big ? "text-4xl md:text-5xl text-gold mt-2" : "text-2xl mt-1"}`}>{value}</div>
     </div>
   );
 }
 
-const fmt = (n: number) => new Intl.NumberFormat("en-CA", { style: "currency", currency: "CAD", maximumFractionDigits: 0 }).format(n);
-const fmt2 = (n: number) => new Intl.NumberFormat("en-CA", { style: "currency", currency: "CAD" }).format(n);
+/* ---------- Formatting helpers and math ---------- */
+
+const fmt = (n: number) =>
+  new Intl.NumberFormat("en-CA", { style: "currency", currency: "CAD", maximumFractionDigits: 0 }).format(n);
+const fmt2 = (n: number) =>
+  new Intl.NumberFormat("en-CA", { style: "currency", currency: "CAD" }).format(n);
 
 function monthlyPayment(principal: number, annualRate: number, amortYears: number) {
   if (principal <= 0 || amortYears <= 0) return 0;
@@ -114,6 +184,8 @@ function monthlyPayment(principal: number, annualRate: number, amortYears: numbe
   const n = amortYears * 12;
   return (principal * effMonthly) / (1 - Math.pow(1 + effMonthly, -n));
 }
+
+/* ---------- Payment calculator ---------- */
 
 function PaymentCalc() {
   const [price, setPrice] = useState(950000);
@@ -132,8 +204,8 @@ function PaymentCalc() {
     rate === 0
       ? principal / equivalentMonthlyPmt
       : equivalentMonthlyPmt <= principal * effMonthlyRate
-        ? amort * 12
-        : Math.log(equivalentMonthlyPmt / (equivalentMonthlyPmt - principal * effMonthlyRate)) / Math.log(1 + effMonthlyRate);
+      ? amort * 12
+      : Math.log(equivalentMonthlyPmt / (equivalentMonthlyPmt - principal * effMonthlyRate)) / Math.log(1 + effMonthlyRate);
   const totalPaidAmount = equivalentMonthlyPmt * payoffMonths;
   const totalInterest = totalPaidAmount - principal;
 
@@ -147,11 +219,22 @@ function PaymentCalc() {
             <NumberInput label="Interest rate" value={rate} onChange={setRate} suffix="%" step={0.01} />
             <NumberInput label="Amortization" value={amort} onChange={setAmort} suffix="yrs" />
           </div>
+
           <div>
             <label className="block text-xs font-medium uppercase tracking-wider text-muted-foreground mb-2">Payment frequency</label>
-            <div className="grid grid-cols-3 gap-2">
+            <div className="grid grid-cols-3 gap-3">
               {(["monthly", "biweekly", "accelerated"] as const).map((f) => (
-                <button key={f} onClick={() => setFreq(f)} className={`rounded-md border px-3 py-2 text-sm capitalize ${freq === f ? "border-gold bg-gold/10 text-foreground" : "border-border text-muted-foreground"}`}>{f === "accelerated" ? "Accel. Bi-weekly" : f}</button>
+                <button
+                  key={f}
+                  onClick={() => setFreq(f)}
+                  className={`rounded-md px-3 py-2 text-sm font-medium capitalize transition ${
+                    freq === f
+                      ? "bg-gold/10 text-foreground border border-gold shadow-sm"
+                      : "bg-background border border-border text-muted-foreground hover:bg-primary/5 hover:text-foreground"
+                  } focus:outline-none focus-visible:ring-2 focus-visible:ring-gold`}
+                >
+                  {f === "accelerated" ? "Accel. Bi-weekly" : f}
+                </button>
               ))}
             </div>
           </div>
@@ -172,6 +255,8 @@ function PaymentCalc() {
   );
 }
 
+/* ---------- Affordability ---------- */
+
 function AffordabilityCalc() {
   const [income, setIncome] = useState(140000);
   const [debts, setDebts] = useState(600);
@@ -185,7 +270,7 @@ function AffordabilityCalc() {
   const maxPmt = Math.max(0, Math.min(gdsLimit * 0.85, tdsLimit));
   const eff = Math.pow(1 + qualifyingRate / 2 / 100, 1 / 6) - 1;
   const n = amort * 12;
-  const maxMortgage = maxPmt > 0 ? maxPmt * (1 - Math.pow(1 + eff, -n)) / eff : 0;
+  const maxMortgage = maxPmt > 0 ? (maxPmt * (1 - Math.pow(1 + eff, -n))) / eff : 0;
   const maxPrice = maxMortgage + down;
 
   return (
@@ -217,6 +302,8 @@ function AffordabilityCalc() {
   );
 }
 
+/* ---------- Land transfer tax ---------- */
+
 function ontarioLTT(price: number) {
   let tax = 0;
   const brackets = [
@@ -239,9 +326,16 @@ function ontarioLTT(price: number) {
 function torontoMLTT(price: number) {
   let tax = 0;
   const brackets = [
-    [55000, 0.005], [195000, 0.01], [150000, 0.015], [1600000, 0.02],
-    [1000000, 0.025], [1000000, 0.044], [1000000, 0.0545],
-    [5000000, 0.065], [10000000, 0.0755], [Infinity, 0.086],
+    [55000, 0.005],
+    [195000, 0.01],
+    [150000, 0.015],
+    [1600000, 0.02],
+    [1000000, 0.025],
+    [1000000, 0.044],
+    [1000000, 0.0545],
+    [5000000, 0.065],
+    [10000000, 0.0755],
+    [Infinity, 0.086],
   ] as const;
   let remaining = price;
   for (const [size, rate] of brackets) {
@@ -295,9 +389,11 @@ function LandTransferCalc() {
   );
 }
 
+/* ---------- CMHC ---------- */
+
 function minCmhcDownPayment(price: number) {
   if (price <= 500000) return price * 0.05;
-  return 25000 + Math.min(price - 500000, 1000000) * 0.10;
+  return 25000 + Math.min(price - 500000, 1000000) * 0.1;
 }
 
 function CmhcCalc() {
@@ -352,6 +448,8 @@ function CmhcCalc() {
     />
   );
 }
+
+/* ---------- Prepayment ---------- */
 
 function PrepaymentCalc() {
   const [principal, setPrincipal] = useState(600000);
