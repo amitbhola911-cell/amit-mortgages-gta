@@ -1,3 +1,4 @@
+// src/pages/Apply.tsx
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { ShieldCheck, Lock, Send, Phone } from "lucide-react";
@@ -26,6 +27,7 @@ export default function Apply() {
       if (res.ok) {
         setStatus("success");
         form.reset();
+        setEmail("");
       } else {
         setStatus("error");
       }
@@ -37,61 +39,67 @@ export default function Apply() {
   return (
     <>
       <SEO
-        title="Mortgage Inquiry Form — Amit Mortgages"
-        description="Start your mortgage inquiry with Amit Mortgages. Quick, secure, and confidential. Get pre-approved in 24 hours across the GTA."
+        title="Apply in Minutes — Amit Mortgages"
+        description="Fast online mortgage application — apply in minutes and get approved in 24 hours for many cases. Secure, simple, and lender-ready."
         canonical="/apply"
       />
 
-      {/* Intro */}
-      <section className="container-page page-content">
+      {/* Intro — tightened top spacing and consistent rhythm */}
+      <section className="container-page page-content pt-8 pb-6">
         <p className="text-xs uppercase tracking-widest text-foreground font-medium">
           Mortgage Inquiry Form
         </p>
 
-        <h1 className="mt-3 max-w-3xl text-3xl md:text-4xl lg:text-5xl font-serif text-balance">
-          Apply in minutes. Approved in <span className="italic text-royal">24 hours.</span>
-        </h1>
+        {/* Two stacked hero lines with tight leading */}
+        <div className="mt-3 max-w-3xl">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif leading-tight">
+            Apply in minutes.
+          </h1>
+          <h2 className="mt-2 text-2xl md:text-3xl lg:text-4xl font-serif text-muted-foreground leading-tight">
+            Approved in <span className="italic text-royal">24 hours.</span>
+          </h2>
+        </div>
       </section>
 
       {/* Main grid: left = supporting content, right = full application form */}
-      <section className="container-page page-content">
+      <section className="container-page page-content pb-16">
         <div className="grid gap-8 md:grid-cols-12 items-start">
           {/* Left column: supporting content stacked under intro */}
           <aside className="md:col-span-5 flex flex-col gap-6">
-            {/* Apply summary card (renamed content) */}
+            {/* Apply summary card */}
             <div className="rounded-2xl bg-card border border-border p-6">
               <h2 className="font-serif text-2xl">We will contact you</h2>
               <p className="mt-3 text-sm text-muted-foreground">
-                Complete the secure form here with basic details. Your information goes directly to Amit — no call centres, no spam. We'll follow up the same business day and give you proper advice - free of charge.
+                Complete the secure form here with basic details. Your information goes directly to Amit — no call centres, no spam. We'll follow up the same business day and give you proper advice — free of charge.
               </p>
             </div>
 
-            {/* Why apply with us (updated bullets) */}
+            {/* Why apply with us */}
             <div className="rounded-2xl bg-gradient-royal p-6 text-primary-foreground">
               <h3 className="font-serif text-xl">Why apply with us</h3>
               <ul className="mt-3 space-y-3 text-sm">
                 <li className="flex items-start gap-3">
-                  <ShieldCheck className="h-4 w-4 text-gold mt-0.5" />
+                  <ShieldCheck className="h-4 w-4 text-gold mt-0.5 flex-shrink-0" />
                   Bank-grade encryption and secure handling
                 </li>
                 <li className="flex items-start gap-3">
-                  <Lock className="h-4 w-4 text-gold mt-0.5" />
+                  <Lock className="h-4 w-4 text-gold mt-0.5 flex-shrink-0" />
                   No credit pull until you approve the lender
                 </li>
                 <li className="flex items-start gap-3">
-                  <ShieldCheck className="h-4 w-4 text-gold mt-0.5" />
+                  <ShieldCheck className="h-4 w-4 text-gold mt-0.5 flex-shrink-0" />
                   Access to 50+ lenders with one application
                 </li>
                 <li className="flex items-start gap-3">
-                  <ShieldCheck className="h-4 w-4 text-gold mt-0.5" />
+                  <ShieldCheck className="h-4 w-4 text-gold mt-0.5 flex-shrink-0" />
                   Personalized lender matching
                 </li>
                 <li className="flex items-start gap-3">
-                  <Lock className="h-4 w-4 text-gold mt-0.5" />
+                  <Lock className="h-4 w-4 text-gold mt-0.5 flex-shrink-0" />
                   Secure, confidential process
                 </li>
                 <li className="flex items-start gap-3">
-                  <ShieldCheck className="h-4 w-4 text-gold mt-0.5" />
+                  <ShieldCheck className="h-4 w-4 text-gold mt-0.5 flex-shrink-0" />
                   Fast same-day follow up
                 </li>
               </ul>
@@ -116,9 +124,8 @@ export default function Apply() {
             </div>
           </aside>
 
-          {/* Right column: full application form (primary focus on wide screens)
-              moved slightly up so it sits next to the "We will contact you" box */}
-          <main className="md:col-span-7 md:mt-2">
+          {/* Right column: full application form */}
+          <main className="md:col-span-7 md:mt-0">
             <form
               onSubmit={onSubmit}
               className="w-full rounded-2xl border border-border bg-card p-6 md:p-8 space-y-5"
@@ -197,7 +204,7 @@ export default function Apply() {
                 <button
                   type="submit"
                   disabled={status === "submitting"}
-                  className="inline-flex items-center gap-2 rounded-md bg-gradient-royal px-5 py-2.5 text-sm md:text-base font-medium text-primary-foreground transition-transform duration-200 hover:scale-[1.15] disabled:opacity-60"
+                  className="inline-flex items-center gap-2 rounded-md bg-gradient-royal px-5 py-2.5 text-sm md:text-base font-medium text-primary-foreground transition-transform duration-200 hover:scale-[1.05] disabled:opacity-60"
                 >
                   <Send className="h-4 w-4" />
                   {status === "submitting" ? "Submitting…" : "Submit Inquiry"}
