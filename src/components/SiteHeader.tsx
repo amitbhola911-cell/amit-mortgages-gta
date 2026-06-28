@@ -32,7 +32,7 @@ export function SiteHeader() {
 
           <a
             href="tel:+16479921909"
-            className="mt-0 inline-flex items-center gap-1 text-sm font-semibold text-foreground transition-transform duration-200 hover:scale-105 focus:scale-105"
+            className="mt-0 inline-flex items-center gap-1 text-sm font-semibold text-foreground transition-transform duration-200 hover:scale-115 focus:scale-115"
             aria-label="Call Amit Mortgages"
           >
             <Phone className="h-4 w-4 text-gold" /> <span className="leading-none">647 992 1909</span>
@@ -61,7 +61,7 @@ export function SiteHeader() {
           {/* Apply Now CTA */}
           <Link
             to="/apply"
-            className="ml-2 inline-flex items-center rounded-md bg-gradient-royal px-4 py-2 text-sm font-medium text-primary-foreground transition-transform duration-200 hover:scale-105 focus:scale-105 shadow"
+            className="ml-2 inline-flex items-center rounded-md bg-gradient-royal px-4 py-2 text-sm font-medium text-primary-foreground transition-transform duration-200 hover:scale-115 focus:scale-115 shadow"
             aria-label="Apply Now"
           >
             Apply Now
