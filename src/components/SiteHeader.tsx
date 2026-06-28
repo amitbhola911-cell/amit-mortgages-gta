@@ -12,7 +12,6 @@ const nav: { to: string; label: string; end?: boolean }[] = [
   { to: "/calculators", label: "Calculators" },
   { to: "/apply", label: "Apply" },
   { to: "/contact", label: "Contact" },
-  { to: "/privacy", label: "Privacy" },
 ];
 
 export function SiteHeader() {
@@ -22,12 +21,12 @@ export function SiteHeader() {
     <header className="sticky top-0 z-40 backdrop-blur-md bg-background/95 border-b border-border shadow-sm">
 
       {/* Branding Row */}
-      <div className="container-page flex items-center justify-between gap-3 py-2">
+      <div className="container-page flex items-center justify-start gap-6 py-2">
         <Link to="/" className="flex items-center gap-2 shrink-0">
           <img
             src={personalLogo}
             alt="Amit Mortgages"
-            className="h-14 sm:h-16 md:h-20 w-auto"
+            className="h-[4.55rem] sm:h-[5.2rem] md:h-[6.5rem] w-auto"
           />
         </Link>
 
