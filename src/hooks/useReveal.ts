@@ -1,10 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 
-export default function useReveal() {
-  const ref = useRef<HTMLImageElement | null>(null);
+export default function useReveal(threshold = 0.15) {
+  const ref = useRef<HTMLElement | null>(null);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    if (!ref.current) return;
+
+    const node = ref.current;
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -13,17 +16,16 @@ export default function useReveal() {
           }
         });
       },
-      { threshold: 0.2 }
+      { threshold }
     );
 
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
+    observer.observe(node);
 
     return () => {
+      observer.unobserve(node);
       observer.disconnect();
     };
-  }, []);
+  }, [threshold]);
 
   return { ref, visible };
 }
