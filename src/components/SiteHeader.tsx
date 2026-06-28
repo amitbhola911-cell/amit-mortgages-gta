@@ -20,26 +20,26 @@ export function SiteHeader() {
     <header className="sticky top-0 z-40 backdrop-blur-md bg-background/95 border-b border-border shadow-sm">
 
       {/* Unified Header Row */}
-      <div className="container-page flex items-center justify-between py-2">
+      <div className="container-page flex items-center justify-between py-1">
 
-      {/* LEFT — Personal Logo + Phone */}
-<div className="flex flex-col items-center shrink-0">
-  <Link to="/" className="flex items-center gap-2">
-    <img
-      src={personalLogo}
-      alt="Amit Mortgages"
-      className="h-[4.55rem] sm:h-[5.2rem] md:h-[6.5rem] w-auto"
-    />
-  </Link>
+        {/* LEFT — Personal Logo + Phone */}
+        <div className="flex flex-col items-center shrink-0">
+          <Link to="/" className="flex items-center">
+            <img
+              src={personalLogo}
+              alt="Amit Mortgages"
+              className="h-[4.55rem] sm:h-[5.2rem] md:h-[6.5rem] w-auto"
+            />
+          </Link>
 
-  {/* Phone under logo */}
-  <a
-    href="tel:+16479921909"
-    className="mt-1 inline-flex items-center gap-2 text-sm font-semibold text-foreground"
-  >
-    <Phone className="h-4 w-4 text-gold" /> 647 992 1909
-  </a>
-</div>
+          {/* Phone under logo — reduced spacing */}
+          <a
+            href="tel:+16479921909"
+            className="mt-0.5 inline-flex items-center gap-1 text-sm font-semibold text-foreground"
+          >
+            <Phone className="h-4 w-4 text-gold" /> 647 992 1909
+          </a>
+        </div>
 
         {/* CENTER — Navigation */}
         <nav className="hidden md:flex items-center gap-2">
@@ -50,17 +50,21 @@ export function SiteHeader() {
               end={n.end}
               className={({ isActive }) =>
                 `px-3 py-1.5 rounded-md text-base font-semibold transition-all duration-200
-                ${isActive ? "text-gold border-b-2 border-gold" : "text-foreground hover:text-gold hover:border-b-2 hover:border-gold hover:shadow-[0_2px_8px_rgba(255,215,0,0.45)]"}`
+                ${
+                  isActive
+                    ? "text-gold border-b-2 border-gold bg-black/20 shadow-[0_2px_8px_rgba(255,215,0,0.45)]"
+                    : "text-foreground hover:text-gold hover:border-b-2 hover:border-gold hover:bg-black/10 hover:shadow-[0_2px_8px_rgba(255,215,0,0.45)]"
+                }`
               }
             >
               {n.label}
             </NavLink>
           ))}
 
-          {/* APPLY NOW BUTTON — after Contact */}
+          {/* APPLY NOW BUTTON — upscale on hover */}
           <Link
             to="/apply"
-            className="ml-2 inline-flex items-center rounded-md bg-gradient-royal px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition shadow"
+            className="ml-2 inline-flex items-center rounded-md bg-gradient-royal px-4 py-2 text-sm font-medium text-primary-foreground transition-all duration-200 hover:scale-[1.06] hover:opacity-90 shadow"
           >
             Apply Now
           </Link>
