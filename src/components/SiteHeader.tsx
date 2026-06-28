@@ -5,7 +5,7 @@ import { NewsTicker } from "./NewsTicker";
 import personalLogo from "@/assets/AMIT MORTGAGES Logo Blue.png";
 import brokerageLogo from "@/assets/8twelve-logo...png";
 
-const nav: { to: string; label: string; end?: boolean }[] = [
+const nav = [
   { to: "/", label: "Home", end: true },
   { to: "/about", label: "About" },
   { to: "/services", label: "Services" },
@@ -18,30 +18,28 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-40 backdrop-blur-md bg-background/95 border-b border-border shadow-sm">
-
-      {/* Unified Header Row */}
+      {/* Header row: compact */}
       <div className="container-page flex items-center justify-between py-1">
-
-        {/* LEFT — Personal Logo + Phone */}
+        {/* Logo + phone (centered stack) */}
         <div className="flex flex-col items-center shrink-0">
           <Link to="/" className="flex items-center">
             <img
               src={personalLogo}
               alt="Amit Mortgages"
-              className="h-[4.55rem] sm:h-[5.2rem] md:h-[6.5rem] w-auto"
+              className="h-[3.9rem] sm:h-[4.6rem] md:h-[5.2rem] w-auto"
             />
           </Link>
 
-          {/* Phone under logo — reduced spacing */}
           <a
             href="tel:+16479921909"
-            className="mt-0.5 inline-flex items-center gap-1 text-sm font-semibold text-foreground"
+            className="mt-0 inline-flex items-center gap-1 text-sm font-semibold text-foreground transition-transform duration-200 hover:scale-105 focus:scale-105"
+            aria-label="Call Amit Mortgages"
           >
-            <Phone className="h-4 w-4 text-gold" /> 647 992 1909
+            <Phone className="h-4 w-4 text-gold" /> <span className="leading-none">647 992 1909</span>
           </a>
         </div>
 
-        {/* CENTER — Navigation */}
+        {/* Navigation (desktop) */}
         <nav className="hidden md:flex items-center gap-2">
           {nav.map((n) => (
             <NavLink
@@ -49,11 +47,10 @@ export function SiteHeader() {
               to={n.to}
               end={n.end}
               className={({ isActive }) =>
-                `px-3 py-1.5 rounded-md text-base font-semibold transition-all duration-200
-                ${
+                `px-3 py-1.5 rounded-md text-base font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--gold)] ${
                   isActive
-                    ? "text-gold border-b-2 border-gold bg-black/20 shadow-[0_2px_8px_rgba(255,215,0,0.45)]"
-                    : "text-foreground hover:text-gold hover:border-b-2 hover:border-gold hover:bg-black/10 hover:shadow-[0_2px_8px_rgba(255,215,0,0.45)]"
+                    ? "text-gold border-b-2 border-gold bg-[color-mix(in oklab, var(--gold) 8%, transparent)] glow-gold"
+                    : "text-foreground hover:text-gold hover:border-b-2 hover:border-gold hover:bg-[color-mix(in oklab, var(--gold) 6%, transparent)]"
                 }`
               }
             >
@@ -61,35 +58,36 @@ export function SiteHeader() {
             </NavLink>
           ))}
 
-          {/* APPLY NOW BUTTON — upscale on hover */}
+          {/* Apply Now CTA */}
           <Link
             to="/apply"
-            className="ml-2 inline-flex items-center rounded-md bg-gradient-royal px-4 py-2 text-sm font-medium text-primary-foreground transition-all duration-200 hover:scale-[1.06] hover:opacity-90 shadow"
+            className="ml-2 inline-flex items-center rounded-md bg-gradient-royal px-4 py-2 text-sm font-medium text-primary-foreground transition-transform duration-200 hover:scale-105 focus:scale-105 shadow"
+            aria-label="Apply Now"
           >
             Apply Now
           </Link>
         </nav>
 
-        {/* RIGHT — Brokerage Logo */}
+        {/* Brokerage logo */}
         <div className="flex items-center gap-3 shrink-0">
           <img
             src={brokerageLogo}
             alt="8Twelve Mortgage Corp."
-            className="h-16 sm:h-18 md:h-22 w-auto"
+            className="h-14 sm:h-16 md:h-20 w-auto"
           />
         </div>
 
-        {/* MOBILE MENU BUTTON */}
+        {/* Mobile menu button */}
         <button
           className="md:hidden p-2 text-foreground"
           onClick={() => setOpen((v) => !v)}
-          aria-label="Menu"
+          aria-label="Toggle menu"
         >
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
       </div>
 
-      {/* MOBILE MENU PANEL */}
+      {/* Mobile panel */}
       {open && (
         <div className="md:hidden border-t border-border bg-background/90">
           <div className="container-page py-4 flex flex-col gap-3">
@@ -98,16 +96,15 @@ export function SiteHeader() {
                 key={n.to}
                 to={n.to}
                 onClick={() => setOpen(false)}
-                className="py-1 text-sm text-foreground"
+                className="py-2 px-2 rounded-md text-sm text-foreground hover:bg-[color-mix(in oklab,var(--gold) 6%,transparent)] transition"
               >
                 {n.label}
               </Link>
             ))}
 
-            {/* Phone under logo for mobile */}
             <a
               href="tel:+16479921909"
-              className="py-1 text-sm text-foreground inline-flex items-center gap-2"
+              className="py-2 text-sm text-foreground inline-flex items-center gap-2 hover:scale-105 transition"
             >
               <Phone className="h-4 w-4 text-gold" /> 647 992 1909
             </a>
