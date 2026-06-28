@@ -38,7 +38,7 @@ export default function Contact() {
         canonical="/contact"
       />
       <section className="container-page pt-20 pb-10">
-        <p className="text-xs uppercase tracking-widest text-gold font-medium">Contact</p>
+        <p className="text-xs uppercase tracking-widest text-forground font-medium">Contact</p>
         <h1 className="mt-3 max-w-3xl text-5xl md:text-6xl font-serif text-balance">
           Let's find your rate.
         </h1>
