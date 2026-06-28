@@ -9,7 +9,7 @@ export default function Privacy() {
         canonical="/privacy"
       />
       <section className="container-page pt-16 pb-6">
-        <p className="text-xs uppercase tracking-widest text-gold font-medium">Compliance</p>
+        <p className="text-xs uppercase tracking-widest text-foreground font-medium">Compliance</p>
         <h1 className="mt-3 text-4xl md:text-5xl font-serif">Privacy Policy</h1>
         <p className="mt-4 text-sm text-muted-foreground">
           8Twelve Mortgage Corp. — Brokerage Licence #13072 · Last updated December 2022
