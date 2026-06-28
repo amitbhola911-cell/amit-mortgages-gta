@@ -21,7 +21,7 @@ export default function Services() {
         canonical="/services"
       />
       <section className="container-page pt-20 pb-10">
-        <p className="text-xs uppercase tracking-widest text-gold font-medium">Services</p>
+        <p className="text-xs uppercase tracking-widest text-foreground font-medium">Services</p>
         <h1 className="mt-3 max-w-3xl text-5xl md:text-6xl font-serif text-balance">
           The full mortgage toolkit — for every kind of GTA buyer.
         </h1>
