@@ -1,3 +1,4 @@
+// src/pages/Contact.tsx
 import { Mail, Phone, MapPin, Clock, Send, MessageCircle } from "lucide-react";
 import { useState } from "react";
 import SEO from "@/components/SEO";
@@ -37,21 +38,23 @@ export default function Contact() {
         description="Book a free mortgage consultation. Call 647 992 1909 or send a message — typical response within one business hour."
         canonical="/contact"
       />
-      <section className="container-page pt-20 pb-10">
-        <p className="text-xs uppercase tracking-widest text-forground font-medium">Contact</p>
-        <h1 className="mt-3 max-w-3xl text-5xl md:text-6xl font-serif text-balance">
+      <section className="container-page pt-8 pb-6">
+        <p className="text-xs uppercase tracking-widest text-foreground font-medium">Contact</p>
+        <h1 className="mt-3 max-w-3xl text-4xl md:text-5xl lg:text-6xl font-serif text-balance">
           Let's find your rate.
         </h1>
-        <p className="mt-6 max-w-xl text-muted-foreground">
+        <p className="mt-4 max-w-xl text-muted-foreground">
           Tell us a little about what you're looking for. Most messages get a personal reply within one business hour.
         </p>
       </section>
 
-      <section className="container-page pb-24 grid gap-10 md:grid-cols-5">
-        <div className="md:col-span-3 rounded-2xl border border-border bg-card p-8 shadow-soft">
+      <section className="container-page pb-16 grid gap-10 md:grid-cols-5">
+        <div className="md:col-span-3 rounded-2xl border border-border bg-card p-6 shadow-soft">
           {status === "success" ? (
-            <div className="py-16 text-center">
-              <div className="mx-auto h-12 w-12 rounded-full bg-gold/20 flex items-center justify-center"><Send className="h-5 w-5 text-gold" /></div>
+            <div className="py-12 text-center">
+              <div className="mx-auto h-12 w-12 rounded-full bg-gold/20 flex items-center justify-center">
+                <Send className="h-5 w-5 text-gold" />
+              </div>
               <h2 className="mt-4 text-2xl font-serif">Message sent.</h2>
               <p className="mt-2 text-sm text-muted-foreground">Amit will reply shortly — usually within the hour.</p>
             </div>
@@ -135,7 +138,9 @@ function InfoCard({ icon: Icon, title, body }: { icon: typeof Mail; title: strin
   return (
     <div className="rounded-xl border border-border bg-card p-6">
       <div className="flex items-center gap-3">
-        <span className="inline-flex h-9 w-9 items-center justify-center rounded-md bg-gold/15 text-gold"><Icon className="h-4 w-4" /></span>
+        <span className="inline-flex h-9 w-9 items-center justify-center rounded-md bg-gold/15 text-gold">
+          <Icon className="h-4 w-4" />
+        </span>
         <h3 className="font-serif text-lg">{title}</h3>
       </div>
       <div className="mt-3 text-sm text-muted-foreground leading-relaxed">{body}</div>
