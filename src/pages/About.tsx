@@ -44,7 +44,8 @@ export default function About() {
           About
         </p>
 
-        <h1 className="mt-3 max-w-3xl text-3xl md:text-4xl lg:text-5xl font-serif text-balance">
+        {/* Keep headline on a single line on medium+ screens; responsive sizing for small screens */}
+        <h1 className="mt-3 max-w-3xl text-3xl md:text-4xl lg:text-5xl font-serif text-balance md:whitespace-nowrap">
           Mortgages should feel like advice — not a sales pitch.
         </h1>
       </section>
@@ -77,9 +78,17 @@ export default function About() {
               ].map((c) => (
                 <div
                   key={c}
-                  className="flex items-start gap-2 text-sm text-foreground"
+                  className="flex items-start gap-3 text-sm text-foreground"
                 >
-                  <Check className="h-4 w-4 text-gold mt-0.5 shrink-0" /> {c}
+                  {/* Premium green tick-in-box */}
+                  <span
+                    className="flex items-center justify-center h-5 w-5 rounded-sm bg-green-600 text-white ring-1 ring-green-700/20 shrink-0"
+                    aria-hidden="true"
+                  >
+                    <Check className="h-3 w-3" />
+                  </span>
+
+                  <span className="leading-tight">{c}</span>
                 </div>
               ))}
             </div>
