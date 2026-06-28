@@ -21,19 +21,19 @@ export default function Calculators() {
         description="Free Canadian mortgage calculators: payment, affordability, Ontario & Toronto land transfer tax, CMHC insurance, and mortgage prepayment savings."
         canonical="/calculators"
       />
-      <section className="container-page pt-8 pb-6">
+      <section className="container-page pt-20 pb-10">
         <p className="text-xs uppercase tracking-widest text-foreground font-medium">Calculators</p>
-        <h1 className="mt-3 max-w-3xl text-4xl md:text-5xl lg:text-6xl font-serif text-balance">
+        <h1 className="mt-3 max-w-3xl text-5xl md:text-6xl font-serif text-balance">
           Run the numbers before you sign anything.
         </h1>
-        <p className="mt-4 max-w-xl text-muted-foreground">
+        <p className="mt-6 max-w-xl text-muted-foreground">
           Built on Canadian semi-annual compounding and current Ontario tax rules. Hover any tab for a quick description. Estimates only — your real approval may differ.
         </p>
       </section>
 
-      <section className="container-page pb-16">
-        {/* Tabs — reverted to original layout (no horizontal scroll), but larger and premium */}
-        <div className="flex flex-wrap gap-3 border-b border-border pb-3">
+      <section className="container-page pb-24">
+        {/* Reverted to original tab layout: wrap, no horizontal scroll, descriptions hidden (tooltip on hover) */}
+        <div className="flex flex-wrap gap-2 border-b border-border">
           {tabs.map((t) => {
             const Active = t.id === active;
             const Icon = t.icon;
@@ -43,21 +43,12 @@ export default function Calculators() {
                   onClick={() => setActive(t.id)}
                   role="tab"
                   aria-selected={Active}
-                  className={`inline-flex items-center gap-3 px-5 py-3 rounded-lg transition-shadow duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold
-                    ${Active ? "bg-gold/10 text-foreground shadow-sm ring-1 ring-gold/20" : "bg-transparent text-muted-foreground hover:bg-primary/5 hover:text-foreground"}
-                    `}
+                  className={`inline-flex items-center gap-2 px-5 py-3 text-sm md:text-base font-medium border-b-2 -mb-px transition ${Active ? "border-gold text-foreground bg-gold/5 rounded-t-md" : "border-transparent text-muted-foreground hover:text-foreground hover:bg-primary/5 rounded-t-md"} focus:outline-none focus-visible:ring-2 focus-visible:ring-gold`}
                 >
-                  <span className={`inline-flex items-center justify-center rounded-md ${Active ? "bg-gold/20 text-gold" : "bg-background/60 text-muted-foreground"} h-9 w-9`}>
-                    <Icon className="h-5 w-5" />
-                  </span>
-
-                  <div className="text-left">
-                    <div className="text-sm md:text-base font-semibold leading-tight">{t.label}</div>
-                    <div className="text-xs text-muted-foreground hidden md:block">{t.desc}</div>
-                  </div>
+                  <Icon className="h-4 w-4" /> {t.label}
                 </button>
 
-                {/* Tooltip (hover) */}
+                {/* Tooltip: only visible on hover/focus */}
                 <div
                   role="tooltip"
                   className="pointer-events-none absolute left-1/2 top-full z-30 mt-2 w-64 -translate-x-1/2 translate-y-1 rounded-lg bg-primary px-4 py-3 text-xs leading-relaxed text-primary-foreground opacity-0 shadow-[var(--shadow-elevated)] transition-all duration-200 group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:opacity-100"
@@ -131,7 +122,7 @@ function Stat({ label, value, big }: { label: string; value: string; big?: boole
   return (
     <div>
       <div className="text-xs uppercase tracking-wider text-primary-foreground/60">{label}</div>
-      <div className={`font-serif ${big ? "text-4xl md:text-5xl text-gold mt-2" : "text-2xl mt-1"}`}>{value}</div>
+      <div className={`font-serif ${big ? "text-5xl text-gold mt-2" : "text-2xl mt-1"}`}>{value}</div>
     </div>
   );
 }
