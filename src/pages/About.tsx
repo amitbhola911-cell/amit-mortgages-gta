@@ -38,7 +38,7 @@ export default function About() {
         canonical="/about"
       />
       <section className="container-page pt-20 pb-12">
-        <p className="text-xs uppercase tracking-widest text-gold font-medium">About</p>
+        <p className="text-xs uppercase tracking-widest text-foreground font-medium">About</p>
         <h1 className="mt-3 max-w-3xl text-5xl md:text-6xl font-serif text-balance">
           Mortgages should feel like advice — not a sales pitch.
         </h1>
