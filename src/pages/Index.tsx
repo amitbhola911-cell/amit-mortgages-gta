@@ -47,8 +47,9 @@ import xceedLogo from "@/assets/logos/xceed.svg";
 import xmcLogo from "@/assets/logos/xmc-mortgage-corporation.svg";
 import privateLendersLogo from "@/assets/logos/private-lenders.svg";
 
-/* scroll reveal hook */
+/* scroll reveal hook (used for counters) */
 import useReveal from "@/hooks/useReveal";
+import { useEffect, useRef, useState } from "react";
 
 const lenders: { name: string; logo: string }[] = [
   { name: "Alterna", logo: alternaLogo },
@@ -85,6 +86,41 @@ const lenders: { name: string; logo: string }[] = [
 ];
 
 export default function Index() {
+  /* counters reveal (single observer for the counters block) */
+  const { ref: countersRef, visible: countersVisible } = useReveal();
+
+  /* logo reveal: use refs array + observer to avoid calling hooks inside loops */
+  const logoRefs = useRef<Array<HTMLImageElement | null>>([]);
+  const [visibleLogos, setVisibleLogos] = useState<boolean[]>(
+    () => new Array(lenders.length).fill(false)
+  );
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const target = entry.target as HTMLImageElement;
+          const idx = logoRefs.current.findIndex((el) => el === target);
+          if (idx !== -1 && entry.isIntersecting) {
+            setVisibleLogos((prev) => {
+              if (prev[idx]) return prev;
+              const next = [...prev];
+              next[idx] = true;
+              return next;
+            });
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    logoRefs.current.forEach((el) => {
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <>
       <SEO
@@ -142,15 +178,19 @@ export default function Index() {
               </div>
             </div>
 
-            {/* Right: counters */}
-            <aside className="md:col-span-5 flex items-start md:justify-end">
+            {/* Right: counters (observe this block) */}
+            <aside ref={countersRef} className="md:col-span-5 flex items-start md:justify-end">
               <div className="w-full md:w-[320px]">
                 <div className="flex flex-col gap-6">
 
                   {/* Lender partners */}
                   <div className="p-3 md:p-4 text-left">
                     <div className="font-serif text-3xl md:text-4xl text-gold">
-                      <CountUp end={50} suffix="+" duration={1.2} />
+                      {countersVisible ? (
+                        <CountUp start={0} end={50} suffix="+" duration={2} />
+                      ) : (
+                        <span>0</span>
+                      )}
                     </div>
                     <div className="mt-1 text-xs uppercase tracking-wider text-primary-foreground/60">
                       Lender partners
@@ -160,7 +200,11 @@ export default function Index() {
                   {/* Funded for clients */}
                   <div className="p-3 md:p-4 text-left">
                     <div className="font-serif text-3xl md:text-4xl text-gold">
-                      <CountUp end={450} prefix="$" suffix="M+" duration={1.2} />
+                      {countersVisible ? (
+                        <CountUp start={0} end={450} prefix="$" suffix="M+" duration={2.2} />
+                      ) : (
+                        <span>$0</span>
+                      )}
                     </div>
                     <div className="mt-1 text-xs uppercase tracking-wider text-primary-foreground/60">
                       Funded for clients
@@ -170,7 +214,11 @@ export default function Index() {
                   {/* Avg. client rating */}
                   <div className="p-3 md:p-4 text-left">
                     <div className="font-serif text-3xl md:text-4xl text-gold">
-                      <CountUp end={4.9} decimals={1} suffix="★" duration={1.2} />
+                      {countersVisible ? (
+                        <CountUp start={0} end={4.9} decimals={1} suffix="★" duration={2} />
+                      ) : (
+                        <span>0.0★</span>
+                      )}
                     </div>
                     <div className="mt-1 text-xs uppercase tracking-wider text-primary-foreground/60">
                       Avg. client rating
@@ -205,7 +253,7 @@ export default function Index() {
         </div>
 
         <div className="mt-8 grid gap-6 md:grid-cols-3">
-          {[ 
+          {[
             {
               icon: Home,
               title: "First-time buyers",
@@ -270,17 +318,16 @@ export default function Index() {
 
           <div className="mt-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 place-items-center">
             {lenders.map((l, i) => {
-              const { ref, visible } = useReveal();
               return (
                 <img
                   key={l.name}
-                  ref={ref}
+                  ref={(el) => (logoRefs.current[i] = el)}
                   src={l.logo}
                   alt={l.name}
                   className={`h-14 md:h-18 w-auto object-contain ${
-                    visible ? "fade-up" : ""
+                    visibleLogos[i] ? "fade-up" : ""
                   }`}
-                  style={{ animationDelay: `${i * 80}ms` }}
+                  style={{ animationDelay: visibleLogos[i] ? `${i * 80}ms` : "0ms" }}
                 />
               );
             })}
