@@ -17,40 +17,70 @@ import SEO from "@/components/SEO";
 /* ------------------------------
    LENDER LOGOS (SVG PATHS)
 --------------------------------*/
-const lenders: { name: string; logo: string }[] = [
-  { name: "Alterna", logo: "/src/assets/logos/alterna.svg" },
-  { name: "B2B Bank", logo: "/src/assets/logos/b2b-bank.svg" },
-  { name: "BMO", logo: "/src/assets/logos/bmo.svg" },
-  { name: "CIBC", logo: "/src/assets/logos/cibc.svg" },
-  { name: "CMLS Financial", logo: "/src/assets/logos/cmls-financial.svg" },
-  { name: "Community Trust", logo: "/src/assets/logos/community-trust.svg" },
-  { name: "CWB Optimum", logo: "/src/assets/logos/cwb-optimum-mortgage.svg" },
-  { name: "DUCA", logo: "/src/assets/logos/duca.svg" },
-  { name: "Effort Trust", logo: "/src/assets/logos/effort-trust.svg" },
-  { name: "Equitable Bank", logo: "/src/assets/logos/equitable-bank.svg" },
-  { name: "First National", logo: "/src/assets/logos/first-national.svg" },
-  { name: "Haventree Bank", logo: "/src/assets/logos/haventree-bank.svg" },
-  { name: "Home Trust", logo: "/src/assets/logos/home-trust.svg" },
-  { name: "HomeEquity Bank", logo: "/src/assets/logos/homeequity-bank.svg" },
-  { name: "IC Savings", logo: "/src/assets/logos/ic-savings.svg" },
-  { name: "ICICI Bank", logo: "/src/assets/logos/icici-bank.svg" },
-  { name: "Lendwise", logo: "/src/assets/logos/lendwise.svg" },
-  { name: "Manulife Bank", logo: "/src/assets/logos/manulife-bank.svg" },
-  { name: "MCAP", logo: "/src/assets/logos/mcap.svg" },
-  { name: "Meridian", logo: "/src/assets/logos/meridian.svg" },
-  { name: "Merix", logo: "/src/assets/logos/merix.svg" },
-  { name: "New Haven Mortgage", logo: "/src/assets/logos/new-haven-mortgage.svg" },
-  { name: "RFA", logo: "/src/assets/logos/rfa.svg" },
-  { name: "RMG Mortgages", logo: "/src/assets/logos/rmg-mortgages.svg" },
-  { name: "Scotiabank", logo: "/src/assets/logos/scotiabank.svg" },
-  { name: "Street Capital", logo: "/src/assets/logos/street-capital-bank-of-canada.svg" },
-  { name: "TD", logo: "/src/assets/logos/td.svg" },
-  { name: "WealthONE", logo: "/src/assets/logos/wealthone-bank-of-canada.svg" },
-  { name: "Xceed", logo: "/src/assets/logos/xceed.svg" },
-  { name: "XMC", logo: "/src/assets/logos/xmc-mortgage-corporation.svg" },
+import alternaLogo from "@/assets/logos/alterna.svg";
+import b2bBankLogo from "@/assets/logos/b2b-bank.svg";
+import bmoLogo from "@/assets/logos/bmo.svg";
+import cibcLogo from "@/assets/logos/cibc.svg";
+import cmlsFinancialLogo from "@/assets/logos/cmls-financial.svg";
+import communityTrustLogo from "@/assets/logos/community-trust.svg";
+import cwbOptimumLogo from "@/assets/logos/cwb-optimum-mortgage.svg";
+import ducaLogo from "@/assets/logos/duca.svg";
+import effortTrustLogo from "@/assets/logos/effort-trust.svg";
+import equitableBankLogo from "@/assets/logos/equitable-bank.svg";
+import firstNationalLogo from "@/assets/logos/first-national.svg";
+import haventreeBankLogo from "@/assets/logos/haventree-bank.svg";
+import homeTrustLogo from "@/assets/logos/home-trust.svg";
+import homeEquityBankLogo from "@/assets/logos/homeequity-bank.svg";
+import icSavingsLogo from "@/assets/logos/ic-savings.svg";
+import iciciBankLogo from "@/assets/logos/icici-bank.svg";
+import lendwiseLogo from "@/assets/logos/lendwise.svg";
+import manulifeBankLogo from "@/assets/logos/manulife-bank.svg";
+import mcapLogo from "@/assets/logos/mcap.svg";
+import meridianLogo from "@/assets/logos/meridian.svg";
+import merixLogo from "@/assets/logos/merix.svg";
+import newHavenMortgageLogo from "@/assets/logos/new-haven-mortgage.svg";
+import rfaLogo from "@/assets/logos/rfa.svg";
+import rmgMortgagesLogo from "@/assets/logos/rmg-mortgages.svg";
+import scotiabankLogo from "@/assets/logos/scotiabank.svg";
+import streetCapitalLogo from "@/assets/logos/street-capital-bank-of-canada.svg";
+import tdLogo from "@/assets/logos/td.svg";
+import wealthOneLogo from "@/assets/logos/wealthone-bank-of-canada.svg";
+import xceedLogo from "@/assets/logos/xceed.svg";
+import xmcLogo from "@/assets/logos/xmc-mortgage-corporation.svg";
+import privateLendersLogo from "@/assets/logos/private-lenders.svg";
 
-  // ⭐ PRIVATE LENDERS LAST
-  { name: "Private Lenders", logo: "/src/assets/logos/private-lenders.svg" },
+const lenders: { name: string; logo: string }[] = [
+  { name: "Alterna", logo: alternaLogo },
+  { name: "B2B Bank", logo: b2bBankLogo },
+  { name: "BMO", logo: bmoLogo },
+  { name: "CIBC", logo: cibcLogo },
+  { name: "CMLS Financial", logo: cmlsFinancialLogo },
+  { name: "Community Trust", logo: communityTrustLogo },
+  { name: "CWB Optimum", logo: cwbOptimumLogo },
+  { name: "DUCA", logo: ducaLogo },
+  { name: "Effort Trust", logo: effortTrustLogo },
+  { name: "Equitable Bank", logo: equitableBankLogo },
+  { name: "First National", logo: firstNationalLogo },
+  { name: "Haventree Bank", logo: haventreeBankLogo },
+  { name: "Home Trust", logo: homeTrustLogo },
+  { name: "HomeEquity Bank", logo: homeEquityBankLogo },
+  { name: "IC Savings", logo: icSavingsLogo },
+  { name: "ICICI Bank", logo: iciciBankLogo },
+  { name: "Lendwise", logo: lendwiseLogo },
+  { name: "Manulife Bank", logo: manulifeBankLogo },
+  { name: "MCAP", logo: mcapLogo },
+  { name: "Meridian", logo: meridianLogo },
+  { name: "Merix", logo: merixLogo },
+  { name: "New Haven Mortgage", logo: newHavenMortgageLogo },
+  { name: "RFA", logo: rfaLogo },
+  { name: "RMG Mortgages", logo: rmgMortgagesLogo },
+  { name: "Scotiabank", logo: scotiabankLogo },
+  { name: "Street Capital", logo: streetCapitalLogo },
+  { name: "TD", logo: tdLogo },
+  { name: "WealthONE", logo: wealthOneLogo },
+  { name: "Xceed", logo: xceedLogo },
+  { name: "XMC", logo: xmcLogo },
+  { name: "Private Lenders", logo: privateLendersLogo },
 ];
 
 export default function Index() {
