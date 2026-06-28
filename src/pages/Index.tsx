@@ -91,87 +91,90 @@ export default function Index() {
       />
 
       {/* Hero */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0">
-          <img
-            src={heroImg}
-            alt="Toronto skyline at twilight"
-            className="h-full w-full object-cover"
-            width={1920}
-            height={1280}
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/80 to-primary/40" />
+<section className="relative overflow-hidden">
+  <div className="absolute inset-0">
+    <img
+      src={heroImg}
+      alt="Toronto skyline at twilight"
+      className="h-full w-full object-cover"
+      width={1920}
+      height={1280}
+    />
+    <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/80 to-primary/40" />
+  </div>
+
+  <div className="relative container-page page-content min-h-[50vh] md:min-h-[60vh] text-primary-foreground">
+    <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
+      {/* Left: headline, subtext, CTAs */}
+      <div className="md:col-span-7">
+        <span className="inline-flex items-center gap-2 rounded-full border border-primary-foreground/20 bg-primary-foreground/5 px-3 py-1 text-xs uppercase tracking-widest">
+          <Sparkles className="h-3 w-3 text-gold" /> FSRA Licensed · GTA, Ontario
+        </span>
+
+        <h1 className="mt-4 max-w-3xl text-balance text-3xl md:text-4xl lg:text-4xl leading-tight font-serif">
+          The mortgage you deserve,{" "}
+          <span className="italic text-gold">without the runaround.</span>
+        </h1>
+
+        <p className="mt-3 max-w-lg text-sm md:text-base text-primary-foreground/80">
+          We shop 50+ Canadian lenders on your behalf — banks, credit unions,
+          monolines, and private — so you get the right rate, terms, and a
+          clear path to closing.
+        </p>
+
+        <div className="mt-5 flex flex-wrap gap-3">
+          <Link
+            to="/contact"
+            className="inline-flex items-center gap-2 rounded-md bg-gold px-5 py-2.5 text-sm font-medium text-gold-foreground hover:opacity-95 transition"
+          >
+            Get a free rate quote <ArrowRight className="h-4 w-4" />
+          </Link>
+
+          <Link
+            to="/calculators"
+            className="inline-flex items-center gap-2 rounded-md border border-primary-foreground/30 px-5 py-2.5 text-sm font-medium text-primary-foreground hover:bg-primary-foreground/10 transition"
+          >
+            Use the calculators
+          </Link>
         </div>
+      </div>
 
-        {/* tightened: use page-content and smaller vertical padding; keep hero tall but not full-screen */}
-        <div className="relative container-page page-content min-h-[60vh] md:min-h-[68vh] text-primary-foreground">
-          <span className="inline-flex items-center gap-2 rounded-full border border-primary-foreground/20 bg-primary-foreground/5 px-3 py-1 text-xs uppercase tracking-widest">
-            <Sparkles className="h-3 w-3 text-gold" /> FSRA Licensed · GTA, Ontario
-          </span>
+      {/* Right: vertical counters on md+; stacks below CTAs on small screens */}
+      <aside className="md:col-span-5 flex items-start md:justify-end">
+        <div className="w-full md:w-[320px]">
+          <div className="flex flex-col gap-3">
+            <div className="p-3 md:p-4 text-left">
+              <div className="text-xs uppercase tracking-wider text-primary-foreground/60">
+                Lender partners
+              </div>
+              <div className="mt-1 font-serif text-2xl md:text-3xl text-gold">
+                <CountUp end={50} suffix="+" />
+              </div>
+            </div>
 
-          <h1 className="mt-6 max-w-3xl text-balance text-4xl md:text-6xl lg:text-7xl leading-[1.05] font-serif">
-            The mortgage you deserve,{" "}
-            <span className="italic text-gold">without the runaround.</span>
-          </h1>
+            <div className="p-3 md:p-4 text-left">
+              <div className="text-xs uppercase tracking-wider text-primary-foreground/60">
+                Funded for clients
+              </div>
+              <div className="mt-1 font-serif text-2xl md:text-3xl text-gold">
+                <CountUp end={450} prefix="$" suffix="M+" />
+              </div>
+            </div>
 
-          <p className="mt-6 max-w-xl text-lg text-primary-foreground/80">
-            We shop 50+ Canadian lenders on your behalf — banks, credit unions,
-            monolines, and private — so you get the right rate, terms, and a
-            clear path to closing.
-          </p>
-
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-2 rounded-md bg-gold px-6 py-3 text-sm font-medium text-gold-foreground hover:opacity-90 transition"
-            >
-              Get a free rate quote <ArrowRight className="h-4 w-4" />
-            </Link>
-
-            <Link
-              to="/calculators"
-              className="inline-flex items-center gap-2 rounded-md border border-primary-foreground/30 px-6 py-3 text-sm font-medium text-primary-foreground hover:bg-primary-foreground/10 transition"
-            >
-              Use the calculators
-            </Link>
+            <div className="p-3 md:p-4 text-left">
+              <div className="text-xs uppercase tracking-wider text-primary-foreground/60">
+                Avg. client rating
+              </div>
+              <div className="mt-1 font-serif text-2xl md:text-3xl text-gold">
+                <CountUp end={4.9} decimals={1} suffix="★" />
+              </div>
+            </div>
           </div>
-
-          <dl className="mt-12 grid max-w-2xl grid-cols-3 gap-8">
-            <Stat
-              value={
-                <CountUp
-                  end={50}
-                  suffix="+"
-                  className="font-serif text-3xl md:text-4xl text-gold"
-                />
-              }
-              label="Lender partners"
-            />
-            <Stat
-              value={
-                <CountUp
-                  end={450}
-                  prefix="$"
-                  suffix="M+"
-                  className="font-serif text-3xl md:text-4xl text-gold"
-                />
-              }
-              label="Funded for clients"
-            />
-            <Stat
-              value={
-                <CountUp
-                  end={4.9}
-                  decimals={1}
-                  suffix="★"
-                  className="font-serif text-3xl md:text-4xl text-gold"
-                />
-              }
-              label="Avg. client rating"
-            />
-          </dl>
         </div>
-      </section>
+      </aside>
+    </div>
+  </div>
+</section>
 
       {/* Services (tightened) */}
       <section className="container-page py-8">
