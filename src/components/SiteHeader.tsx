@@ -22,24 +22,24 @@ export function SiteHeader() {
       {/* Unified Header Row */}
       <div className="container-page flex items-center justify-between py-2">
 
-        {/* LEFT — Personal Logo + Phone */}
-        <div className="flex flex-col items-start shrink-0">
-          <Link to="/" className="flex items-center gap-2">
-            <img
-              src={personalLogo}
-              alt="Amit Mortgages"
-              className="h-[4.55rem] sm:h-[5.2rem] md:h-[6.5rem] w-auto"
-            />
-          </Link>
+      {/* LEFT — Personal Logo + Phone */}
+<div className="flex flex-col items-center shrink-0">
+  <Link to="/" className="flex items-center gap-2">
+    <img
+      src={personalLogo}
+      alt="Amit Mortgages"
+      className="h-[4.55rem] sm:h-[5.2rem] md:h-[6.5rem] w-auto"
+    />
+  </Link>
 
-          {/* Phone under logo */}
-          <a
-            href="tel:+16479921909"
-            className="mt-1 inline-flex items-center gap-2 text-sm font-semibold text-foreground"
-          >
-            <Phone className="h-4 w-4 text-gold" /> 647 992 1909
-          </a>
-        </div>
+  {/* Phone under logo */}
+  <a
+    href="tel:+16479921909"
+    className="mt-1 inline-flex items-center gap-2 text-sm font-semibold text-foreground"
+  >
+    <Phone className="h-4 w-4 text-gold" /> 647 992 1909
+  </a>
+</div>
 
         {/* CENTER — Navigation */}
         <nav className="hidden md:flex items-center gap-2">
@@ -50,7 +50,7 @@ export function SiteHeader() {
               end={n.end}
               className={({ isActive }) =>
                 `px-3 py-1.5 rounded-md text-base font-semibold transition-all duration-200
-                ${isActive ? "text-gold border-b-2 border-gold" : "text-foreground hover:text-gold hover:border-b-2 hover:border-gold"}`
+                ${isActive ? "text-gold border-b-2 border-gold" : "text-foreground hover:text-gold hover:border-b-2 hover:border-gold hover:shadow-[0_2px_8px_rgba(255,215,0,0.45)]"}`
               }
             >
               {n.label}
