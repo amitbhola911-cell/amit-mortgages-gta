@@ -42,7 +42,7 @@ export default function Apply() {
         canonical="/apply"
       />
       <section className="container-page pt-20 pb-10">
-        <p className="text-xs uppercase tracking-widest text-gold font-medium">Mortgage Application</p>
+        <p className="text-xs uppercase tracking-widest text-foreground font-medium">Mortgage Application</p>
         <h1 className="mt-3 max-w-3xl text-5xl md:text-6xl font-serif text-balance">
           Apply in minutes. Approved in <span className="italic text-royal">24 hours.</span>
         </h1>
