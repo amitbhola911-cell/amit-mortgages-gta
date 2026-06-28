@@ -21,7 +21,7 @@ export default function Calculators() {
         canonical="/calculators"
       />
       <section className="container-page pt-20 pb-10">
-        <p className="text-xs uppercase tracking-widest text-gold font-medium">Calculators</p>
+        <p className="text-xs uppercase tracking-widest text-foreground font-medium">Calculators</p>
         <h1 className="mt-3 max-w-3xl text-5xl md:text-6xl font-serif text-balance">
           Run the numbers before you sign anything.
         </h1>
