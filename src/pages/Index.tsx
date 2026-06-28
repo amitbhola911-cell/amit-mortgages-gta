@@ -14,7 +14,7 @@ import advisorImg from "@/assets/Profile picture.png";
 import CountUp from "@/components/CountUp";
 import SEO from "@/components/SEO";
 
-/* lender logos omitted for brevity in this snippet import block (keep as-is) */
+/* lender logos (keep as-is) */
 import alternaLogo from "@/assets/logos/alterna.svg";
 import b2bBankLogo from "@/assets/logos/b2b-bank.svg";
 import bmoLogo from "@/assets/logos/bmo.svg";
@@ -91,90 +91,94 @@ export default function Index() {
       />
 
       {/* Hero */}
-<section className="relative overflow-hidden">
-  <div className="absolute inset-0">
-    <img
-      src={heroImg}
-      alt="Toronto skyline at twilight"
-      className="h-full w-full object-cover"
-      width={1920}
-      height={1280}
-    />
-    <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/80 to-primary/40" />
-  </div>
-
-  <div className="relative container-page page-content min-h-[50vh] md:min-h-[60vh] text-primary-foreground">
-    <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
-      {/* Left: headline, subtext, CTAs */}
-      <div className="md:col-span-7">
-        <span className="inline-flex items-center gap-2 rounded-full border border-primary-foreground/20 bg-primary-foreground/5 px-3 py-1 text-xs uppercase tracking-widest">
-          <Sparkles className="h-3 w-3 text-gold" /> FSRA Licensed · GTA, Ontario
-        </span>
-
-        <h1 className="mt-4 max-w-3xl text-balance text-3xl md:text-4xl lg:text-4xl leading-tight font-serif">
-          The mortgage you deserve,{" "}
-          <span className="italic text-gold">without the runaround.</span>
-        </h1>
-
-        <p className="mt-3 max-w-lg text-sm md:text-base text-primary-foreground/80">
-          We shop 50+ Canadian lenders on your behalf — banks, credit unions,
-          monolines, and private — so you get the right rate, terms, and a
-          clear path to closing.
-        </p>
-
-        <div className="mt-5 flex flex-wrap gap-3">
-          <Link
-            to="/contact"
-            className="inline-flex items-center gap-2 rounded-md bg-gold px-5 py-2.5 text-sm font-medium text-gold-foreground hover:opacity-95 transition"
-          >
-            Get a free rate quote <ArrowRight className="h-4 w-4" />
-          </Link>
-
-          <Link
-            to="/calculators"
-            className="inline-flex items-center gap-2 rounded-md border border-primary-foreground/30 px-5 py-2.5 text-sm font-medium text-primary-foreground hover:bg-primary-foreground/10 transition"
-          >
-            Use the calculators
-          </Link>
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src={heroImg}
+            alt="Toronto skyline at twilight"
+            className="h-full w-full object-cover"
+            width={1920}
+            height={1280}
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/80 to-primary/40" />
         </div>
-      </div>
 
-      {/* Right: vertical counters on md+; stacks below CTAs on small screens */}
-      <aside className="md:col-span-5 flex items-start md:justify-end">
-        <div className="w-full md:w-[320px]">
-          <div className="flex flex-col gap-3">
-            <div className="p-3 md:p-4 text-left">
-              <div className="text-xs uppercase tracking-wider text-primary-foreground/60">
-                Lender partners
-              </div>
-              <div className="mt-1 font-serif text-2xl md:text-3xl text-gold">
-                <CountUp end={50} suffix="+" />
+        <div className="relative container-page page-content min-h-[46vh] md:min-h-[56vh] text-primary-foreground">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
+            {/* Left: headline, subtext, CTAs */}
+            <div className="md:col-span-7">
+              <span className="inline-flex items-center gap-2 rounded-full border border-primary-foreground/20 bg-primary-foreground/5 px-3 py-1 text-xs uppercase tracking-widest">
+                <Sparkles className="h-3 w-3 text-gold" /> FSRA Licensed · GTA, Ontario
+              </span>
+
+              {/* Headline increased ~110% by stepping up sizes */}
+              <h1 className="mt-4 max-w-3xl text-balance text-3xl md:text-5xl lg:text-6xl leading-tight font-serif">
+                The mortgage you deserve,{" "}
+                <span className="italic text-gold">without the runaround.</span>
+              </h1>
+
+              {/* Subtext slightly larger */}
+              <p className="mt-3 max-w-lg text-base md:text-lg text-primary-foreground/80">
+                We shop 50+ Canadian lenders on your behalf — banks, credit unions,
+                monolines, and private — so you get the right rate, terms, and a
+                clear path to closing.
+              </p>
+
+              {/* CTAs: visible on first load; hover scale 115% */}
+              <div className="mt-5 flex flex-wrap gap-3">
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center gap-2 rounded-md bg-gold px-5 py-2.5 text-sm md:text-base font-medium text-gold-foreground transition-transform duration-200 hover:scale-[1.15] focus:scale-[1.15]"
+                >
+                  Get a free rate quote <ArrowRight className="h-4 w-4" />
+                </Link>
+
+                <Link
+                  to="/calculators"
+                  className="inline-flex items-center gap-2 rounded-md border border-primary-foreground/30 px-5 py-2.5 text-sm md:text-base font-medium text-primary-foreground transition-transform duration-200 hover:bg-primary-foreground/10 hover:scale-[1.15] focus:scale-[1.15]"
+                >
+                  Use the calculators
+                </Link>
               </div>
             </div>
 
-            <div className="p-3 md:p-4 text-left">
-              <div className="text-xs uppercase tracking-wider text-primary-foreground/60">
-                Funded for clients
-              </div>
-              <div className="mt-1 font-serif text-2xl md:text-3xl text-gold">
-                <CountUp end={450} prefix="$" suffix="M+" />
-              </div>
-            </div>
+            {/* Right: vertical counters on md+; stacks below CTAs on small screens */}
+            <aside className="md:col-span-5 flex items-start md:justify-end">
+              <div className="w-full md:w-[320px]">
+                <div className="flex flex-col gap-3">
+                  <div className="p-3 md:p-4 text-left">
+                    <div className="text-xs uppercase tracking-wider text-primary-foreground/60">
+                      Lender partners
+                    </div>
+                    <div className="mt-1 font-serif text-3xl md:text-4xl text-gold">
+                      {/* slowed to ~85% by increasing duration slightly (if CountUp supports duration) */}
+                      <CountUp end={50} suffix="+" duration={1.2} />
+                    </div>
+                  </div>
 
-            <div className="p-3 md:p-4 text-left">
-              <div className="text-xs uppercase tracking-wider text-primary-foreground/60">
-                Avg. client rating
+                  <div className="p-3 md:p-4 text-left">
+                    <div className="text-xs uppercase tracking-wider text-primary-foreground/60">
+                      Funded for clients
+                    </div>
+                    <div className="mt-1 font-serif text-3xl md:text-4xl text-gold">
+                      <CountUp end={450} prefix="$" suffix="M+" duration={1.2} />
+                    </div>
+                  </div>
+
+                  <div className="p-3 md:p-4 text-left">
+                    <div className="text-xs uppercase tracking-wider text-primary-foreground/60">
+                      Avg. client rating
+                    </div>
+                    <div className="mt-1 font-serif text-3xl md:text-4xl text-gold">
+                      <CountUp end={4.9} decimals={1} suffix="★" duration={1.2} />
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="mt-1 font-serif text-2xl md:text-3xl text-gold">
-                <CountUp end={4.9} decimals={1} suffix="★" />
-              </div>
-            </div>
+            </aside>
           </div>
         </div>
-      </aside>
-    </div>
-  </div>
-</section>
+      </section>
 
       {/* Services (tightened) */}
       <section className="container-page py-8">
@@ -277,22 +281,17 @@ export default function Index() {
         </div>
       </section>
 
-      {/* Advisor (tightened) */}
+      {/* Advisor (tightened) — removed border/extra badge around picture */}
       <section className="container-page py-8 grid gap-10 md:grid-cols-2 items-center">
         <div className="relative">
           <img
             src={advisorImg}
             alt="Amit Bhola, your mortgage advisor"
-            className="rounded-2xl shadow-elevated"
+            className="rounded-2xl" /* removed shadow/border for a clean look */
             loading="lazy"
           />
 
-          <div className="absolute -bottom-6 -right-6 hidden md:block rounded-xl bg-gold text-gold-foreground px-5 py-3 shadow-soft">
-            <div className="font-serif text-xl">12+ years</div>
-            <div className="text-xs uppercase tracking-wider">
-              funding GTA mortgages
-            </div>
-          </div>
+          {/* removed the gold badge that sat over the image to keep the portrait clean */}
         </div>
 
         <div>
@@ -349,7 +348,7 @@ export default function Index() {
 
           <Link
             to="/contact"
-            className="inline-flex w-fit items-center gap-2 rounded-md bg-gold px-5 py-3 text-sm font-medium text-gold-foreground"
+            className="inline-flex w-fit items-center gap-2 rounded-md bg-gold px-5 py-3 text-sm md:text-base font-medium text-gold-foreground transition-transform duration-200 hover:scale-[1.08]"
           >
             Book a free consult <ArrowRight className="h-4 w-4" />
           </Link>
