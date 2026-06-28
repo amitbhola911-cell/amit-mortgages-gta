@@ -219,4 +219,161 @@ export default function Index() {
             {
               icon: TrendingUp,
               title: "Refinance & equity",
-              body: "Consolidate debt, fund a renovation, or unlock equity for the next
+              body: "Consolidate debt, fund a renovation, or unlock equity for the next investment property.",
+            },
+            {
+              icon: Building2,
+              title: "Investment properties",
+              body: "Rental, multi-unit, and BRRRR financing with lenders who actually understand the strategy.",
+            },
+            {
+              icon: ShieldCheck,
+              title: "Self-employed & new to Canada",
+              body: "Alternative documentation, stated income, and newcomer programs that work for your reality.",
+            },
+            {
+              icon: Sparkles,
+              title: "Private & bridge",
+              body: "Short-term solutions when the banks say no — for closings that can't wait.",
+            },
+          ].map((s) => (
+            <div
+              key={s.title}
+              className="group rounded-xl border border-border bg-card p-6 transition hover:shadow-elevated hover:-translate-y-0.5"
+            >
+              <s.icon className="h-6 w-6 text-gold" />
+              <h3 className="mt-4 text-lg font-serif">{s.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                {s.body}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Lender Grid */}
+      <section className="bg-secondary/60 py-8">
+        <div className="container-page text-center">
+          <p className="text-xs uppercase tracking-widest text-foreground font-medium">
+            Lender network
+          </p>
+
+          <h2 className="mt-3 text-3xl md:text-4xl font-serif">
+            One conversation. The entire market.
+          </h2>
+
+          <p className="mt-4 max-w-2xl mx-auto text-muted-foreground">
+            We're brokerage-independent and work with every major category of
+            Canadian lender — so the recommendation is always about fit, not
+            loyalty.
+          </p>
+
+          <div className="mt-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 place-items-center">
+            {lenders.map((l, i) => {
+              const { ref, visible } = useReveal();
+              return (
+                <img
+                  key={l.name}
+                  ref={ref}
+                  src={l.logo}
+                  alt={l.name}
+                  className={`h-14 md:h-18 w-auto object-contain ${
+                    visible ? "fade-up" : ""
+                  }`}
+                  style={{ animationDelay: `${i * 80}ms` }}
+                />
+              );
+            })}
+          </div>
+
+          <p className="mt-4 text-center italic text-muted-foreground">
+            &amp; many more
+          </p>
+        </div>
+      </section>
+
+      {/* Advisor */}
+      <section className="container-page py-8 grid gap-10 md:grid-cols-2 items-center">
+        <div className="relative">
+          <img
+            src={advisorImg}
+            alt="Amit Bhola, your mortgage advisor"
+            className="rounded-2xl"
+            loading="lazy"
+          />
+        </div>
+
+        <div>
+          <p className="text-xs uppercase tracking-widest text-foreground font-medium">
+            Meet your advisor
+          </p>
+
+          <h2 className="mt-3 text-3xl md:text-4xl font-serif">
+            Direct access, honest answers.
+          </h2>
+
+          <p className="mt-4 text-muted-foreground leading-relaxed">
+            I started Amit Mortgages because too many buyers in the GTA were
+            getting fast-tracked into the wrong product. You'll work with me
+            directly — from the first call, through underwriting, and well past
+            your closing day.
+          </p>
+
+          <ul className="mt-5 space-y-3 text-sm">
+            {[
+              "FSRA-licensed mortgage agent, Ontario",
+              "Brokerage-independent — no lender quotas",
+              "Same-day pre-approvals, evenings & weekends",
+              "Fluent in English, Hindi, Punjabi & Urdu",
+            ].map((b) => (
+              <li key={b} className="flex items-start gap-3">
+                <Check className="h-5 w-5 text-gold mt-0.5" /> {b}
+              </li>
+            ))}
+          </ul>
+
+          <Link
+            to="/about"
+            className="mt-6 inline-flex items-center gap-2 text-sm font-medium hover:text-gold"
+          >
+            More about Amit <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="container-page pb-12">
+        <div className="rounded-3xl bg-primary text-primary-foreground p-10 md:p-14 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+          <div>
+            <h2 className="text-2xl md:text-3xl font-serif max-w-md">
+              Ready to see what you actually qualify for?
+            </h2>
+
+            <p className="mt-3 text-primary-foreground/70 max-w-md">
+              No credit check, no commitment. A 15-minute call usually answers
+              everything.
+            </p>
+          </div>
+
+          <Link
+            to="/contact"
+            className="inline-flex w-fit items-center gap-2 rounded-md bg-gold px-5 py-3 text-sm md:text-base font-medium text-gold-foreground transition-transform duration-200 hover:scale-[1.08]"
+          >
+            Book a free consult <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
+      </section>
+    </>
+  );
+}
+
+function Stat({ value, label }: { value: React.ReactNode; label: string }) {
+  return (
+    <div>
+      <dt>{value}</dt>
+      <dd className="mt-1 text-xs uppercase tracking-wider text-primary-foreground/60">
+        {label}
+      </dd>
+    </div>
+  );
+}
