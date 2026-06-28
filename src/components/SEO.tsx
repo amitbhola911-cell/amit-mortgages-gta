@@ -50,18 +50,6 @@ function ensureLinkRel(rel: string, href: string) {
   el.setAttribute("href", href);
 }
 
-function injectScriptOnce(id: string, src?: string, inline?: string, async = true) {
-  if (document.getElementById(id)) return;
-  const s = document.createElement("script");
-  s.id = id;
-  if (src) {
-    s.src = src;
-    s.async = async;
-  }
-  if (inline) s.text = inline;
-  document.head.appendChild(s);
-}
-
 export default function SEO({
   title,
   description,
@@ -83,12 +71,15 @@ export default function SEO({
     : absoluteUrl(meta.image || DEFAULT_OG);
 
   useEffect(() => {
-    document.title = meta.title;
+    // Document title
+    if (meta.title) document.title = meta.title;
 
+    // Basic meta tags
     ensureMetaTag("description", meta.description);
     ensureMetaTag("robots", noIndex ? "noindex, nofollow" : "index, follow");
     ensureLinkRel("canonical", absoluteCanonical);
 
+    // Open Graph
     ensureMetaTag("og:title", meta.title, true);
     ensureMetaTag("og:description", meta.description, true);
     ensureMetaTag("og:type", "website", true);
@@ -96,36 +87,107 @@ export default function SEO({
     ensureMetaTag("og:image", absoluteImage, true);
     ensureMetaTag("og:locale", SITE_LOCALE ?? "en-CA", true);
 
+    // Twitter
     ensureMetaTag("twitter:card", "summary_large_image");
     ensureMetaTag("twitter:title", meta.title);
     ensureMetaTag("twitter:description", meta.description);
     ensureMetaTag("twitter:image", absoluteImage);
 
+    /* ---------------- JSON-LD: Organization / LocalBusiness (FinancialService) ---------------- */
     const ldId = "ld-json-localbusiness";
     const existingLd = document.getElementById(ldId) as HTMLScriptElement | null;
-    const localBusiness = {
+
+    // Build contactPoint if phone/email exist
+    const contactPoints: any[] = [];
+    if (PHONE) {
+      contactPoints.push({
+        "@type": "ContactPoint",
+        telephone: PHONE,
+        contactType: "customer service",
+        areaServed: SERVICE_AREAS || undefined,
+        availableLanguage: LANGUAGES || ["English"],
+      });
+    }
+    if (EMAIL) {
+      contactPoints.push({
+        "@type": "ContactPoint",
+        email: EMAIL,
+        contactType: "customer service",
+        areaServed: SERVICE_AREAS || undefined,
+        availableLanguage: LANGUAGES || ["English"],
+      });
+    }
+
+    // Identifier for license (PropertyValue) if FSRA_LICENSE exists
+    const identifier = FSRA_LICENSE
+      ? {
+          "@type": "PropertyValue",
+          propertyID: "BusinessLicense",
+          value: FSRA_LICENSE,
+          description: LICENSE_DISPLAY || "Regulatory license",
+        }
+      : undefined;
+
+    // Address block (only include when ADDRESS is present)
+    const addressBlock = ADDRESS
+      ? {
+          "@type": "PostalAddress",
+          streetAddress: ADDRESS?.streetAddress || undefined,
+          addressLocality: ADDRESS?.addressLocality || undefined,
+          addressRegion: ADDRESS?.addressRegion || undefined,
+          postalCode: ADDRESS?.postalCode || undefined,
+          addressCountry: ADDRESS?.addressCountry || undefined,
+        }
+      : undefined;
+
+    // sameAs: prefer SiteConfig.SOCIALS or empty
+    const sameAs = (SiteConfig && (SiteConfig as any).SOCIALS) || undefined;
+
+    // openingHours: if provided in SiteConfig (optional)
+    const openingHours = (SiteConfig && (SiteConfig as any).OPENING_HOURS) || undefined;
+
+    const localBusiness: Record<string, any> = {
       "@context": "https://schema.org",
       "@type": "FinancialService",
-      "name": meta.title,
-      "url": SITE,
-      "logo": DEFAULT_LOGO,
-      "image": absoluteImage,
-      "telephone": PHONE || undefined,
-      "email": EMAIL || undefined,
-      "address": {
-        "@type": "PostalAddress",
-        streetAddress: ADDRESS?.streetAddress || undefined,
-        addressLocality: ADDRESS?.addressLocality || undefined,
-        addressRegion: ADDRESS?.addressRegion || undefined,
-        postalCode: ADDRESS?.postalCode || undefined,
-        addressCountry: ADDRESS?.addressCountry || undefined,
-      },
-      "areaServed": SERVICE_AREAS || undefined,
-      "knowsLanguage": LANGUAGES || undefined,
-      "sameAs": [],
-      "hasCredential": FSRA_LICENSE ? [{ "@type": "EducationalOccupationalCredential", "credentialCategory": "License", "name": `FSRA License ${FSRA_LICENSE}` }] : undefined,
-      "memberOf": LICENSE_DISPLAY ? [{ "@type": "Organization", "name": LICENSE_DISPLAY }] : undefined,
+      name: SiteConfig?.SITE_NAME ?? meta.title ?? "Amit Mortgages",
+      legalName: SiteConfig?.LEGAL_NAME || undefined,
+      url: SITE || (typeof window !== "undefined" ? window.location.origin : undefined),
+      logo: DEFAULT_LOGO || undefined,
+      image: absoluteImage || undefined,
+      description: meta.description || undefined,
+      telephone: PHONE || undefined,
+      email: EMAIL || undefined,
+      address: addressBlock,
+      contactPoint: contactPoints.length ? contactPoints : undefined,
+      areaServed: SERVICE_AREAS || undefined,
+      knowsLanguage: LANGUAGES || undefined,
+      sameAs: sameAs || undefined,
+      openingHours: openingHours || undefined,
+      hasCredential: FSRA_LICENSE
+        ? [
+            {
+              "@type": "EducationalOccupationalCredential",
+              credentialCategory: "License",
+              name: `FSRA License ${FSRA_LICENSE}`,
+            },
+          ]
+        : undefined,
+      memberOf: LICENSE_DISPLAY
+        ? [
+            {
+              "@type": "Organization",
+              name: LICENSE_DISPLAY,
+            },
+          ]
+        : undefined,
+      identifier: identifier || undefined,
+      // Optional: serviceType or priceRange can be added in SiteConfig and included here
+      serviceType: (SiteConfig && (SiteConfig as any).SERVICE_TYPE) || undefined,
+      priceRange: (SiteConfig && (SiteConfig as any).PRICE_RANGE) || undefined,
     };
+
+    // Remove undefined keys for a cleaner JSON-LD
+    Object.keys(localBusiness).forEach((k) => localBusiness[k] === undefined && delete localBusiness[k]);
 
     const ldJson = JSON.stringify(localBusiness, null, 2);
 
@@ -139,26 +201,7 @@ export default function SEO({
       document.head.appendChild(s);
     }
 
-    // Inject Google tag (gtag.js) only when ANALYTICS_ID is set and not already present
-    const gaId = ANALYTICS_ID ?? null;
-    if (gaId) {
-      const gaScriptId = "ga-gtag-js";
-      if (!document.getElementById(gaScriptId)) {
-        injectScriptOnce(gaScriptId, `https://www.googletagmanager.com/gtag/js?id=${gaId}`, undefined, true);
-      }
-
-      const gaInlineId = "ga-gtag-init";
-      if (!document.getElementById(gaInlineId)) {
-        const inline = `
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', '${gaId}', { page_path: window.location.pathname });
-        `.trim();
-        injectScriptOnce(gaInlineId, undefined, inline, false);
-      }
-    }
-
+    // NOTE: Intentionally do NOT inject analytics here. Use a consent-gated injector (CookieConsent).
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [meta.title, meta.description, meta.canonical, meta.image, noIndex]);
 
