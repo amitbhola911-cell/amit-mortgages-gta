@@ -68,9 +68,12 @@
   --accent: oklch(0.93 0.05 250);
   --accent-foreground: oklch(0.24 0.1 265);
 
-  /* Royal gold */
+  /* Royal gold (original) */
   --gold: oklch(0.78 0.14 82);
   --gold-foreground: oklch(0.22 0.07 260);
+
+  /* Darker gold for hover/active contrast (new) */
+  --gold-dark: oklch(0.62 0.14 82);
 
   /* Royal purple accent */
   --royal: oklch(0.32 0.16 290);
@@ -131,6 +134,13 @@
     font-weight: 500;
     letter-spacing: -0.02em;
   }
+
+  /* Small, consistent focus ring for accessibility */
+  :focus {
+    outline: none;
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--gold) 18%, transparent);
+    border-radius: 6px;
+  }
 }
 
 @layer utilities {
@@ -153,6 +163,39 @@
     background-clip: text;
     color: transparent;
   }
+
+  /* NEW: subtle gold glow utility */
+  .glow-gold {
+    box-shadow: 0 6px 18px rgba(180,140,20,0.12);
+  }
+
+  /* NEW: nav hover / active helpers (use in NavLink className or apply via utility) */
+  .nav-hover {
+    background: color-mix(in oklab, var(--gold) 6%, transparent);
+    border-bottom: 2px solid var(--gold);
+    color: var(--gold);
+    transition: all 180ms ease;
+  }
+  .nav-active {
+    background: color-mix(in oklab, var(--gold) 8%, transparent);
+    border-bottom: 2px solid var(--gold);
+    color: var(--gold);
+    box-shadow: 0 6px 18px rgba(180,140,20,0.18);
+  }
+
+  /* NEW: compact header helper (optional) */
+  .header-compact { padding-top: 0.25rem; padding-bottom: 0.25rem; }
+
+  /* NEW: page content helper to replace large py-20 spacing */
+  /* Use <div className="page-content"> or replace page containers with this class */
+  .page-content {
+    padding-top: 2rem;   /* ~pt-8 */
+    padding-bottom: 2rem;
+  }
+
+  /* NEW: utility for slightly larger hover scale used for CTA and phone */
+  .hover-scale-105 { transition: transform 180ms ease; }
+  .hover-scale-105:hover { transform: scale(1.05); }
 }
 
 /* News ticker marquee */
