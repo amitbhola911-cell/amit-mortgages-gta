@@ -39,7 +39,10 @@ export const LICENSE_DISPLAY = process.env.NEXT_PUBLIC_LICENSE_DISPLAY ?? "FSRA 
  */
 export const SERVICE_AREAS = ["Greater Toronto Area", "Mississauga", "Toronto", "Brampton"];
 export const LANGUAGES = ["English", "Hindi", "Punjabi", "Urdu"];
-export const SOCIALS: string[] = [];
+export const SOCIALS = [
+  "https://www.instagram.com/AmitMortgages",
+  "https://wa.me/16479921909"
+];
 export const OPENING_HOURS = ["Mo-Fr 09:00-18:00", "Sa 10:00-16:00"];
 
 /**
