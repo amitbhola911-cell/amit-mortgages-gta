@@ -18,57 +18,108 @@ export default function Calculators() {
     <>
       <SEO
         title="Mortgage Calculators — Payment, Affordability, Land Transfer | Amit Mortgages"
-        description="Free Canadian mortgage calculators: payment, affordability, Ontario & Toronto land transfer tax, CMHC insurance, and mortgage prepayment savings."
+        description="Free Canadian mortgage calculators: payment, affordability, Ontario & Toronto land transfer tax, CMHC insurance, and mortgage prepayment savings. Calculate your mortgage with Canadian semi-annual compounding."
         canonical="/calculators"
-      />
-      <section className="container-page pt-20 pb-10">
-        <p className="text-xs uppercase tracking-widest text-foreground font-medium">Calculators</p>
-        <h1 className="mt-3 max-w-3xl text-5xl md:text-6xl font-serif text-balance">
-          Run the numbers before you sign anything.
-        </h1>
-        <p className="mt-6 max-w-xl text-muted-foreground">
-          Built on Canadian semi-annual compounding and current Ontario tax rules. Hover any tab for a quick description. Estimates only — your real approval may differ.
-        </p>
+        keywords="mortgage calculator, payment calculator, affordability calculator, land transfer tax calculator, CMHC calculator, GTA mortgage calculators, Ontario mortgage tools"
+      >
+        {/* Page-level JSON-LD describing the calculators (helps search engines understand the toolset) */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(
+              {
+                "@context": "https://schema.org",
+                "@type": "WebApplication",
+                name: "Amit Mortgages Calculators",
+                url: "https://amitmortgages.ca/calculators",
+                description:
+                  "Free Canadian mortgage calculators: payment, affordability, land transfer tax, CMHC insurance, and prepayment savings.",
+                applicationCategory: "FinanceApplication",
+                featureList: [
+                  "Mortgage Payment Calculator",
+                  "Affordability Calculator",
+                  "Ontario Land Transfer Tax Calculator",
+                  "CMHC Insurance Calculator",
+                  "Mortgage Prepayment Savings Calculator",
+                ],
+              },
+              null,
+              2
+            ),
+          }}
+        />
+      </SEO>
+
+      {/* Compact header section */}
+      <section className="bg-gradient-to-br from-blue-600 to-blue-800 text-white py-6">
+        <div className="container-page">
+          <p className="text-xs uppercase tracking-widest font-medium text-blue-100">Mortgage Tools</p>
+          <h1 className="text-3xl md:text-4xl font-serif mt-1">Run the numbers.</h1>
+        </div>
       </section>
 
-      <section className="container-page pb-24">
-        {/* Reverted to original tab layout: wrap, no horizontal scroll, descriptions hidden (tooltip on hover) */}
-        <div className="flex flex-wrap gap-2 border-b border-border">
-          {tabs.map((t) => {
-            const Active = t.id === active;
-            const Icon = t.icon;
-            return (
-              <div key={t.id} className="relative group">
+      {/* Main layout: left sidebar + right content */}
+      <section className="container-page py-8 flex gap-8 min-h-[calc(100vh-300px)]">
+        {/* Mobile: compact horizontal tabs */}
+        <div className="md:hidden w-full mb-4">
+          <div className="flex gap-2 overflow-x-auto pb-2">
+            {tabs.map((t) => {
+              const isActive = t.id === active;
+              const Icon = t.icon;
+              return (
                 <button
+                  key={t.id}
                   onClick={() => setActive(t.id)}
-                  role="tab"
-                  aria-selected={Active}
-                  className={`inline-flex items-center gap-2 px-5 py-3 text-sm md:text-base font-medium border-b-2 -mb-px transition ${Active ? "border-gold text-foreground bg-gold/5 rounded-t-md" : "border-transparent text-muted-foreground hover:text-foreground hover:bg-primary/5 rounded-t-md"} focus:outline-none focus-visible:ring-2 focus-visible:ring-gold`}
+                  aria-pressed={isActive}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-md whitespace-nowrap transition ${
+                    isActive ? "bg-gold/10 text-foreground" : "bg-transparent text-muted-foreground hover:bg-primary/5"
+                  }`}
                 >
-                  <Icon className="h-4 w-4" /> {t.label}
+                  <Icon className="h-4 w-4" />
+                  <span className="text-sm">{t.label}</span>
                 </button>
-
-                {/* Tooltip: only visible on hover/focus */}
-                <div
-                  role="tooltip"
-                  className="pointer-events-none absolute left-1/2 top-full z-30 mt-2 w-64 -translate-x-1/2 translate-y-1 rounded-lg bg-primary px-4 py-3 text-xs leading-relaxed text-primary-foreground opacity-0 shadow-[var(--shadow-elevated)] transition-all duration-200 group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:opacity-100"
-                >
-                  <span className="absolute -top-1.5 left-1/2 h-3 w-3 -translate-x-1/2 rotate-45 bg-primary" />
-                  <span className="block font-serif text-sm text-gold mb-1">{t.label}</span>
-                  {t.desc}
-                </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
 
-        <div className="mt-10">
-          {active === "payment" && <PaymentCalc />}
-          {active === "afford" && <AffordabilityCalc />}
-          {active === "ltt" && <LandTransferCalc />}
-          {active === "cmhc" && <CmhcCalc />}
-          {active === "prepay" && <PrepaymentCalc />}
-        </div>
+        {/* Desktop: semantic sidebar (hidden on mobile) */}
+        <nav aria-label="Calculator tools" className="hidden md:block w-80 flex-shrink-0">
+          <ul className="space-y-2">
+            {tabs.map((t) => {
+              const isActive = t.id === active;
+              const Icon = t.icon;
+              return (
+                <li key={t.id}>
+                  <button
+                    onClick={() => setActive(t.id)}
+                    aria-current={isActive ? "true" : undefined}
+                    className={`w-full text-left rounded-lg border-2 p-4 transition ${
+                      isActive ? "border-gold bg-gold/5 text-foreground" : "border-border text-foreground hover:bg-primary/5"
+                    } focus:outline-none focus-visible:ring-2 focus-visible:ring-gold`}
+                  >
+                    <div className="flex items-center gap-3 mb-2">
+                      <Icon className="h-5 w-5" aria-hidden />
+                      <span className="font-medium text-sm">{t.label}</span>
+                    </div>
+                    <p className={`text-xs leading-relaxed ${isActive ? "text-foreground/80" : "text-muted-foreground"}`}>{t.desc}</p>
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+
+        {/* RIGHT: Calculator content */}
+        <main className="flex-1 min-w-0">
+          <div className="sticky top-20 md:top-32">
+            {active === "payment" && <PaymentCalc />}
+            {active === "afford" && <AffordabilityCalc />}
+            {active === "ltt" && <LandTransferCalc />}
+            {active === "cmhc" && <CmhcCalc />}
+            {active === "prepay" && <PrepaymentCalc />}
+          </div>
+        </main>
       </section>
     </>
   );
@@ -78,9 +129,14 @@ export default function Calculators() {
 
 function Shell({ inputs, results }: { inputs: React.ReactNode; results: React.ReactNode }) {
   return (
-    <div className="grid gap-8 md:grid-cols-5">
-      <div className="md:col-span-3 rounded-2xl border border-border bg-card p-8 space-y-5">{inputs}</div>
-      <div className="md:col-span-2 rounded-2xl bg-primary text-primary-foreground p-8 space-y-5">{results}</div>
+    <div className="grid gap-6 md:grid-cols-3 lg:grid-cols-5">
+      <div className="md:col-span-3 lg:col-span-3 rounded-2xl border border-border bg-card p-8 space-y-6">{inputs}</div>
+      <div
+        className="md:col-span-3 lg:col-span-2 rounded-2xl bg-primary text-primary-foreground p-8 space-y-6"
+        aria-live="polite"
+      >
+        {results}
+      </div>
     </div>
   );
 }
@@ -107,9 +163,13 @@ function NumberInput({
         {prefix && <span className="px-3 text-muted-foreground text-sm">{prefix}</span>}
         <input
           type="number"
+          inputMode="numeric"
+          pattern="[0-9]*"
+          min="0"
           step={step}
           value={Number.isFinite(value) ? value : 0}
           onChange={(e) => onChange(parseFloat(e.target.value) || 0)}
+          aria-label={label}
           className="flex-1 bg-transparent px-3 py-3 text-sm focus:outline-none"
         />
         {suffix && <span className="px-3 text-muted-foreground text-sm">{suffix}</span>}
@@ -122,7 +182,7 @@ function Stat({ label, value, big }: { label: string; value: string; big?: boole
   return (
     <div>
       <div className="text-xs uppercase tracking-wider text-primary-foreground/60">{label}</div>
-      <div className={`font-serif ${big ? "text-5xl text-gold mt-2" : "text-2xl mt-1"}`}>{value}</div>
+      <div className={`font-serif ${big ? "text-4xl md:text-5xl text-gold mt-2" : "text-lg mt-1"}`}>{value}</div>
     </div>
   );
 }
@@ -161,8 +221,8 @@ function PaymentCalc() {
     rate === 0
       ? principal / equivalentMonthlyPmt
       : equivalentMonthlyPmt <= principal * effMonthlyRate
-        ? amort * 12
-        : Math.log(equivalentMonthlyPmt / (equivalentMonthlyPmt - principal * effMonthlyRate)) / Math.log(1 + effMonthlyRate);
+      ? amort * 12
+      : Math.log(equivalentMonthlyPmt / (equivalentMonthlyPmt - principal * effMonthlyRate)) / Math.log(1 + effMonthlyRate);
   const totalPaidAmount = equivalentMonthlyPmt * payoffMonths;
   const totalInterest = totalPaidAmount - principal;
 
@@ -172,7 +232,7 @@ function PaymentCalc() {
         <>
           <NumberInput label="Home price" value={price} onChange={setPrice} prefix="$" />
           <NumberInput label="Down payment" value={down} onChange={setDown} prefix="$" />
-          <div className="grid grid-cols-2 gap-5">
+          <div className="grid grid-cols-2 gap-4">
             <NumberInput label="Interest rate" value={rate} onChange={setRate} suffix="%" step={0.01} />
             <NumberInput label="Amortization" value={amort} onChange={setAmort} suffix="yrs" />
           </div>
@@ -181,7 +241,14 @@ function PaymentCalc() {
             <label className="block text-xs font-medium uppercase tracking-wider text-muted-foreground mb-2">Payment frequency</label>
             <div className="grid grid-cols-3 gap-2">
               {(["monthly", "biweekly", "accelerated"] as const).map((f) => (
-                <button key={f} onClick={() => setFreq(f)} className={`rounded-md border px-3 py-2 text-sm capitalize ${freq === f ? "border-gold bg-gold/10 text-foreground" : "border-border text-muted-foreground hover:bg-primary/5 hover:text-foreground"}`}>{f === "accelerated" ? "Accel. Bi-weekly" : f}</button>
+                <button
+                  key={f}
+                  onClick={() => setFreq(f)}
+                  aria-pressed={freq === f}
+                  className={`rounded-md border px-3 py-2 text-xs md:text-sm capitalize ${freq === f ? "border-gold bg-gold/10 text-foreground" : "border-border text-muted-foreground hover:bg-primary/5 hover:text-foreground"}`}
+                >
+                  {f === "accelerated" ? "Accel. Bi-weekly" : f}
+                </button>
               ))}
             </div>
           </div>
@@ -190,7 +257,7 @@ function PaymentCalc() {
       results={
         <>
           <Stat label={freq === "monthly" ? "Monthly payment" : "Per payment"} value={fmt2(payment)} big />
-          <div className="grid grid-cols-2 gap-4 pt-4 border-t border-primary-foreground/15">
+          <div className="grid grid-cols-2 gap-3 pt-4 border-t border-primary-foreground/15">
             <Stat label="Mortgage amount" value={fmt(principal)} />
             <Stat label="Per year" value={fmt(perYear)} />
             <Stat label="Total interest" value={fmt(totalInterest)} />
@@ -227,17 +294,17 @@ function AffordabilityCalc() {
           <NumberInput label="Household income (annual)" value={income} onChange={setIncome} prefix="$" />
           <NumberInput label="Monthly debt payments" value={debts} onChange={setDebts} prefix="$" />
           <NumberInput label="Down payment available" value={down} onChange={setDown} prefix="$" />
-          <div className="grid grid-cols-2 gap-5">
+          <div className="grid grid-cols-2 gap-4">
             <NumberInput label="Contract rate" value={rate} onChange={setRate} suffix="%" step={0.01} />
             <NumberInput label="Amortization" value={amort} onChange={setAmort} suffix="yrs" />
           </div>
-          <p className="text-xs text-muted-foreground">Uses the federal stress test: qualifying rate = max(contract + 2%, 5.25%). GDS 39% / TDS 44%.</p>
+          <p className="text-xs text-muted-foreground">Uses federal stress test: qualifying rate = max(contract + 2%, 5.25%). GDS 39% / TDS 44%.</p>
         </>
       }
       results={
         <>
           <Stat label="Max home price" value={fmt(maxPrice)} big />
-          <div className="grid grid-cols-2 gap-4 pt-4 border-t border-primary-foreground/15">
+          <div className="grid grid-cols-2 gap-3 pt-4 border-t border-primary-foreground/15">
             <Stat label="Max mortgage" value={fmt(maxMortgage)} />
             <Stat label="Qualifying rate" value={qualifyingRate.toFixed(2) + "%"} />
             <Stat label="Max payment" value={fmt2(maxPmt)} />
@@ -305,19 +372,19 @@ function LandTransferCalc() {
           <NumberInput label="Purchase price" value={price} onChange={setPrice} prefix="$" />
           <label className="flex items-center gap-3 text-sm">
             <input type="checkbox" checked={toronto} onChange={(e) => setToronto(e.target.checked)} className="h-4 w-4 accent-[oklch(0.74_0.13_75)]" />
-            Property is in the City of Toronto (adds municipal LTT)
+            City of Toronto property
           </label>
           <label className="flex items-center gap-3 text-sm">
             <input type="checkbox" checked={fthb} onChange={(e) => setFthb(e.target.checked)} className="h-4 w-4 accent-[oklch(0.74_0.13_75)]" />
-            First-time home buyer (apply rebate)
+            First-time home buyer
           </label>
-          <p className="text-xs text-muted-foreground">Ontario rebate caps at $4,000. Toronto first-time rebate caps at $4,475.</p>
+          <p className="text-xs text-muted-foreground">Ontario rebate caps at $4,000. Toronto rebate caps at $4,475.</p>
         </>
       }
       results={
         <>
           <Stat label="Total land transfer tax" value={fmt(Math.max(total, 0))} big />
-          <div className="grid grid-cols-2 gap-4 pt-4 border-t border-primary-foreground/15">
+          <div className="grid grid-cols-2 gap-3 pt-4 border-t border-primary-foreground/15">
             <Stat label="Ontario LTT" value={fmt(ont)} />
             <Stat label="Toronto LTT" value={fmt(tor)} />
             <Stat label="ON rebate" value={"−" + fmt(fthbOnt)} />
@@ -363,13 +430,13 @@ function CmhcCalc() {
           <NumberInput label="Home price" value={price} onChange={setPrice} prefix="$" />
           <NumberInput label="Down payment" value={down} onChange={setDown} prefix="$" />
           <p className="text-xs text-muted-foreground">
-            CMHC requires min 5% down on the first $500k and 10% on the portion above (up to $1.5M). Premium ranges from 2.8% to 4.0% of the mortgage based on LTV.
+            Min 5% on first $500k, 10% above. Premium 2.8–4.0% of mortgage based on LTV.
           </p>
           {!eligible && (
             <p className="text-xs text-destructive">
               {price > 1500000
-                ? "Not insurable: CMHC insurance is not available above $1.5M — minimum 20% down required."
-                : `Minimum down payment for this price is ${fmt(minDown)} (5% on the first $500,000, plus 10% on the remainder).`}
+                ? "Not insurable above $1.5M — 20% down required."
+                : `Min down: ${fmt(minDown)} (5% on $500k + 10% above).`}
             </p>
           )}
         </>
@@ -377,7 +444,7 @@ function CmhcCalc() {
       results={
         <>
           <Stat label="CMHC premium" value={fmt(premium)} big />
-          <div className="grid grid-cols-2 gap-4 pt-4 border-t border-primary-foreground/15">
+          <div className="grid grid-cols-2 gap-3 pt-4 border-t border-primary-foreground/15">
             <Stat label="Loan-to-value" value={(ratio * 100).toFixed(1) + "%"} />
             <Stat label="Base mortgage" value={fmt(principal)} />
             <Stat label="Total insured" value={fmt(insured)} />
@@ -415,18 +482,18 @@ function PrepaymentCalc() {
       inputs={
         <>
           <NumberInput label="Current mortgage balance" value={principal} onChange={setPrincipal} prefix="$" />
-          <div className="grid grid-cols-2 gap-5">
+          <div className="grid grid-cols-2 gap-4">
             <NumberInput label="Rate" value={rate} onChange={setRate} suffix="%" step={0.01} />
             <NumberInput label="Amortization" value={amort} onChange={setAmort} suffix="yrs" />
           </div>
           <NumberInput label="Extra monthly payment" value={extra} onChange={setExtra} prefix="$" />
-          <p className="text-xs text-muted-foreground">Most lenders allow 10–20% annual prepayment without penalty. We'll confirm your specific lender's privileges.</p>
+          <p className="text-xs text-muted-foreground">Most lenders allow 10–20% annual prepayment without penalty. We'll confirm your lender's privileges.</p>
         </>
       }
       results={
         <>
           <Stat label="Years off your mortgage" value={yearsSaved.toFixed(1) + " yrs"} big />
-          <div className="grid grid-cols-2 gap-4 pt-4 border-t border-primary-foreground/15">
+          <div className="grid grid-cols-2 gap-3 pt-4 border-t border-primary-foreground/15">
             <Stat label="Interest saved" value={fmt(Math.max(interestSaved, 0))} />
             <Stat label="New payment" value={fmt2(base + extra)} />
             <Stat label="Original payment" value={fmt2(base)} />
