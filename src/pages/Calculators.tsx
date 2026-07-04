@@ -22,7 +22,6 @@ export default function Calculators() {
         canonical="/calculators"
         keywords="mortgage calculator, payment calculator, affordability calculator, land transfer tax calculator, CMHC calculator, GTA mortgage calculators, Ontario mortgage tools"
       >
-        {/* Page-level JSON-LD describing the calculators (helps search engines understand the toolset) */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -50,119 +49,81 @@ export default function Calculators() {
         />
       </SEO>
 
-    {/* Intro (matches About page style) */}
-<section className="container-page page-content">
-  <p className="text-xs uppercase tracking-widest text-foreground font-medium">Mortgage Tools</p>
-  <h1 className="mt-3 max-w-3xl text-3xl md:text-4xl lg:text-5xl font-serif text-balance">
-    Run the numbers before you sign anything.
-  </h1>
-  <p className="mt-4 text-sm text-muted-foreground max-w-xl">
-    Built on Canadian semi-annual compounding and current Ontario tax rules. Estimates only — your real approval may differ.
-  </p>
-</section>
+      {/* Intro (matches About page style) */}
+      <section className="container-page page-content">
+        <p className="text-xs uppercase tracking-widest text-foreground font-medium">CALCULATORS</p>
+        <h1 className="mt-3 max-w-3xl text-3xl md:text-4xl lg:text-5xl font-serif text-balance">
+          Let's run some numbers before you sign anything.
+        </h1>
+        <p className="mt-4 text-sm text-muted-foreground max-w-xl">
+          Built on Canadian semi-annual compounding and current Ontario tax rules. Estimates only — your real approval may differ.
+        </p>
+      </section>
 
-{/* Main calculators band with secondary background (two-tone effect) */}
-<section className="bg-secondary/60 page-content">
-  <div className="container-page py-8 flex gap-8 min-h-[calc(100vh-300px)]">
-    {/* Mobile: compact horizontal tabs */}
-    <div className="md:hidden w-full mb-4">
-      <div className="flex gap-2 overflow-x-auto pb-2">
-        {tabs.map((t) => {
-          const isActive = t.id === active;
-          const Icon = t.icon;
-          return (
-            <button
-              key={t.id}
-              onClick={() => setActive(t.id)}
-              aria-pressed={isActive}
-              className={`flex items-center gap-2 px-4 py-2 rounded-md whitespace-nowrap transition ${
-                isActive ? "bg-gold/10 text-foreground" : "bg-transparent text-muted-foreground hover:bg-primary/5"
-              }`}
-            >
-              <Icon className="h-4 w-4" />
-              <span className="text-sm">{t.label}</span>
-            </button>
-          );
-        })}
-      </div>
-    </div>
-
-    {/* Desktop: semantic sidebar (hidden on mobile) */}
-    <nav aria-label="Calculator tools" className="hidden md:block w-80 flex-shrink-0">
-      <ul className="space-y-2">
-        {tabs.map((t) => {
-          const isActive = t.id === active;
-          const Icon = t.icon;
-          return (
-            <li key={t.id}>
-              <button
-                onClick={() => setActive(t.id)}
-                aria-current={isActive ? "true" : undefined}
-                className={`w-full text-left rounded-lg border-2 p-4 transition ${
-                  isActive ? "border-gold bg-gold/5 text-foreground" : "border-border text-foreground hover:bg-primary/5"
-                } focus:outline-none focus-visible:ring-2 focus-visible:ring-gold`}
-              >
-                <div className="flex items-center gap-3 mb-2">
-                  <Icon className="h-5 w-5" aria-hidden />
-                  <span className="font-medium text-sm">{t.label}</span>
-                </div>
-                <p className={`text-xs leading-relaxed ${isActive ? "text-foreground/80" : "text-muted-foreground"}`}>{t.desc}</p>
-              </button>
-            </li>
-          );
-        })}
-      </ul>
-    </nav>
-
-    {/* RIGHT: Calculator content */}
-    <main className="flex-1 min-w-0">
-      <div className="sticky top-20 md:top-32">
-        {active === "payment" && <PaymentCalc />}
-        {active === "afford" && <AffordabilityCalc />}
-        {active === "ltt" && <LandTransferCalc />}
-        {active === "cmhc" && <CmhcCalc />}
-        {active === "prepay" && <PrepaymentCalc />}
-      </div>
-    </main>
-  </div>
-</section>
-        {/* Desktop: semantic sidebar (hidden on mobile) */}
-        <nav aria-label="Calculator tools" className="hidden md:block w-80 flex-shrink-0">
-          <ul className="space-y-2">
-            {tabs.map((t) => {
-              const isActive = t.id === active;
-              const Icon = t.icon;
-              return (
-                <li key={t.id}>
+      {/* Main calculators band with secondary background (two-tone effect) */}
+      <section className="bg-secondary/60 page-content">
+        <div className="container-page py-8 flex gap-8 min-h-[calc(100vh-300px)]">
+          {/* Mobile: compact horizontal tabs */}
+          <div className="md:hidden w-full mb-4">
+            <div className="flex gap-2 overflow-x-auto pb-2">
+              {tabs.map((t) => {
+                const isActive = t.id === active;
+                const Icon = t.icon;
+                return (
                   <button
+                    key={t.id}
                     onClick={() => setActive(t.id)}
-                    aria-current={isActive ? "true" : undefined}
-                    className={`w-full text-left rounded-lg border-2 p-4 transition ${
-                      isActive ? "border-gold bg-gold/5 text-foreground" : "border-border text-foreground hover:bg-primary/5"
-                    } focus:outline-none focus-visible:ring-2 focus-visible:ring-gold`}
+                    aria-pressed={isActive}
+                    className={`flex items-center gap-2 px-4 py-2 rounded-md whitespace-nowrap transition ${
+                      isActive ? "bg-gold/10 text-foreground" : "bg-transparent text-muted-foreground hover:bg-primary/5"
+                    }`}
                   >
-                    <div className="flex items-center gap-3 mb-2">
-                      <Icon className="h-5 w-5" aria-hidden />
-                      <span className="font-medium text-sm">{t.label}</span>
-                    </div>
-                    <p className={`text-xs leading-relaxed ${isActive ? "text-foreground/80" : "text-muted-foreground"}`}>{t.desc}</p>
+                    <Icon className="h-4 w-4" />
+                    <span className="text-sm">{t.label}</span>
                   </button>
-                </li>
-              );
-            })}
-          </ul>
-        </nav>
-
-        {/* RIGHT: Calculator content */}
-        <main className="flex-1 min-w-0">
-          <div className="sticky top-20 md:top-32">
-            {active === "payment" && <PaymentCalc />}
-            {active === "afford" && <AffordabilityCalc />}
-            {active === "ltt" && <LandTransferCalc />}
-            {active === "cmhc" && <CmhcCalc />}
-            {active === "prepay" && <PrepaymentCalc />}
+                );
+              })}
+            </div>
           </div>
-        </main>
+
+          {/* Desktop: semantic sidebar (hidden on mobile) */}
+          <nav aria-label="Calculator tools" className="hidden md:block w-80 flex-shrink-0">
+            <ul className="space-y-2">
+              {tabs.map((t) => {
+                const isActive = t.id === active;
+                const Icon = t.icon;
+                return (
+                  <li key={t.id}>
+                    <button
+                      onClick={() => setActive(t.id)}
+                      aria-current={isActive ? "true" : undefined}
+                      className={`w-full text-left rounded-lg border-2 p-4 transition ${
+                        isActive ? "border-gold bg-gold/5 text-foreground" : "border-border text-foreground hover:bg-primary/5"
+                      } focus:outline-none focus-visible:ring-2 focus-visible:ring-gold`}
+                    >
+                      <div className="flex items-center gap-3 mb-2">
+                        <Icon className="h-5 w-5" aria-hidden />
+                        <span className="font-medium text-sm">{t.label}</span>
+                      </div>
+                      <p className={`text-xs leading-relaxed ${isActive ? "text-foreground/80" : "text-muted-foreground"}`}>{t.desc}</p>
+                    </button>
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
+
+          {/* RIGHT: Calculator content */}
+          <main className="flex-1 min-w-0">
+            <div className="sticky top-20 md:top-32">
+              {active === "payment" && <PaymentCalc />}
+              {active === "afford" && <AffordabilityCalc />}
+              {active === "ltt" && <LandTransferCalc />}
+              {active === "cmhc" && <CmhcCalc />}
+              {active === "prepay" && <PrepaymentCalc />}
+            </div>
+          </main>
+        </div>
       </section>
     </>
   );
