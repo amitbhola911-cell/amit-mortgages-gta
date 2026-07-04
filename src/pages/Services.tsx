@@ -63,12 +63,13 @@ export default function Services() {
       {/* Intro — tightened top spacing to remove extra empty space */}
       <section className="container-page pt-8 pb-10">
         <p className="text-xs uppercase tracking-widest text-foreground font-medium">Services</p>
-        <h1 className="mt-3 max-w-3xl text-4xl md:text-5xl lg:text-6xl font-serif text-balance">
-          The full mortgage toolkit — for every kind of GTA buyer.
-        </h1>
-        <p className="mt-4 max-w-2xl text-muted-foreground">
-          Whether you're buying your first condo in Liberty Village or refinancing a multi-plex in Hamilton, we have a lender and a structure that fits.
-        </p>
+       
+        <h1 className="mt-3 max-w-3xl text-3xl md:text-4xl lg:text-5xl font-serif text-balance md:whitespace-nowrap">
+  The full mortgage toolkit — for every kind of GTA buyer.
+</h1>
+<p className="mt-4 md:max-w-none max-w-2xl text-muted-foreground md:whitespace-nowrap">
+  Whether you're buying your first condo in Toronto or refinancing a multi-plex in Durham or Hamilton, we have a lender and a structure that fits.
+</p>
       </section>
 
       {/* Services grid — consistent padding and improved card layout */}
