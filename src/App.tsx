@@ -9,6 +9,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import Index from "@/pages/Index";
 import About from "@/pages/About";
 import Services from "@/pages/Services";
+import Rates from "@/pages/Rates";
 import Calculators from "@/pages/Calculators";
 import Contact from "@/pages/Contact";
 import Apply from "@/pages/Apply";
@@ -33,6 +34,7 @@ export default function App() {
               <Route path="/" element={<Index />} />
               <Route path="/about" element={<About />} />
               <Route path="/services" element={<Services />} />
+              <Route path="/rates" element={<Rates />} />
               <Route path="/calculators" element={<Calculators />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/apply" element={<Apply />} />
