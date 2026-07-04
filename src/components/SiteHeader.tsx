@@ -1,6 +1,7 @@
+// src/components/SiteHeader.tsx
+import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { useState } from "react";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X, Phone, ArrowRight } from "lucide-react";
 import { NewsTicker } from "./NewsTicker";
 import personalLogo from "@/assets/AMIT MORTGAGES Logo Blue.png";
 import brokerageLogo from "@/assets/8twelve-logo...png";
@@ -9,6 +10,7 @@ const nav = [
   { to: "/", label: "Home", end: true },
   { to: "/about", label: "About" },
   { to: "/services", label: "Services" },
+  { to: "/rates", label: "Rates" }, // <-- added Rates
   { to: "/calculators", label: "Calculators" },
   { to: "/contact", label: "Contact" },
 ];
@@ -61,10 +63,10 @@ export function SiteHeader() {
           {/* Apply Now CTA */}
           <Link
             to="/apply"
-            className="ml-2 inline-flex items-center rounded-md bg-gradient-royal px-4 py-2 text-sm font-medium text-primary-foreground transition-transform duration-200 hover:scale-115 focus:scale-115 shadow"
+            className="ml-2 inline-flex items-center gap-2 rounded-md bg-gradient-royal px-4 py-2 text-sm font-medium text-primary-foreground transition-transform duration-200 hover:scale-115 focus:scale-115 shadow"
             aria-label="Apply Now"
           >
-            Apply Now
+            Apply Now <ArrowRight className="h-4 w-4" />
           </Link>
         </nav>
 
