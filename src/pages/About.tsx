@@ -45,9 +45,9 @@ export default function About() {
         </p>
 
         {/* Keep headline on a single line on medium+ screens; responsive sizing for small screens */}
-        <h1 className="mt-3 max-w-3xl text-3xl md:text-4xl lg:text-5xl font-serif text-balance md:whitespace-nowrap">
-          Mortgages should feel like advice — not a sales pitch.
-        </h1>
+       <h1 className="mt-3 md:max-w-none max-w-3xl text-3xl md:text-4xl lg:text-5xl font-serif text-balance md:whitespace-nowrap">
+         Mortgages should feel like advice — not a sales pitch.
+       </h1>
       </section>
 
       {/* Main content: image + checklist on left, copy on right */}
