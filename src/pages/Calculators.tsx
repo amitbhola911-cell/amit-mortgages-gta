@@ -238,7 +238,7 @@ function PaymentCalc() {
           <NumberInput label="Down payment" value={down} onChange={setDown} prefix="$" />
           <div className="grid grid-cols-2 gap-4">
             <NumberInput label="Interest rate" value={rate} onChange={setRate} suffix="%" step={0.01} />
-            <NumberInput label="Amortization" value={amort} onChange={setAmort} suffix="yrs" />
+            <NumberInput label="Amortization (in Years)" value={amort} onChange={setAmort} />
           </div>
 
           <div>
@@ -300,7 +300,7 @@ function AffordabilityCalc() {
           <NumberInput label="Down payment available" value={down} onChange={setDown} prefix="$" />
           <div className="grid grid-cols-2 gap-4">
             <NumberInput label="Contract rate" value={rate} onChange={setRate} suffix="%" step={0.01} />
-            <NumberInput label="Amortization" value={amort} onChange={setAmort} suffix="yrs" />
+            <NumberInput label="Amortization (in Years)" value={amort} onChange={setAmort} />
           </div>
           <p className="text-xs text-muted-foreground">Uses federal stress test: qualifying rate = max(contract + 2%, 5.25%). GDS 39% / TDS 44%.</p>
         </>
@@ -488,7 +488,7 @@ function PrepaymentCalc() {
           <NumberInput label="Current mortgage balance" value={principal} onChange={setPrincipal} prefix="$" />
           <div className="grid grid-cols-2 gap-4">
             <NumberInput label="Rate" value={rate} onChange={setRate} suffix="%" step={0.01} />
-            <NumberInput label="Amortization" value={amort} onChange={setAmort} suffix="yrs" />
+            <NumberInput label="Amortization (in Years)" value={amort} onChange={setAmort} />
           </div>
           <NumberInput label="Extra monthly payment" value={extra} onChange={setExtra} prefix="$" />
           <p className="text-xs text-muted-foreground">Most lenders allow 10–20% annual prepayment without penalty. We'll confirm your lender's privileges.</p>
