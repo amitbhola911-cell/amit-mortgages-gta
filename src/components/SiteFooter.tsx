@@ -1,13 +1,12 @@
+// src/components/SiteFooter.tsx
+import React from "react";
 import { Link } from "react-router-dom";
-import { Mail, Phone, MapPin, BadgeCheck, MessageCircle } from "lucide-react";
+import { Mail, Phone, MapPin, BadgeCheck, MessageCircle, Instagram } from "lucide-react";
 
 export function SiteFooter() {
   return (
-
     <footer className="mt-24 bg-gradient-to-br from-primary via-primary to-royal text-primary-foreground">
-
       <div className="container-page py-10 grid gap-8 md:grid-cols-4">
-
         <div className="md:col-span-2">
           <p className="text-sm text-primary-foreground/75 max-w-sm">
             Independent mortgage advisory serving the Greater Toronto Area. Access to 50+ lenders, one trusted advisor.
@@ -19,21 +18,72 @@ export function SiteFooter() {
             </p>
             <p className="text-primary-foreground/80">Licence No. 22002220</p>
             <p className="text-primary-foreground/80">8Twelve Mortgage Corp.</p>
-            <p className="text-primary-foreground/60 text-xs">
-              Mortgage Brokerage Ontario #13072
-            </p>
+            <p className="text-primary-foreground/60 text-xs">Mortgage Brokerage Ontario #13072</p>
+
+            <div className="mt-4 flex items-center gap-3">
+              <a
+                href="https://www.instagram.com/AmitMortgages"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Amit Mortgages on Instagram"
+                className="inline-flex items-center gap-2 text-sm text-primary-foreground/90 hover:text-gold"
+              >
+                <Instagram className="h-4 w-4 text-primary-foreground/90" />
+                <span className="text-sm">@AmitMortgages</span>
+              </a>
+
+              <a
+                href="https://wa.me/16479921909"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Chat on WhatsApp"
+                className="inline-flex items-center gap-2 text-sm text-primary-foreground/90 hover:text-gold"
+              >
+                <MessageCircle className="h-4 w-4 text-primary-foreground/90" />
+                <span className="text-sm">WhatsApp</span>
+              </a>
+            </div>
           </div>
         </div>
 
         <div>
           <h4 className="font-serif text-base mb-4">Explore</h4>
           <ul className="space-y-2 text-sm text-primary-foreground/75">
-            <li><Link to="/about" className="hover:text-gold">About</Link></li>
-            <li><Link to="/services" className="hover:text-gold">Services</Link></li>
-            <li><Link to="/calculators" className="hover:text-gold">Calculators</Link></li>
-            <li><Link to="/apply" className="hover:text-gold">Apply Now</Link></li>
-            <li><Link to="/contact" className="hover:text-gold">Contact</Link></li>
-            <li><Link to="/privacy" className="hover:text-gold">Privacy Policy</Link></li>
+            <li>
+              <Link to="/about" className="hover:text-gold">
+                About
+              </Link>
+            </li>
+            <li>
+              <Link to="/services" className="hover:text-gold">
+                Services
+              </Link>
+            </li>
+            <li>
+              <Link to="/rates" className="hover:text-gold">
+                Rates
+              </Link>
+            </li>
+            <li>
+              <Link to="/calculators" className="hover:text-gold">
+                Calculators
+              </Link>
+            </li>
+            <li>
+              <Link to="/apply" className="hover:text-gold">
+                Apply Now
+              </Link>
+            </li>
+            <li>
+              <Link to="/contact" className="hover:text-gold">
+                Contact
+              </Link>
+            </li>
+            <li>
+              <Link to="/privacy" className="hover:text-gold">
+                Privacy Policy
+              </Link>
+            </li>
           </ul>
         </div>
 
@@ -42,7 +92,9 @@ export function SiteFooter() {
           <ul className="space-y-3 text-sm text-primary-foreground/75">
             <li className="flex items-start gap-2">
               <Phone className="h-5 w-5 mt-0.5 text-gold" />
-              <a href="tel:+16479921909" className="hover:text-gold text-base font-semibold">647 992 1909</a>
+              <a href="tel:+16479921909" className="hover:text-gold text-base font-semibold">
+                647 992 1909
+              </a>
             </li>
             <li className="flex items-start gap-2">
               <Mail className="h-4 w-4 mt-0.5 text-gold" />
@@ -58,9 +110,11 @@ export function SiteFooter() {
             </li>
             <li className="flex items-start gap-2">
               <MapPin className="h-4 w-4 mt-0.5 text-gold shrink-0" />
-              <span>
-                55 Renfrew Dr, #201<br />Markham, ON L3R 8H3
-              </span>
+              <address className="not-italic">
+                55 Renfrew Dr, #201
+                <br />
+                Markham, ON L3R 8H3
+              </address>
             </li>
           </ul>
         </div>
@@ -72,7 +126,9 @@ export function SiteFooter() {
           <span className="flex gap-3 items-center">
             <span>© {new Date().getFullYear()} Amit Mortgages — Amit Bhola. All rights reserved.</span>
             <span>·</span>
-            <Link to="/privacy" className="hover:text-gold">Privacy Policy</Link>
+            <Link to="/privacy" className="hover:text-gold">
+              Privacy Policy
+            </Link>
           </span>
         </div>
       </div>
