@@ -32,7 +32,7 @@ export default function Rates() {
     <>
       <SEO
         title="Current Mortgage Rates — Ontario | Amit Mortgages"
-        description="Sample Ontario mortgage rates and example payments. Rates vary by lender, credit, equity and product — contact us for a personalized quote."
+        description="Current Ontario mortgage rates and example payments. Rates vary by lender, credit, equity and product — contact us for a personalized quote."
         canonical="/rates"
       >
         <script
@@ -43,7 +43,7 @@ export default function Rates() {
               "@type": "WebPage",
               name: "Amit Mortgages — Rates",
               url: "https://amitmortgages.ca/rates",
-              description: "Sample Ontario mortgage rates and example payments.",
+              description: "Current Ontario mortgage rates and example payments.",
             }, null, 2),
           }}
         />
@@ -53,10 +53,10 @@ export default function Rates() {
       <section className="container-page pt-8 pb-10">
         <p className="text-xs uppercase tracking-widest text-foreground font-medium">Rates</p>
         <h1 className="mt-3 max-w-3xl text-4xl md:text-5xl lg:text-6xl font-serif text-balance">
-          Sample Ontario mortgage rates and example payments
+          Current Ontario mortgage rates and example payments
         </h1>
         <p className="mt-4 max-w-2xl text-muted-foreground">
-          These sample rates are illustrative. Your actual rate depends on credit, down payment, property type, and lender underwriting. Contact us for a tailored quote. 
+          These rates are illustrative. Your actual rate depends on credit, down payment, property type, and lender underwriting. Contact us for a tailored quote. 
         </p>
       </section>
 
@@ -65,7 +65,7 @@ export default function Rates() {
         <div className="container-page py-8">
           <div className="rounded-2xl border border-border bg-card p-6">
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-xl font-serif">Ontario rates (sample)</h2>
+              <h2 className="text-xl font-serif">Ontario rates (current)</h2>
               <div className="text-sm text-muted-foreground">Last updated: {new Date().toLocaleDateString()}</div>
             </div>
 
