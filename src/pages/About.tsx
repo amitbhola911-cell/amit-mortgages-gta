@@ -34,7 +34,7 @@ export default function About() {
     <>
       <SEO
         title="About Amit Bhola — GTA Mortgage Agent"
-        description="Meet Amit Bhola, an FSRA-licensed mortgage agent serving the Greater Toronto Area with access to 50+ Canadian lenders through 8Twelve Mortgage Corp."
+        description="Meet Amit Bhola, FSRA-licensed mortgage broker serving GTA. Specializing in complex cases, self-employed, renewals, refinance, and first-time buyers."
         canonical="/about"
       />
 
