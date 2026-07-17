@@ -5,7 +5,7 @@ export default function Privacy() {
     <>
       <SEO
         title="Privacy Policy — 8Twelve Mortgage Corp."
-        description="8Twelve Mortgage Corp. Privacy Policy governing the collection, use, and disclosure of personal information."
+        description="8Twelve Mortgage Corp. Privacy Policy governing the collection, use, and disclosure of personal information. Committed towards you and your information - always all ways"
         canonical="/privacy"
       />
       <section className="container-page pt-16 pb-6">
