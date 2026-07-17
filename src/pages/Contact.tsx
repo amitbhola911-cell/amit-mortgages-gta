@@ -35,7 +35,7 @@ export default function Contact() {
     <>
       <SEO
         title="Contact Amit Mortgages — GTA, Ontario"
-        description="Book a free mortgage consultation. Call 647 992 1909 or send a message — typical response within one business hour."
+        description="Contact Amit Mortgages for a FREE mortgage consultation. Call 6479921909 or fill out our form for a quick response"
         canonical="/contact"
       />
       <section className="container-page pt-8 pb-6">
