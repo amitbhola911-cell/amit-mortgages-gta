@@ -32,7 +32,7 @@ export default function Rates() {
     <>
       <SEO
         title="Current Mortgage Rates — Ontario | Amit Mortgages"
-        description="Current Ontario mortgage rates and example payments. Rates vary by lender, credit, equity and product — contact us for a personalized quote."
+        description="Current GTA mortgage rates for purchase, renewal, and refinance. Compare fixed vs. variable rates. Updated rates. Contact for personalized rate quote today."
         canonical="/rates"
       >
         <script
