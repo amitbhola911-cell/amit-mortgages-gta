@@ -56,7 +56,7 @@ export default function Services() {
     <>
       <SEO
         title="Mortgage Services — Amit Mortgages GTA"
-        description="Purchase, refinance, renewal, investment, self-employed, newcomer, and private mortgage solutions across the Greater Toronto Area."
+        description="Mortgage services: purchase, renewal, refinance, private lending, self-employed mortgages, bad credit solutions across the Greater Toronto Area. FSRA licensed. 50+ lender access."
         canonical="/services"
       />
 
