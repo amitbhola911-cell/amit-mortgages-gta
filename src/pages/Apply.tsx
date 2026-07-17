@@ -40,7 +40,7 @@ export default function Apply() {
     <>
       <SEO
         title="Apply in Minutes — Amit Mortgages"
-        description="Fast online mortgage application — apply in minutes and get approved in 24 hours for many cases. Secure, simple, and lender-ready."
+        description="Fast online mortgage application and preapprovals — apply in minutes and get approved in 24 hours for many cases. Secure, simple, and lender-ready. Get approved for purchase, renewal, or refinance."
         canonical="/apply"
       />
 
