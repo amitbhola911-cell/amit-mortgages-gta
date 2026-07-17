@@ -140,7 +140,7 @@ export default function Index() {
     <>
       <SEO
         title="Amit Mortgages — GTA Mortgage Agent"
-        description="One advisor, 50+ lenders. Get sharper mortgage rates and personal guidance for buying, renewing, or refinancing anywhere in the Greater Toronto Area."
+        description="One certified advisor, 50+ lenders. Free personal guidance for buying, renewing, or refinancing anywhere in the Greater Toronto Area. Fast approvals guranteed."
         canonical="/"
         image={DEFAULT_OG}
       />
