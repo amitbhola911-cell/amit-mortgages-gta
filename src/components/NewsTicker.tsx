@@ -5,7 +5,7 @@ import { Megaphone } from "lucide-react";
  */
 const TICKER_MESSAGES: string[] = [
   "BREAKING: Fixed 5-year rates starting from 4.19% — Call 647 992 1909 today!",
-  "RATE ANNOUNCEMENT: The Bank of Canada held its benchmark interest rate steady at 2.25% on July 15, 2026, marking 6th consecutive hold.",
+  "RATE ANNOUNCEMENT: The Bank of Canada held its benchmark interest rate steady at 2.25% on Sep 02, 2026, next announcement Oct 28, 2026",
   "PREDICTION: Economy to stabalize alongside projections that inflation will gradually ease.",
   "🏠 First-time home buyers: Up to $4,000 Ontario Land Transfer Tax rebate available",
   "💼 Self-employed? We work with lenders who understand your income",
