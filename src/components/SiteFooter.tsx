@@ -98,8 +98,8 @@ export function SiteFooter() {
             </li>
             <li className="flex items-start gap-2">
               <Mail className="h-4 w-4 mt-0.5 text-gold" />
-              <a href="mailto:amit.bhola@8twelve.mortgage" className="hover:text-gold break-all">
-                amit.bhola@8twelve.mortgage
+              <a href="mailto:info@amitmortgages.ca" className="hover:text-gold break-all">
+                info@amitmortgages.ca
               </a>
             </li>
             <li className="flex items-start gap-2">
